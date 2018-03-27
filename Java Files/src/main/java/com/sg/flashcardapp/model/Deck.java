@@ -5,6 +5,8 @@
  */
 package com.sg.flashcardapp.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -15,6 +17,7 @@ public class Deck {
   private int deckId;
   private String deckName;
   private String deckDesc;
+  private List<Review> reviews = new ArrayList<>();
 
   public Deck() {
     
