@@ -19,5 +19,65 @@ public class Category {
   public Category() {
     
   }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public String getCategoryDesc() {
+        return categoryDesc;
+    }
+
+    public void setCategoryDesc(String categoryDesc) {
+        this.categoryDesc = categoryDesc;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 89 * hash + this.categoryId;
+        hash = 89 * hash + Objects.hashCode(this.categoryName);
+        hash = 89 * hash + Objects.hashCode(this.categoryDesc);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Category other = (Category) obj;
+        if (this.categoryId != other.categoryId) {
+            return false;
+        }
+        if (!Objects.equals(this.categoryName, other.categoryName)) {
+            return false;
+        }
+        if (!Objects.equals(this.categoryDesc, other.categoryDesc)) {
+            return false;
+        }
+        return true;
+    }
+  
+  
+    
   
 }
