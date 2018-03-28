@@ -5,16 +5,43 @@
  */
 package com.sg.flashcardapp.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 /**
  *
  * @authors Mike Betzler, Jacob Duerr, Anna Maxam, Jeff Peterson
  */
+@Entity
 public class Role {
-  private int roleId;
-  private String roleName;
-  private String roleDesc;
+    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column
+    private int roleId;
+    
+    @Column(nullable = false)
+    private String roleName;
+    
+    @Column(nullable = false)
+    private String roleDesc;
+    
+    @ManyToMany
+    @JoinTable(name="UserRole", 
+    joinColumns={ @JoinColumn(name = "roleId") },
+    inverseJoinColumns={ @JoinColumn(name = "userId") } 
+    )
+    private List<User> users = new ArrayList<>();
+    
 
   public Role() {
     

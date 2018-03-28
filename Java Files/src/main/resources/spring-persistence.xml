@@ -31,12 +31,6 @@
         <property name="initialSize" value="5" />
         <property name="maxTotal" value="10" />
     </bean>
-
-<!--DO WE NEED THIS??-->
-<!--    <bean id="jdbcTemplate"
-          class="org.springframework.jdbc.core.JdbcTemplate">
-        <property name="dataSource" ref="dataSource" />
-    </bean>-->
     
     <bean id="transactionManager"
           class="org.springframework.orm.jpa.JpaTransactionManager">
@@ -75,13 +69,6 @@
             </props>
         </property>
     </bean>
-    
-    
-    <!--DO WE NEED THIS?-->
-<!--    <bean id="contactListDao"
-          class="com.sg.contactlistspringmvc.dao.ContactListDaoDbImpl">
-        <property name="jdbcTemplate" ref="jdbcTemplate" />
-    </bean>-->
     
     
     

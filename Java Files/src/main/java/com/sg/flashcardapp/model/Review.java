@@ -6,15 +6,37 @@
 package com.sg.flashcardapp.model;
 
 import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
 
 /**
  *
  * @authors Mike Betzler, Jacob Duerr, Anna Maxam, Jeff Peterson
  */
+@Entity
+@IdClass(CompositeKeyReview.class)
 public class Review {
     
-    private Integer reviewId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column
+    private int reviewId;
+    
+    @Id
+    private int userId;
+    
+    @Id
+    private int deckId;
+    
+    
+    @Column(nullable = false)
     private String reviewName;
+    
+    @Column(nullable = false)
     private String reviewContent;
 
     public Integer getReviewId() {

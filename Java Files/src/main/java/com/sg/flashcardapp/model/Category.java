@@ -5,16 +5,42 @@
  */
 package com.sg.flashcardapp.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 /**
  *
  * @authors Mike Betzler, Jacob Duerr, Anna Maxam, Jeff Peterson
  */
+@Entity
 public class Category {
-  private int categoryId;
-  private String categoryName;
-  private String categoryDesc;
+    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column
+    private int categoryId;
+    
+    @Column(nullable = false)
+    private String categoryName;
+    
+    @Column
+    private String categoryDesc;
+    
+    @ManyToMany
+    @JoinTable(name = "CategoryCard",
+            joinColumns = {@JoinColumn(name = "categoryId")}, 
+            inverseJoinColumns = { @JoinColumn(name = "cardId")}
+    )
+    private List<Card> cards = new ArrayList<>();
+    
 
   public Category() {
     
