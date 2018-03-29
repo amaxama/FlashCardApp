@@ -78,13 +78,22 @@ public class Card {
         this.cardAnswer = cardAnswer;
     }
 
+    public List<CardRating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(List<CardRating> ratings) {
+        this.ratings = ratings;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 83 * hash + this.cardId;
-        hash = 83 * hash + Objects.hashCode(this.cardName);
-        hash = 83 * hash + Objects.hashCode(this.cardChallenge);
-        hash = 83 * hash + Objects.hashCode(this.cardAnswer);
+        int hash = 3;
+        hash = 79 * hash + this.cardId;
+        hash = 79 * hash + Objects.hashCode(this.cardName);
+        hash = 79 * hash + Objects.hashCode(this.cardChallenge);
+        hash = 79 * hash + Objects.hashCode(this.cardAnswer);
+        hash = 79 * hash + Objects.hashCode(this.ratings);
         return hash;
     }
 
@@ -112,8 +121,15 @@ public class Card {
         if (!Objects.equals(this.cardAnswer, other.cardAnswer)) {
             return false;
         }
+        if (!Objects.equals(this.ratings, other.ratings)) {
+            return false;
+        }
         return true;
     }
+    
+    
+
+    
   
   
   

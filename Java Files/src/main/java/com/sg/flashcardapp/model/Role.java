@@ -35,13 +35,6 @@ public class Role {
     @Column(nullable = false)
     private String roleDesc;
     
-    @ManyToMany
-    @JoinTable(name="UserRole", 
-    joinColumns={ @JoinColumn(name = "roleId") },
-    inverseJoinColumns={ @JoinColumn(name = "userId") } 
-    )
-    private List<User> users = new ArrayList<>();
-    
 
   public Role() {
     

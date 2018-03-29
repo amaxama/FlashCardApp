@@ -22,8 +22,8 @@
         <form-login login-processing-url="/j_spring_security_check"
                     login-page="/login"
                     authentication-failure-url="/login?login_error=1"/>
-        <intercept-url pattern="/" access="IS_AUTHENTICATED_ANONYMOUSLY"/>     
-        <intercept-url pattern="/home" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY"/>     
+        <intercept-url pattern="/home.html" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/content" access="ROLE_USER"/>
         <intercept-url pattern="/admin" access="ROLE_ADMIN"/>        
         <intercept-url pattern="/**" access="ROLE_USER"/> 
@@ -36,16 +36,19 @@
 
     <authentication-manager>
         <authentication-provider>
-            <!--<password-encoder ref="encoder"/>-->
+            <password-encoder ref="encoder"/>
             <jdbc-user-service id="userService"
                                data-source-ref="dataSource"
                                users-by-username-query=
-                                    "SELECT userName, password, active FROM user WHERE userId=?"
+                                    "SELECT userName, password, active FROM user WHERE userName=?"
                                authorities-by-username-query=
-                                    "SELECT r.roleName FROM role r JOIN userRole ur ON r.roleId = ur.roleId WHERE ur.userId = ?" />
+                                    "SELECT u.userName, r.roleName FROM role r JOIN userRole ur ON r.roleId = ur.roleId JOIN user u ON ur.userId = u.userId WHERE u.userName = ?" />
                                      
         </authentication-provider>
     </authentication-manager>
+    
+    <beans:bean id="encoder"
+            class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 
 </beans:beans>
 

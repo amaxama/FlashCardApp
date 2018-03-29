@@ -40,6 +40,13 @@ public class User {
     private boolean active;
 
     @ManyToMany
+    @JoinTable(name= "UserRole",
+            joinColumns = {@JoinColumn(name = "userId")},
+            inverseJoinColumns = {@JoinColumn(name = "deckId")}
+    )
+    List<Role> roles = new ArrayList<>();
+    
+    @ManyToMany
     @JoinTable(name = "UserDeck",
             joinColumns = {@JoinColumn(name = "userId")},
             inverseJoinColumns = {@JoinColumn(name = "deckId")}

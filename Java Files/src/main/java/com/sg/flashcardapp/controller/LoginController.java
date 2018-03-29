@@ -15,9 +15,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class LoginController {
     
-    @GetMapping("/")
+    @GetMapping("/login")
     public String showLoginForm() {
         return "login";
+    }
+    
+    @GetMapping("/")
+    public String goToHomePage() {
+        return "hello";
     }
     
     
