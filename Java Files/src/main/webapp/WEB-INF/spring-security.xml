@@ -49,9 +49,3 @@
 
 </beans:beans>
 
-
-
-
-
-<beans:bean id="webexpressionHandler" 
-            class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler"/>
