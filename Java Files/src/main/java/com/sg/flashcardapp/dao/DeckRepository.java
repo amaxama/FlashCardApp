@@ -5,10 +5,13 @@
  */
 package com.sg.flashcardapp.dao;
 
+import com.sg.flashcardapp.model.Deck;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 /**
  *
  * @author JP
  */
-public interface RoleDao {
+public interface DeckRepository extends JpaRepository<Deck, Integer> {
   
 }

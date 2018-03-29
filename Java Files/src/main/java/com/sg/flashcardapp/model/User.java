@@ -5,21 +5,63 @@
  */
 package com.sg.flashcardapp.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @authors Mike Betzler, Jacob Duerr, Anna Maxam, Jeff Peterson
  */
+@Entity
 public class User {
-  private int userId;
-  private String userName;
-  private String password;
-  private boolean active;
 
-  public User() {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column
+    private int userId;
+
+    @Column(nullable = false)
+    private String userName;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Column(nullable = false)
+    private boolean active;
+
+    @ManyToMany
+    @JoinTable(name = "UserDeck",
+            joinColumns = {@JoinColumn(name = "userId")},
+            inverseJoinColumns = {@JoinColumn(name = "deckId")}
+    )
+    List<Deck> decks = new ArrayList<>();
     
-  }
+    @ManyToMany
+    @JoinTable(name="userCard", 
+    joinColumns={ @JoinColumn(name = "userId") },
+    inverseJoinColumns={ @JoinColumn(name = "cardId") } 
+    )
+    List<Card> cards = new ArrayList<>();
+
+    @OneToMany
+    List<Review> reviews = new ArrayList<>();
+    
+    @OneToMany
+    List<CardRating> ratings = new ArrayList<>();
+
+    public User() {
+
+    }
 
     public int getUserId() {
         return userId;
@@ -89,8 +131,5 @@ public class User {
         }
         return true;
     }
-  
-  
-    
-  
+
 }

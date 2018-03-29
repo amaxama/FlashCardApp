@@ -13,15 +13,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 /**
  *
  * @authors Mike Betzler, Jacob Duerr, Anna Maxam, Jeff Peterson
  */
 @Entity
-public class Card {
+public class CardQueue {
   
   
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,13 +39,12 @@ public class Card {
   @Column(nullable = false)
   private String cardAnswer;
   
-  @OneToMany
-  private List<CardRating> ratings = new ArrayList<>();
-  
-
-  public Card() {
-    
-  }
+    @ManyToMany
+    @JoinTable(name="CardCategoryQueue", 
+    joinColumns={ @JoinColumn(name = "cardId") },
+    inverseJoinColumns={ @JoinColumn(name = "categoryId") } 
+    )
+  private List<Category> categories = new ArrayList<>();
 
     public int getCardId() {
         return cardId;
@@ -81,10 +81,10 @@ public class Card {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 83 * hash + this.cardId;
-        hash = 83 * hash + Objects.hashCode(this.cardName);
-        hash = 83 * hash + Objects.hashCode(this.cardChallenge);
-        hash = 83 * hash + Objects.hashCode(this.cardAnswer);
+        hash = 79 * hash + this.cardId;
+        hash = 79 * hash + Objects.hashCode(this.cardName);
+        hash = 79 * hash + Objects.hashCode(this.cardChallenge);
+        hash = 79 * hash + Objects.hashCode(this.cardAnswer);
         return hash;
     }
 
@@ -99,7 +99,7 @@ public class Card {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Card other = (Card) obj;
+        final CardQueue other = (CardQueue) obj;
         if (this.cardId != other.cardId) {
             return false;
         }
@@ -117,7 +117,5 @@ public class Card {
   
   
   
-  
-    
   
 }

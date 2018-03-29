@@ -5,10 +5,13 @@
  */
 package com.sg.flashcardapp.dao;
 
+import com.sg.flashcardapp.model.Category;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 /**
  *
  * @author JP
  */
-public interface CategoryDao {
-  
+public interface CategoryRepository extends JpaRepository<Category, Integer> {
+    
 }

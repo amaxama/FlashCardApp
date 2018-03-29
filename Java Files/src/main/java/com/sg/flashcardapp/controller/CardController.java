@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sg.flashcardapp.dao;
+package com.sg.flashcardapp.controller;
 
 /**
  *
- * @authors Mike Betzler, Jacob Duerr, Anna Maxam, Jeff Peterson
+ * @author annamaxam
  */
-public interface CardDao {
-
+public class CardController {
+    
 }
