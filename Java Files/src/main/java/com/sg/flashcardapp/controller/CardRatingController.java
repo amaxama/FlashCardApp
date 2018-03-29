@@ -7,8 +7,8 @@ package com.sg.flashcardapp.controller;
 
 /**
  *
- * @author JP
+ * @authors Mike Betzler, Jacob Duerr, Anna Maxam, Jeff Peterson
  */
-public class RatingController {
+public class CardRatingController {
   
 }
