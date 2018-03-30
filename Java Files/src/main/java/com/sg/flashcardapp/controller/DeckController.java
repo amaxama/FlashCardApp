@@ -48,12 +48,14 @@ public class DeckController {
 
     @RequestMapping(value = "/deck/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateDEck(@PathVariable("id") int id, @Valid @RequestBody Deck deck) throws UpdateIntegrityException {
+    public Deck updateDeck(@PathVariable("id") int id, @Valid @RequestBody Deck deck) throws UpdateIntegrityException {
         // favor the path variable over the id in the object if they differ
         if (id != deck.getDeckId()) {
             throw new UpdateIntegrityException("Deck Id on URL must match Deck Id in submitted data.");
         }
         decks.save(deck);
+        
+        return deck;
     }
 
     @RequestMapping(value = "/decks", method = RequestMethod.GET)

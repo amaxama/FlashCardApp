@@ -48,12 +48,14 @@ public class CardController {
 
     @RequestMapping(value = "/card/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateCard(@PathVariable("id") long id, @Valid @RequestBody Card card) throws UpdateIntegrityException {
+    public Card updateCard(@PathVariable("id") int id, @Valid @RequestBody Card card) throws UpdateIntegrityException {
         // favor the path variable over the id in the object if they differ
         if (id != card.getCardId()) {
             throw new UpdateIntegrityException("Card Id on URL must match Card Id in submitted data.");
         }
         cards.save(card);
+        
+        return card;
     }
 
     @RequestMapping(value = "/cards", method = RequestMethod.GET)
