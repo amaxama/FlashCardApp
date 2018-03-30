@@ -20,10 +20,6 @@ public class LoginController {
         return "login";
     }
     
-    @GetMapping("/")
-    public String goToHomePage() {
-        return "hello";
-    }
     
     
 //    <c:if test="${pageContext.request.userPrincipal.name != null}">

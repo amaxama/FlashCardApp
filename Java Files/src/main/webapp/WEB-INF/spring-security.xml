@@ -27,6 +27,7 @@
         <!--<intercept-url pattern="/content" access="ROLE_USER"/>-->
         <intercept-url pattern="/admin" access="ROLE_ADMIN"/>        
         <intercept-url pattern="/**" access="ROLE_USER"/> 
+        <intercept-url pattern="/html/loggedInHome.html" access="ROLE_USER"/> 
 
         <!--Add any intercept-urls we want to direct to other html pages - shows the access to them-->
 

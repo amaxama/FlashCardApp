@@ -24,7 +24,6 @@ public class CardRating {
     @Id
     private int cardId;
     
-    
     @Column(nullable = false)
     private Integer rating;
 

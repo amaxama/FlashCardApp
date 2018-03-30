@@ -25,13 +25,10 @@ public class Review {
     @Id
     @Column
     private int reviewId;
-    
     @Id
     private int userId;
-    
     @Id
     private int deckId;
-    
     
     @Column(nullable = false)
     private String reviewName;

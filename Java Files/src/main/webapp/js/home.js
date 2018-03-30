@@ -38,6 +38,77 @@ function getUser(userId) {
     });
 }
 
+function createUser() {
+    
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost:8080/FlashCardApp/user', 
+        data: JSON.stringify({
+//            userName: 
+//            password:
+//                map from role object on page to - index -1 = id
+//              roles: [{role[id of form element]  : #div , role 2 }]
+            
+        }),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        'dataType': 'json',
+        success: function(data, status) {
+            $('#errorMessages').empty();
+//            Set user values to ('')
+        },
+        error: function() {
+            $('#errorMessages')
+                    .append($('<li>')
+                    .attr({class: 'list-group-item list-group-item-danger'})
+                    .text('Error calling web service.  Please try again later.'));
+        }
+    });
+}
+
+function updateUser(userId) {
+    
+    $.ajax({
+        type: 'PUT',
+        url: 'http://localhost:8080/FlashCardApp/user/' + userId, 
+        data: JSON.stringify({
+//            userName: $('#____').val(),
+//            password: $('#____').val(),
+//            roles: 
+        }),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        'dataType': 'json',
+        success: function(data, status) {
+            $('#errorMessages').empty();
+            hideEditCardForm();
+            getAllCards();
+        },
+        error: function() {
+            $('#errorMessages')
+                    .append($('<li>')
+                    .attr({class: 'list-group-item list-group-item-danger'})
+                    .text('Error calling web service.  Please try again later.'));
+        }
+    });
+    
+}
+
+function deleteCard(cardId) {
+    
+    $.ajax ({
+        type: 'DELETE',
+        url: 'http://localhost:8080/FlashCardApp/card/' + cardId, 
+        success: function (status) {
+            getAllCards();
+        }
+    });
+    
+}
 
 
 // =============================================================================
@@ -136,6 +207,7 @@ function updateCard(cardId) {
 //            cardName: $('#____').val(),
 //            cardChallenge: $('#____').val(),
 //            cardAnswer: $('#____').val()
+//                ratings:
         }),
         headers: {
             'Accept': 'application/json',
@@ -159,11 +231,24 @@ function updateCard(cardId) {
 
 function deleteCard(cardId) {
     
+    $.ajax ({
+        type: 'DELETE',
+        url: 'http://localhost:8080/FlashCardApp/card/' + cardId, 
+        success: function (status) {
+            getAllCards();
+        }
+    });
+    
 }
 
 function showEditCardForm(cardId) {
     $('#errorMessages').empty();
     getCard(cardId);
+    
+//    CHECK IDs!!
+    $('#main-div').hide();
+    $('#edit-card-form-div').show();
+    
 }
 
 function hideEditCardForm() {
@@ -171,11 +256,13 @@ function hideEditCardForm() {
 //    $('#______').val('');
 //    $('#______').val('');
 //      ETC.....
+//CHECK ID NAME
     $('#edit-card-form-div').hide();
     $('#main-div').show();
 }
 
 function clearCardsList() {
+//    CHECK IDS!
     $('#cards-list').empty();
 }
 
