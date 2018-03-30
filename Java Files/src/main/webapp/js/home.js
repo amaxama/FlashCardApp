@@ -107,16 +107,72 @@ function createCard() {
 //            cardChallenge:
 //            cardAnswer:
             
-        })
-    })
+        }),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        'dataType': 'json',
+        success: function(data, status) {
+            $('#errorMessages').empty();
+//            Set card values to ('')
+            getAllCards();
+        },
+        error: function() {
+            $('#errorMessages')
+                    .append($('<li>')
+                    .attr({class: 'list-group-item list-group-item-danger'})
+                    .text('Error calling web service.  Please try again later.'));
+        }
+    });
 }
 
 function updateCard(cardId) {
+    
+    $.ajax({
+        type: 'PUT',
+        url: 'http://localhost:8080/FlashCardApp/card/' + cardId, 
+        data: JSON.stringify({
+//            cardName: $('#____').val(),
+//            cardChallenge: $('#____').val(),
+//            cardAnswer: $('#____').val()
+        }),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        'dataType': 'json',
+        success: function(data, status) {
+            $('#errorMessages').empty();
+            hideEditCardForm();
+            getAllCards();
+        },
+        error: function() {
+            $('#errorMessages')
+                    .append($('<li>')
+                    .attr({class: 'list-group-item list-group-item-danger'})
+                    .text('Error calling web service.  Please try again later.'));
+        }
+    });
     
 }
 
 function deleteCard(cardId) {
     
+}
+
+function showEditCardForm(cardId) {
+    $('#errorMessages').empty();
+    getCard(cardId);
+}
+
+function hideEditCardForm() {
+    $('#errorMessages').empty();
+//    $('#______').val('');
+//    $('#______').val('');
+//      ETC.....
+    $('#edit-card-form-div').hide();
+    $('#contactTableDiv').show();
 }
 
 function clearCardsList() {
