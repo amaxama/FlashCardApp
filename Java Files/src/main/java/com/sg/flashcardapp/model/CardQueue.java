@@ -23,28 +23,40 @@ import javax.persistence.ManyToMany;
  */
 @Entity
 public class CardQueue {
-  
-  
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Id
-  @Column
-  private int cardId;
-  
-  @Column(nullable = false)
-  private String cardName;
-  
-  @Column(nullable = false)
-  private String cardChallenge;
-  
-  @Column(nullable = false)
-  private String cardAnswer;
-  
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column
+    private int cardQueueId;
+
+    @Column(nullable = false)
+    private int cardId;
+
+    @Column(nullable = false)
+    private String cardName;
+
+    @Column(nullable = false)
+    private String cardChallenge;
+
+    @Column(nullable = false)
+    private String cardAnswer;
+
     @ManyToMany
-    @JoinTable(name="CardCategoryQueue", 
-    joinColumns={ @JoinColumn(name = "cardId") },
-    inverseJoinColumns={ @JoinColumn(name = "categoryId") } 
+    @JoinTable(name = "CardCategoryQueue",
+            joinColumns = {
+                @JoinColumn(name = "cardQueueId")},
+            inverseJoinColumns = {
+                @JoinColumn(name = "categoryId")}
     )
-  private List<Category> categories = new ArrayList<>();
+    private List<Category> categories = new ArrayList<>();
+
+    public int getCardQueueId() {
+        return cardQueueId;
+    }
+
+    public void setCardQueueId(int cardQueueId) {
+        this.cardQueueId = cardQueueId;
+    }
 
     public int getCardId() {
         return cardId;
@@ -88,12 +100,13 @@ public class CardQueue {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 41 * hash + this.cardId;
-        hash = 41 * hash + Objects.hashCode(this.cardName);
-        hash = 41 * hash + Objects.hashCode(this.cardChallenge);
-        hash = 41 * hash + Objects.hashCode(this.cardAnswer);
-        hash = 41 * hash + Objects.hashCode(this.categories);
+        int hash = 5;
+        hash = 73 * hash + this.cardQueueId;
+        hash = 73 * hash + this.cardId;
+        hash = 73 * hash + Objects.hashCode(this.cardName);
+        hash = 73 * hash + Objects.hashCode(this.cardChallenge);
+        hash = 73 * hash + Objects.hashCode(this.cardAnswer);
+        hash = 73 * hash + Objects.hashCode(this.categories);
         return hash;
     }
 
@@ -109,6 +122,9 @@ public class CardQueue {
             return false;
         }
         final CardQueue other = (CardQueue) obj;
+        if (this.cardQueueId != other.cardQueueId) {
+            return false;
+        }
         if (this.cardId != other.cardId) {
             return false;
         }
@@ -128,7 +144,4 @@ public class CardQueue {
     }
 
     
-  
-  
-  
 }

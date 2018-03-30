@@ -48,12 +48,14 @@ public class CategoryController {
 
     @RequestMapping(value = "/category/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateCategory(@PathVariable("id") int id, @Valid @RequestBody Category category) throws UpdateIntegrityException {
+    public Category updateCategory(@PathVariable("id") int id, @Valid @RequestBody Category category) throws UpdateIntegrityException {
         // favor the path variable over the id in the object if they differ
         if (id != category.getCategoryId()) {
             throw new UpdateIntegrityException("Category Id on URL must match Category Id in submitted data.");
         }
         categories.save(category);
+        
+        return category;
     }
 
     @RequestMapping(value = "/categories", method = RequestMethod.GET)
