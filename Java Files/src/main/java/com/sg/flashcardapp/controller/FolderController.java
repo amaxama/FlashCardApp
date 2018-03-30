@@ -48,12 +48,14 @@ public class FolderController {
 
     @RequestMapping(value = "/folder/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateFolder(@PathVariable("id") int id, @Valid @RequestBody Folder folder) throws UpdateIntegrityException {
+    public Folder updateFolder(@PathVariable("id") int id, @Valid @RequestBody Folder folder) throws UpdateIntegrityException {
         // favor the path variable over the id in the object if they differ
         if (id != folder.getFolderId()) {
             throw new UpdateIntegrityException("Contact Id on URL must match Contact Id in submitted data.");
         }
         folders.save(folder);
+        
+        return folder;
     }
 
     @RequestMapping(value = "/folders", method = RequestMethod.GET)

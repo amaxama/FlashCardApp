@@ -67,12 +67,14 @@ public class UserController {
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateUser(@PathVariable("id") int id, @Valid @RequestBody User user) throws UpdateIntegrityException {
+    public User updateUser(@PathVariable("id") int id, @Valid @RequestBody User user) throws UpdateIntegrityException {
         // favor the path variable over the id in the object if they differ
         if (id != user.getUserId()) {
-            throw new UpdateIntegrityException("Contact Id on URL must match Contact Id in submitted data.");
+            throw new UpdateIntegrityException("User Id on URL must match User Id in submitted data.");
         }
         users.save(user);
+        
+        return user;
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
