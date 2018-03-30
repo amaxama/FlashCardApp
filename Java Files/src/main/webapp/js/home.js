@@ -13,6 +13,20 @@ $(document).ready(function(){
     
 }
 
-function loadCards
+function loadAllCards() {
+    clearCardsList();
+    var cardsList = $('#cards-list');
+    
+    $.ajax({
+        type: 'GET',
+        url: 'http://localhost:8080/FlashCardApp/cards',
+        success: 
+    })
+})
+
+
+function clearCardsList() {
+    $('#cards-list').empty();
+}
 
 
