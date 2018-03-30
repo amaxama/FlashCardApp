@@ -30,7 +30,7 @@ body {
 }
 
 #header-title {
-	margin-top: 2px;
+	margin-top: -8px;
 	padding: 5px 0;
 	font-size: 30px;
 }
@@ -56,7 +56,7 @@ body {
 .footer {
    display: table-row;
    height: 20px;
-   background: gray;
+   background: #105B63;
    color: #FFFAD5;
 }
 
@@ -81,6 +81,13 @@ h2 {
 	height: 35vh;
 }
 
+#name-button, #created-date-button, #category-button, #rating-button {
+	width: 125px;
+}
+/*
+.btn {
+	width: 150px;
+}*/
 
 /*#main-content {
 	width: 80%;
