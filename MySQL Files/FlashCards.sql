@@ -46,7 +46,7 @@ CONSTRAINT fk_CardCategoryQCategoryID FOREIGN KEY (CategoryID) REFERENCES Catego
 CREATE TABLE IF NOT EXISTS `User`
 (UserID INT UNSIGNED AUTO_INCREMENT,
 UserName VARCHAR(25) NOT NULL, -- IF WE'RE GOING TO USE EMAIL IT NEEDS TO BE MORE LIKE 50
-`Password` VARCHAR(25) NOT NULL,
+`Password` VARCHAR(100) NOT NULL,
 Active BOOLEAN NOT NULL DEFAULT 1,
 PRIMARY KEY(UserID),
 INDEX (UserName)
@@ -153,3 +153,15 @@ VALUES
 (1,1),
 (1, 2),
 (2, 2);
+
+UPDATE `FlashCards`.`User`
+SET
+`password` = '$2a$10$DH/hmF4yOLIR9cxnEzO5yus75EPOkCezs0O7g8ybPl211/0VcwcRS'
+WHERE `userId` = 2;
+SELECT * FROM FlashCards.user;
+
+UPDATE `FlashCards`.`User`
+SET
+`password` = '$2a$10$DH/hmF4yOLIR9cxnEzO5yus75EPOkCezs0O7g8ybPl211/0VcwcRS'
+WHERE `userId` = 1;
+SELECT * FROM FlashCards.user;

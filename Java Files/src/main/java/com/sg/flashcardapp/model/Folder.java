@@ -63,11 +63,29 @@ public class Folder {
         this.folderName = folderName;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Deck> getDecks() {
+        return decks;
+    }
+
+    public void setDecks(List<Deck> decks) {
+        this.decks = decks;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 53 * hash + this.folderId;
-        hash = 53 * hash + Objects.hashCode(this.folderName);
+        int hash = 7;
+        hash = 31 * hash + this.folderId;
+        hash = 31 * hash + Objects.hashCode(this.folderName);
+        hash = 31 * hash + Objects.hashCode(this.user);
+        hash = 31 * hash + Objects.hashCode(this.decks);
         return hash;
     }
 
@@ -89,7 +107,15 @@ public class Folder {
         if (!Objects.equals(this.folderName, other.folderName)) {
             return false;
         }
+        if (!Objects.equals(this.user, other.user)) {
+            return false;
+        }
+        if (!Objects.equals(this.decks, other.decks)) {
+            return false;
+        }
         return true;
     }
+
+    
 
 }
