@@ -11,10 +11,12 @@ import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -27,26 +29,26 @@ public class DeckController {
     @Autowired
     private DeckRepository decks;
 
-    @RequestMapping(value = "/deck/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/deck/{id}")
     @ResponseBody
     public Deck getDeck(@PathVariable("id") int id) {
         return decks.findOne(id);
     }
 
-    @RequestMapping(value = "/deck", method = RequestMethod.POST)
+    @PostMapping(value = "/deck")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public Deck createContact(@Valid @RequestBody Deck deck) {
         return decks.save(deck);
     }
 
-    @RequestMapping(value = "/deck/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/deck/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteDeck(@PathVariable("id") int id) {
         decks.delete(id);
     }
 
-    @RequestMapping(value = "/deck/{id}", method = RequestMethod.PUT)
+    @PutMapping(value = "/deck/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public Deck updateDeck(@PathVariable("id") int id, @Valid @RequestBody Deck deck) throws UpdateIntegrityException {
         // favor the path variable over the id in the object if they differ
@@ -58,7 +60,7 @@ public class DeckController {
         return deck;
     }
 
-    @RequestMapping(value = "/decks", method = RequestMethod.GET)
+    @GetMapping(value = "/decks")
     @ResponseBody
     public List<Deck> getAllDecks() {
         return decks.findAll();

@@ -11,10 +11,12 @@ import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -27,26 +29,26 @@ public class CardController {
     @Autowired
     private CardRepository cards;
 
-    @RequestMapping(value = "/card/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/card/{id}")
     @ResponseBody
     public Card getCard(@PathVariable("id") int id) {
         return cards.findOne(id);
     }
 
-    @RequestMapping(value = "/card", method = RequestMethod.POST)
+    @PostMapping(value = "/card")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public Card createCard(@Valid @RequestBody Card card) {
         return cards.save(card);
     }
 
-    @RequestMapping(value = "/card/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/card/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteCard(@PathVariable("id") int id) {
         cards.delete(id);
     }
 
-    @RequestMapping(value = "/card/{id}", method = RequestMethod.PUT)
+    @PutMapping(value = "/card/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public Card updateCard(@PathVariable("id") int id, @Valid @RequestBody Card card) throws UpdateIntegrityException {
         // favor the path variable over the id in the object if they differ
@@ -58,7 +60,7 @@ public class CardController {
         return card;
     }
 
-    @RequestMapping(value = "/cards", method = RequestMethod.GET)
+    @GetMapping(value = "/cards")
     @ResponseBody
     public List<Card> getAllCards() {
         return cards.findAll();

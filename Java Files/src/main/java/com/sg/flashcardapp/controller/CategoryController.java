@@ -11,10 +11,12 @@ import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -27,26 +29,26 @@ public class CategoryController {
     @Autowired
     private CategoryRepository categories;
 
-    @RequestMapping(value = "/category/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/category/{id}")
     @ResponseBody
     public Category getCategory(@PathVariable("id") int id) {
         return categories.findOne(id);
     }
 
-    @RequestMapping(value = "/category", method = RequestMethod.POST)
+    @PostMapping(value = "/category")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public Category createCategory(@Valid @RequestBody Category category) {
         return categories.save(category);
     }
 
-    @RequestMapping(value = "/category/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/category/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteCategory(@PathVariable("id") int id) {
         categories.delete(id);
     }
 
-    @RequestMapping(value = "/category/{id}", method = RequestMethod.PUT)
+    @PutMapping(value = "/category/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public Category updateCategory(@PathVariable("id") int id, @Valid @RequestBody Category category) throws UpdateIntegrityException {
         // favor the path variable over the id in the object if they differ
@@ -58,7 +60,7 @@ public class CategoryController {
         return category;
     }
 
-    @RequestMapping(value = "/categories", method = RequestMethod.GET)
+    @GetMapping(value = "/categories")
     @ResponseBody
     public List<Category> getAllCategories() {
         return categories.findAll();
