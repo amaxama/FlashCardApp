@@ -102,6 +102,12 @@ function createCard() {
     $.ajax({
         type: 'POST',
         url: 'http://localhost:8080/FlashCardApp/card', 
+        data: JSON.stringify({
+//            cardName: 
+//            cardChallenge:
+//            cardAnswer:
+            
+        })
     })
 }
 
@@ -213,6 +219,16 @@ function getReview(reviewId) {
                     .attr({class: 'list-group-item list-group-item-danger'})
                     .text('Error calling web service.  Please try again later.'));
         }
+    });
+}
+
+
+
+
+function toggleCard() {
+    $('#toggle-card').click(function(event) {
+        $('#front').toggle();
+        $('#back').toggle();
     });
 }
 
