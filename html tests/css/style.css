@@ -82,7 +82,7 @@ h2 {
 }
 
 #name-button, #created-date-button, #category-button, #rating-button {
-	width: 125px;
+	width: 2em;
 }
 /*
 .btn {
