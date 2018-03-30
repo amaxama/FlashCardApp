@@ -81,9 +81,13 @@ h2 {
 	height: 35vh;
 }
 
+#name-button, #created-date-button, #category-button, #rating-button {
+	width: 125px;
+}
+/*
 .btn {
 	width: 150px;
-}
+}*/
 
 /*#main-content {
 	width: 80%;
