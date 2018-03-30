@@ -172,7 +172,7 @@ function hideEditCardForm() {
 //    $('#______').val('');
 //      ETC.....
     $('#edit-card-form-div').hide();
-    $('#contactTableDiv').show();
+    $('#main-div').show();
 }
 
 function clearCardsList() {
