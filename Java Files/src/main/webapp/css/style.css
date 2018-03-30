@@ -90,6 +90,19 @@ h2 {
 	margin-top: 10px;
 }
 
+.cards-list {
+	width: 80%;
+	height: 70%;
+	background-color: lavender;
+	padding-top: 20px;
+	margin: 15px auto 0 auto;
+}
+
+#main-page-table {
+	width: 100%;
+	margin: 0 auto;
+}
+
 
 /*#main-content {
 	width: 80%;
