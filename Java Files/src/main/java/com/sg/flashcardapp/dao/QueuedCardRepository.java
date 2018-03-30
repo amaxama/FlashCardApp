@@ -5,13 +5,13 @@
  */
 package com.sg.flashcardapp.dao;
 
-import com.sg.flashcardapp.model.Card;
+import com.sg.flashcardapp.model.QueuedCard;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @authors Mike Betzler, Jacob Duerr, Anna Maxam, Jeff Peterson
  */
-public interface CardRepository extends JpaRepository<Card, Integer> {
+public interface QueuedCardRepository extends JpaRepository<QueuedCard, Integer> {
 
 }

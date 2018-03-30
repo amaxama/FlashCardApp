@@ -17,27 +17,26 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author annamaxam
  */
+@RestController
 public class FolderController {
 
     @Autowired
     private FolderRepository folders;
 
     @GetMapping(value = "/folder/{id}")
-    @ResponseBody
     public Folder getFolder(@PathVariable("id") int id) {
         return folders.findOne(id);
     }
 
     @PostMapping(value = "/folder")
     @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody
     public Folder createFolder(@Valid @RequestBody Folder folder) {
         return folders.save(folder);
     }
@@ -61,7 +60,6 @@ public class FolderController {
     }
 
     @GetMapping(value = "/folders")
-    @ResponseBody
     public List<Folder> getAllFolders() {
         return folders.findAll();
     }

@@ -5,8 +5,8 @@
  */
 package com.sg.flashcardapp.controller;
 
-import com.sg.flashcardapp.dao.RoleRepository;
-import com.sg.flashcardapp.model.Role;
+import com.sg.flashcardapp.model.Card;
+import com.sg.flashcardapp.model.QueuedCard;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,49 +19,49 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import com.sg.flashcardapp.dao.QueuedCardRepository;
 
 /**
  *
- * @author annamaxam
+ * @authors Mike Betzler, Jacob Duerr, Anna Maxam, Jeff Peterson
  */
 @RestController
-public class RoleController {
+public class QueuedCardController {
+    
+        @Autowired
+    private QueuedCardRepository queuedcards;
 
-    @Autowired
-    private RoleRepository roles;
-
-    @GetMapping(value = "/role/{id}")
-    public Role getRole(@PathVariable("id") int id) {
-        return roles.findOne(id);
+    @GetMapping(value = "/queuedcard/{id}")
+    public QueuedCard getQueuedCard(@PathVariable("id") int id) {
+        return queuedcards.findOne(id);
     }
 
-    @PostMapping(value = "/role")
+    @PostMapping(value = "/queuedcard")
     @ResponseStatus(HttpStatus.CREATED)
-    public Role createRole(@Valid @RequestBody Role role) {
-        return roles.save(role);
+    public QueuedCard createQueuedCard(@Valid @RequestBody QueuedCard queuedcard) {
+        return queuedcards.save(queuedcard);
     }
 
-    @DeleteMapping(value = "/role/{id}")
+    @DeleteMapping(value = "/queuedcard/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteRole(@PathVariable("id") int id) {
-        roles.delete(id);
+    public void deleteQueueCard(@PathVariable("id") int id) {
+        queuedcards.delete(id);
     }
 
-    @PutMapping(value = "/role/{id}")
+    @PutMapping(value = "/queuedcard/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public Role updateRole(@PathVariable("id") int id, @Valid @RequestBody Role role) throws UpdateIntegrityException {
+    public QueuedCard updateQueuedCard(@PathVariable("id") int id, @Valid @RequestBody QueuedCard queuedcard) throws UpdateIntegrityException {
         // favor the path variable over the id in the object if they differ
-        if (id != role.getRoleId()) {
+        if (id != queuedcard.getQueuedCardId()) {
             throw new UpdateIntegrityException("Card Id on URL must match Card Id in submitted data.");
         }
-        roles.save(role);
-
-        return role;
+        queuedcards.save(queuedcard);
+        
+        return queuedcard;
     }
 
-    @GetMapping(value = "/roles")
-    public List<Role> getAllRoles() {
-        return roles.findAll();
+    @GetMapping(value = "/queuedcards")
+    public List<QueuedCard> getAllQueuedCards() {
+        return queuedcards.findAll();
     }
-
 }

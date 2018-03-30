@@ -22,12 +22,12 @@ import javax.persistence.ManyToMany;
  * @authors Mike Betzler, Jacob Duerr, Anna Maxam, Jeff Peterson
  */
 @Entity
-public class CardQueue {
+public class QueuedCard {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column
-    private int cardQueueId;
+    private int queuedCardId;
 
     @Column(nullable = false)
     private int cardId;
@@ -42,20 +42,20 @@ public class CardQueue {
     private String cardAnswer;
 
     @ManyToMany
-    @JoinTable(name = "CardCategoryQueue",
+    @JoinTable(name = "QueuedCardCategory",
             joinColumns = {
-                @JoinColumn(name = "cardQueueId")},
+                @JoinColumn(name = "queuedCardId")},
             inverseJoinColumns = {
                 @JoinColumn(name = "categoryId")}
     )
     private List<Category> categories = new ArrayList<>();
 
-    public int getCardQueueId() {
-        return cardQueueId;
+    public int getQueuedCardId() {
+        return queuedCardId;
     }
 
-    public void setCardQueueId(int cardQueueId) {
-        this.cardQueueId = cardQueueId;
+    public void setQueuedCardId(int queuedCardId) {
+        this.queuedCardId = queuedCardId;
     }
 
     public int getCardId() {
@@ -100,13 +100,13 @@ public class CardQueue {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 73 * hash + this.cardQueueId;
-        hash = 73 * hash + this.cardId;
-        hash = 73 * hash + Objects.hashCode(this.cardName);
-        hash = 73 * hash + Objects.hashCode(this.cardChallenge);
-        hash = 73 * hash + Objects.hashCode(this.cardAnswer);
-        hash = 73 * hash + Objects.hashCode(this.categories);
+        int hash = 7;
+        hash = 37 * hash + this.queuedCardId;
+        hash = 37 * hash + this.cardId;
+        hash = 37 * hash + Objects.hashCode(this.cardName);
+        hash = 37 * hash + Objects.hashCode(this.cardChallenge);
+        hash = 37 * hash + Objects.hashCode(this.cardAnswer);
+        hash = 37 * hash + Objects.hashCode(this.categories);
         return hash;
     }
 
@@ -121,8 +121,8 @@ public class CardQueue {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final CardQueue other = (CardQueue) obj;
-        if (this.cardQueueId != other.cardQueueId) {
+        final QueuedCard other = (QueuedCard) obj;
+        if (this.queuedCardId != other.queuedCardId) {
             return false;
         }
         if (this.cardId != other.cardId) {
@@ -142,6 +142,8 @@ public class CardQueue {
         }
         return true;
     }
+
+
 
     
 }

@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author annamaxam
+ * @authors Mike Betzler, Jacob Duerr, Anna Maxam, Jeff Peterson
  */
 @RestController //for security sake - okay to have restcontroller, not just controller?
 public class UserController {
@@ -36,14 +36,12 @@ public class UserController {
     private PasswordEncoder encoder;
 
     @GetMapping(value = "/user/{id}")
-    @ResponseBody
     public User getUser(@PathVariable("id") int id) {
         return users.findOne(id);
     }
 
     @PostMapping(value = "/user")
     @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody
     public User createUser(@Valid @RequestBody User user) {
         User newUser = user;
         String clearPw = user.getPassword();
@@ -79,7 +77,6 @@ public class UserController {
     }
 
     @GetMapping(value = "/users")
-    @ResponseBody
     public List<User> getAllUsers() {
         return users.findAll();
     }

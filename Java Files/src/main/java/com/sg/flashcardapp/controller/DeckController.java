@@ -19,25 +19,25 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author annamaxam
  */
+@RestController
 public class DeckController {
 
     @Autowired
     private DeckRepository decks;
 
     @GetMapping(value = "/deck/{id}")
-    @ResponseBody
     public Deck getDeck(@PathVariable("id") int id) {
         return decks.findOne(id);
     }
 
     @PostMapping(value = "/deck")
     @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody
     public Deck createContact(@Valid @RequestBody Deck deck) {
         return decks.save(deck);
     }
@@ -61,7 +61,6 @@ public class DeckController {
     }
 
     @GetMapping(value = "/decks")
-    @ResponseBody
     public List<Deck> getAllDecks() {
         return decks.findAll();
     }

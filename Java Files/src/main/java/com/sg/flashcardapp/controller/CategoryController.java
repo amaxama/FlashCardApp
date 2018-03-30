@@ -17,27 +17,26 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author annamaxam
  */
+@RestController
 public class CategoryController {
 
     @Autowired
     private CategoryRepository categories;
 
     @GetMapping(value = "/category/{id}")
-    @ResponseBody
     public Category getCategory(@PathVariable("id") int id) {
         return categories.findOne(id);
     }
 
     @PostMapping(value = "/category")
     @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody
     public Category createCategory(@Valid @RequestBody Category category) {
         return categories.save(category);
     }
@@ -61,7 +60,6 @@ public class CategoryController {
     }
 
     @GetMapping(value = "/categories")
-    @ResponseBody
     public List<Category> getAllCategories() {
         return categories.findAll();
     }

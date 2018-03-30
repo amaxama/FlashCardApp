@@ -17,27 +17,26 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author annamaxam
  */
+@RestController
 public class CardController {
 
     @Autowired
     private CardRepository cards;
 
     @GetMapping(value = "/card/{id}")
-    @ResponseBody
     public Card getCard(@PathVariable("id") int id) {
         return cards.findOne(id);
     }
 
     @PostMapping(value = "/card")
     @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody
     public Card createCard(@Valid @RequestBody Card card) {
         return cards.save(card);
     }
@@ -61,7 +60,6 @@ public class CardController {
     }
 
     @GetMapping(value = "/cards")
-    @ResponseBody
     public List<Card> getAllCards() {
         return cards.findAll();
     }
