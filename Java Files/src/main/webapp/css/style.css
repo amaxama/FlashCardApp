@@ -30,7 +30,7 @@ body {
 }
 
 #header-title {
-	margin-top: -8px;
+	margin-top: 2px;
 	padding: 5px 0;
 	font-size: 30px;
 }
@@ -56,7 +56,7 @@ body {
 .footer {
    display: table-row;
    height: 20px;
-   background: #105B63;
+   background: gray;
    color: #FFFAD5;
 }
 
@@ -81,9 +81,6 @@ h2 {
 	height: 35vh;
 }
 
-.btn {
-	width: 150px;
-}
 
 /*#main-content {
 	width: 80%;
