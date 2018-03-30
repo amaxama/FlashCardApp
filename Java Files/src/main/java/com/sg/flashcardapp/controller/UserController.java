@@ -12,11 +12,12 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,13 +35,13 @@ public class UserController {
     @Autowired
     private PasswordEncoder encoder;
 
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/user/{id}")
     @ResponseBody
     public User getUser(@PathVariable("id") int id) {
         return users.findOne(id);
     }
 
-    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    @PostMapping(value = "/user")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public User createUser(@Valid @RequestBody User user) {
@@ -59,13 +60,13 @@ public class UserController {
 //            newUser.addAuthority("ROLE_ADMIN");
     }
 
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/user/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteUser(@PathVariable("id") int id) {
         users.delete(id);
     }
 
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.PUT)
+    @PutMapping(value = "/user/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public User updateUser(@PathVariable("id") int id, @Valid @RequestBody User user) throws UpdateIntegrityException {
         // favor the path variable over the id in the object if they differ
@@ -77,7 +78,7 @@ public class UserController {
         return user;
     }
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    @GetMapping(value = "/users")
     @ResponseBody
     public List<User> getAllUsers() {
         return users.findAll();

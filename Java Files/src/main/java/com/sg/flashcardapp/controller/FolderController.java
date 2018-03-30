@@ -11,10 +11,12 @@ import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -27,26 +29,26 @@ public class FolderController {
     @Autowired
     private FolderRepository folders;
 
-    @RequestMapping(value = "/folder/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/folder/{id}")
     @ResponseBody
     public Folder getFolder(@PathVariable("id") int id) {
         return folders.findOne(id);
     }
 
-    @RequestMapping(value = "/folder", method = RequestMethod.POST)
+    @PostMapping(value = "/folder")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public Folder createFolder(@Valid @RequestBody Folder folder) {
         return folders.save(folder);
     }
 
-    @RequestMapping(value = "/folder/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/folder/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteFolder(@PathVariable("id") int id) {
         folders.delete(id);
     }
 
-    @RequestMapping(value = "/folder/{id}", method = RequestMethod.PUT)
+    @PutMapping(value = "/folder/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public Folder updateFolder(@PathVariable("id") int id, @Valid @RequestBody Folder folder) throws UpdateIntegrityException {
         // favor the path variable over the id in the object if they differ
@@ -58,7 +60,7 @@ public class FolderController {
         return folder;
     }
 
-    @RequestMapping(value = "/folders", method = RequestMethod.GET)
+    @GetMapping(value = "/folders")
     @ResponseBody
     public List<Folder> getAllFolders() {
         return folders.findAll();
