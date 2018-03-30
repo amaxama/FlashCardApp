@@ -32,3 +32,122 @@ and open the template in the editor.
 
 
 <!--Same functionality on home page for regular users and non logged in users, if nonlogged in user tries to create a deck, will give them the login page...-->
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Flashcard App</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+
+<body>
+	<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Layout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            background: #FFFAD5;
+            color: black;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header">Flashcard App</div>
+        <div class="main">
+            <div class="box sidebar">Left-sidebar</div>
+            <div class="box content">Main Content</div>
+            <div class="box sidebar">Right-sidebar</div>
+        </div>
+        <div class="footer">FOOTER</div>
+    </div>
+</body>
+
+</html>
+
+
+
+
+
+
+	<div class="container-fluid">
+
+		<div class="row title-header">
+			<div class="col-sm-3">
+			</div>
+			<div class="col-sm-6">
+				<h1 class="text-center">Flashcard App</h1>
+			</div>
+			<div id="header-buttons-section" class="col-sm-3">
+				<div class="row">
+					<div class="col-sm-12">
+						<button id="login-button" type="button" class="btn btn-outline-primary">
+							Login
+						</button>
+						<button id="signup-button" type="button" class="btn btn-outline-primary">
+							Sign Up
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div id="sidebar-section" class="col-sm-2">
+				<div class="row">
+					<div class="col-sm-12">
+						<ul>
+							<li class="demo-deck-list">&nbsp;Deck 1</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="main-section" class="col-sm-8">
+			</div>
+			<div id="feed-section" class="col-sm-2">
+				<div class="row">
+					<div id="card-feed-section" class="col-sm-12">
+						<h2 id="card-feed-heading" class="text-center">Card Feed</h2>
+						<div class="btn-group btn-group-sm mr-2" role="group" aria-label="Second group">
+					   	<button type="button" class="btn btn-secondary">Top</button>
+					    	<button type="button" class="btn btn-secondary">Most Recent</button>
+					    	<button type="button" class="btn btn-secondary">Name</button>
+					  	</div>
+						<div id="card-feed-box"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div id="deck-feed-section" class="col-sm-12">
+						<h2 id="deck-feed-heading" class="text-center">Deck Feed</h2>
+						<div class="btn-group mr-2 btn-group-sm" role="group" aria-label="Second group">
+					   	<button type="button" class="btn btn-secondary">Top</button>
+					    	<button type="button" class="btn btn-secondary">Most Recent</button>
+					    	<button type="button" class="btn btn-secondary">Name</button>
+					  	</div>
+						<div id="deck-feed-box"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr/>
+</body>
+</html>
