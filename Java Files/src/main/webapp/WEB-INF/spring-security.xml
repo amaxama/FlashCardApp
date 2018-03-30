@@ -34,6 +34,9 @@
         <!--In database, better to have user have list of roles - on website, will create user and assign them a list of roles - will be working from the point of view of the user-->
      </http>
 
+     <beans:bean id="encoder"
+            class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+
     <authentication-manager>
         <authentication-provider>
             <password-encoder ref="encoder"/>
@@ -47,8 +50,7 @@
         </authentication-provider>
     </authentication-manager>
     
-    <beans:bean id="encoder"
-            class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+    
 
 </beans:beans>
 

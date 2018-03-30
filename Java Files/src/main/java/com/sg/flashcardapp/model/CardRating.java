@@ -25,10 +25,10 @@ public class CardRating {
     private int cardId;
     
     
-    
     @Column(nullable = false)
     private Integer rating;
 
+    
     public int getUserId() {
         return userId;
     }

@@ -11,21 +11,28 @@ import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author annamaxam
  */
+@RestController //for security sake - okay to have restcontroller, not just controller?
 public class UserController {
 
     @Autowired
     private UserRepository users;
+    
+    @Autowired
+    private PasswordEncoder encoder;
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     @ResponseBody
@@ -37,7 +44,19 @@ public class UserController {
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public User createUser(@Valid @RequestBody User user) {
+        User newUser = user;
+        String clearPw = user.getPassword();
+        String hashPw = encoder.encode(clearPw);
+        newUser.setPassword(hashPw);
         return users.save(user);
+        
+//        Treat user as if already finished - set role in ajax call 
+        
+        // All users have ROLE_USER, only add ROLE_ADMIN if the isAdmin 
+        // box is checked
+//        newUser.addAuthority("ROLE_USER");
+//        if (null != req.getParameter("isAdmin")) {
+//            newUser.addAuthority("ROLE_ADMIN");
     }
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
@@ -61,4 +80,6 @@ public class UserController {
     public List<User> getAllUsers() {
         return users.findAll();
     }
+    
+
 }

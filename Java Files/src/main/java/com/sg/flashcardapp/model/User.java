@@ -102,13 +102,64 @@ public class User {
         this.active = active;
     }
 
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    public List<Deck> getDecks() {
+        return decks;
+    }
+
+    public void setDecks(List<Deck> decks) {
+        this.decks = decks;
+    }
+
+    public List<Card> getCards() {
+        return cards;
+    }
+
+    public void setCards(List<Card> cards) {
+        this.cards = cards;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    public List<CardRating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(List<CardRating> ratings) {
+        this.ratings = ratings;
+    }
+
+    
+    
+    public void addRole(Role role) {
+        roles.add(role);
+    }
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + this.userId;
-        hash = 97 * hash + Objects.hashCode(this.userName);
-        hash = 97 * hash + Objects.hashCode(this.password);
-        hash = 97 * hash + (this.active ? 1 : 0);
+        int hash = 7;
+        hash = 37 * hash + this.userId;
+        hash = 37 * hash + Objects.hashCode(this.userName);
+        hash = 37 * hash + Objects.hashCode(this.password);
+        hash = 37 * hash + (this.active ? 1 : 0);
+        hash = 37 * hash + Objects.hashCode(this.roles);
+        hash = 37 * hash + Objects.hashCode(this.decks);
+        hash = 37 * hash + Objects.hashCode(this.cards);
+        hash = 37 * hash + Objects.hashCode(this.reviews);
+        hash = 37 * hash + Objects.hashCode(this.ratings);
         return hash;
     }
 
@@ -136,7 +187,24 @@ public class User {
         if (!Objects.equals(this.password, other.password)) {
             return false;
         }
+        if (!Objects.equals(this.roles, other.roles)) {
+            return false;
+        }
+        if (!Objects.equals(this.decks, other.decks)) {
+            return false;
+        }
+        if (!Objects.equals(this.cards, other.cards)) {
+            return false;
+        }
+        if (!Objects.equals(this.reviews, other.reviews)) {
+            return false;
+        }
+        if (!Objects.equals(this.ratings, other.ratings)) {
+            return false;
+        }
         return true;
     }
+
+    
 
 }

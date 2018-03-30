@@ -78,13 +78,22 @@ public class CardQueue {
         this.cardAnswer = cardAnswer;
     }
 
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 79 * hash + this.cardId;
-        hash = 79 * hash + Objects.hashCode(this.cardName);
-        hash = 79 * hash + Objects.hashCode(this.cardChallenge);
-        hash = 79 * hash + Objects.hashCode(this.cardAnswer);
+        int hash = 3;
+        hash = 41 * hash + this.cardId;
+        hash = 41 * hash + Objects.hashCode(this.cardName);
+        hash = 41 * hash + Objects.hashCode(this.cardChallenge);
+        hash = 41 * hash + Objects.hashCode(this.cardAnswer);
+        hash = 41 * hash + Objects.hashCode(this.categories);
         return hash;
     }
 
@@ -112,9 +121,13 @@ public class CardQueue {
         if (!Objects.equals(this.cardAnswer, other.cardAnswer)) {
             return false;
         }
+        if (!Objects.equals(this.categories, other.categories)) {
+            return false;
+        }
         return true;
     }
-  
+
+    
   
   
   
