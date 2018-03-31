@@ -30,10 +30,15 @@ body {
    text-align: center;
 }
 .header {
-   display: table-row;
+   display: inline-block;
    height: 15px;
    width: 100%;
    background-color: lightblue;
+}
+
+#header-login-button, #header-logout-button, #header-signup-button {
+	display: inline-block;
+	width: 4.3em;
 }
 
 #header-title {
@@ -88,14 +93,41 @@ h2 {
 	height: 35vh;
 }
 
-#name-button, #created-date-button, #category-button, #rating-button {
-	width: 10em;
+#name-button, #category-button, #rating-button {
+	width: 12em;
 }
 
 #user-bucket-name {
 	font-size: 1.5em;
 	margin-top: 10px;
 }
+
+.cards-list {
+	width: 80%;
+	height: 70%;
+	background-color: lavender;
+	padding-top: 20px;
+	margin: 15px auto 0 auto;
+}
+
+#main-page-table {
+	width: 100%;
+	margin: 0 auto;
+}
+
+th {
+	text-align: center;
+}
+
+table, th, td {
+	border: 1px solid black;
+}
+
+#user-name {
+	margin-right: 15px;
+}
+
+
 
 
 /*#main-content {
