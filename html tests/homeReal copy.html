@@ -11,45 +11,64 @@
 <body>
     <div class="wrapper">
         <div class="header">
-        	<h1 id="header-title">Flashcard App</h1>
+        	<div class="row">
+	        	<div class="col-sm-4">	
+	        	</div>
+	        	<div class="col-sm-4">
+	        		<h1 id="header-title">Flashcard App</h1>
+	        	</div>
+
+	        	<div class="col-sm-4">
+	        		<div class="row" id="header-button-row align-center">
+	        			<div class="col-sm-12">
+			        		<div class="btn-group header-login-button-group" role="group" aria-label="Header buttons for login">
+			        			<span id="user-name">Hi, "${userName}!"</span>
+				        		<button id="header-login-button">Login</button>
+					        	<button id="header-logout-button">Logout</button>
+					        	<button id="header-signup-button">Sign Up</button>
+					        </div>
+				        </div>
+			        </div>
+	        	</div>
+        	</div>
         </div>		
 	        <div class="main">
 	            <div class="box sidebar">
 	            	<h2>Sidebar</h2>
+	            	<div></div>
 	            </div>
 	            <div id="main-content" class="box content">
 	            	<div class="row">
 		            	<div id="dialog-menu" class="col-sm-12">
 		            		<h2 id="user-bucket-name">${userName}'s Bucket</h2>
-										<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-											  <button id="name-button" type="button" class="btn btn-secondary active">Name</button>
-											  <button id="created-date-button" type="button" class="btn btn-secondary">Created Date</button>
-											  <button id="category-button" type="button" class="btn btn-secondary">Category</button>
-											  <button id="rating-button" type="button" class="btn btn-secondary">Rating</button>
-										</div>
-							    </div>
-						  	</div>
-						  	<div class="row cards-list">
-									<div class="col-sm-8" "id="main-table-div">
-										<table id="main-page-table">
-											<tr>
-										    <th>Name</th>
-										    <th>Category</th>
-										    <th>Rating</th>
-										  </tr>
-										  <tr>
-										    <td>Card1</td>
-										    <td>Java</td> 
-										    <td>3</td>
-										  </tr>
-										  <tr>
-										    <td>Eve</td>
-										    <td>Jackson</td> 
-										    <td>94</td>
-										  </tr>
-										</table>
-									</div>
-						  	</div>
+								<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+								  <button id="name-button" type="button" class="btn btn-secondary active">Name</button>
+								  <button id="category-button" type="button" class="btn btn-secondary">Category</button>
+								  <button id="rating-button" type="button" class="btn btn-secondary">Rating</button>
+								</div>
+					    </div>
+				  	</div>
+				  	<div class="row cards-list">
+							<div class="col-sm-12" id="main-table-div">
+								<table id="main-page-table">
+									<tr id="name-row">
+								    <th>Name</th>
+								    <th>Category</th>
+								    <th>Rating</th>
+								  </tr>
+								  <tr id="category-row">
+								    <td>Card1</td>
+								    <td>Java</td> 
+								    <td>3</td>
+								  </tr>
+								  <tr id="rating-row">
+								    <td>Eve</td>
+								    <td>Jackson</td> 
+								    <td>94</td>
+								  </tr>
+								</table>
+							</div>
+				  	</div>
 	            </div>
 	            <div class="container box feed">
 	            	<div class="row">
