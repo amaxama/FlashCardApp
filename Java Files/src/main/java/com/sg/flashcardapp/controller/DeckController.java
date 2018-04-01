@@ -7,6 +7,7 @@ package com.sg.flashcardapp.controller;
 
 import com.sg.flashcardapp.dao.DeckRepository;
 import com.sg.flashcardapp.model.Deck;
+import com.sg.flashcardapp.service.FlashCardService;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,23 +30,24 @@ import org.springframework.web.bind.annotation.RestController;
 public class DeckController {
 
     @Autowired
-    private DeckRepository decks;
+//    private DeckRepository decks;
+    private FlashCardService service;
 
     @GetMapping(value = "/deck/{id}")
     public Deck getDeck(@PathVariable("id") int id) {
-        return decks.findOne(id);
+        return service.getDeck(id);
     }
 
     @PostMapping(value = "/deck")
     @ResponseStatus(HttpStatus.CREATED)
-    public Deck createContact(@Valid @RequestBody Deck deck) {
-        return decks.save(deck);
+    public Deck createDeck(@Valid @RequestBody Deck deck) {
+        return service.createDeck(deck);
     }
 
     @DeleteMapping(value = "/deck/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteDeck(@PathVariable("id") int id) {
-        decks.delete(id);
+        service.deleteDeck(id);
     }
 
     @PutMapping(value = "/deck/{id}")
@@ -55,14 +57,13 @@ public class DeckController {
         if (id != deck.getDeckId()) {
             throw new UpdateIntegrityException("Deck Id on URL must match Deck Id in submitted data.");
         }
-        decks.save(deck);
-        
-        return deck;
+
+        return service.updateDeck(id, deck);
     }
 
     @GetMapping(value = "/decks")
     public List<Deck> getAllDecks() {
-        return decks.findAll();
+        return service.getAllDecks();
     }
 
 }
