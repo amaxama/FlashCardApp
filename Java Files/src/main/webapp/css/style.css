@@ -135,10 +135,41 @@ table, th, td {
 }
 
 .sidebar-buttons {
-	width: 90%;
+	display: flex;
+	width: 20vw;
 	height: 12vh;
 	background-color: tan;
 	margin: 0 auto;
+	justify-content: center;
+}
+
+.icon:hover {
+	filter: hue-rotate(45deg);
+}
+
+.icons {
+ 	width: 3.5rem;
+	height: 3.5rem;
+	background-color: tan;
+	background-repeat: no-repeat;
+	background-size: 100%;
+  display: block;
+  border: none;
+  outline: none;
+  margin: 18px;
+
+}
+
+.add-button {
+	background-image: url(../images/plus-circle.png);
+}
+
+.edit-button {
+	background-image: url(../images/pencil-alt.png);
+}
+
+.trash-button {
+	background-image: url(../images/trash-alt.png);
 }
 
 /*#main-content {
