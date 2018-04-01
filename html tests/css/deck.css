@@ -1,0 +1,35 @@
+body {
+    background-color: gainsboro;
+  }
+  
+  textarea {
+    resize: none;
+  }
+  
+  #create-deck {
+    border-style: solid;
+    border-color: cornflowerblue;
+    display: block;
+    margin: auto;
+    width: 30%;
+    background-color: rgba(16, 202, 248, 0.322);
+    margin-top: 10%;
+  
+  }
+  
+  #deck-form-div {
+    margin-top: 5%;
+  }
+  
+  #cancel, #submit {
+    margin: 3%;
+    margin-bottom: 15%;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  h2 {
+    text-align: center;
+  }
