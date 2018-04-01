@@ -7,6 +7,7 @@ package com.sg.flashcardapp.controller;
 
 import com.sg.flashcardapp.dao.CardRepository;
 import com.sg.flashcardapp.model.Card;
+import com.sg.flashcardapp.service.FlashCardService;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,23 +29,27 @@ import org.springframework.web.bind.annotation.RestController;
 public class CardController {
 
     @Autowired
-    private CardRepository cards;
+//    private CardRepository cards;
+    private FlashCardService service;
 
     @GetMapping(value = "/card/{id}")
     public Card getCard(@PathVariable("id") int id) {
-        return cards.findOne(id);
+//        return cards.findOne(id);
+        return service.getCard(id);
     }
 
     @PostMapping(value = "/card")
     @ResponseStatus(HttpStatus.CREATED)
     public Card createCard(@Valid @RequestBody Card card) {
-        return cards.save(card);
+//        return cards.save(card);
+        return service.createCard(card);
     }
 
     @DeleteMapping(value = "/card/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteCard(@PathVariable("id") int id) {
-        cards.delete(id);
+//        cards.delete(id);
+        service.deleteCard(id);
     }
 
     @PutMapping(value = "/card/{id}")
@@ -54,13 +59,15 @@ public class CardController {
         if (id != card.getCardId()) {
             throw new UpdateIntegrityException("Card Id on URL must match Card Id in submitted data.");
         }
-        cards.save(card);
-        
-        return card;
+//        return cards.save(card);
+        return service.updateCard(id, card);
+
+//        return card;
     }
 
     @GetMapping(value = "/cards")
     public List<Card> getAllCards() {
-        return cards.findAll();
+//        return cards.findAll();
+        return service.getAllCards();
     }
 }
