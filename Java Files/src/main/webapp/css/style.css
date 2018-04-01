@@ -23,22 +23,22 @@ body {
 }
 
 
-.wrapper {
+/*.wrapper {
    height: 100%;
    display: table;
    width: 100%;
    text-align: center;
-}
-.header {
+}*/
+/*.header {
    display: inline-block;
    height: 15px;
    width: 100%;
    background-color: lightblue;
-}
+}*/
 
 #header-login-button, #header-logout-button, #header-signup-button {
-	display: inline-block;
-	width: 4.3em;
+	/*display: inline-block;*/
+	/*width: 4.3em;*/
 }
 
 #header-title {
@@ -46,12 +46,12 @@ body {
 	padding: 5px 0;
 	font-size: 2.2em;
 }
-.main {
+/*.main {
    height: 100%;
    display: table;
    width: 100%;
    background-color: lightpink;
-}
+}*/
 .box {
    display: table-cell;
 }

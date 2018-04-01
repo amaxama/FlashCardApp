@@ -23,7 +23,8 @@
                     login-page="/login"
                     authentication-failure-url="/login?login_error=1"/>
         <intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY"/>     
-        <intercept-url pattern="/home.html" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <!--<intercept-url pattern="/home.html" access="IS_AUTHENTICATED_ANONYMOUSLY"/>-->
+        <intercept-url pattern="/homeReal.html" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <!--<intercept-url pattern="/content" access="ROLE_USER"/>-->
         <intercept-url pattern="/admin" access="ROLE_ADMIN"/>        
         <intercept-url pattern="/**" access="ROLE_USER"/> 

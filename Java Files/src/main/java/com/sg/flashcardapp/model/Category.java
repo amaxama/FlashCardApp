@@ -5,11 +5,14 @@
  */
 package com.sg.flashcardapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,6 +24,7 @@ import javax.persistence.ManyToMany;
  * @authors Mike Betzler, Jacob Duerr, Anna Maxam, Jeff Peterson
  */
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Category {
     
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,11 +38,12 @@ public class Category {
     @Column
     private String categoryDesc;
     
-    @ManyToMany
-    @JoinTable(name = "CategoryCard",
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "CardCategory",
             joinColumns = {@JoinColumn(name = "categoryId")}, 
             inverseJoinColumns = { @JoinColumn(name = "cardId")}
     )
+    @JsonIgnore
     private List<Card> cards = new ArrayList<>();
     
 

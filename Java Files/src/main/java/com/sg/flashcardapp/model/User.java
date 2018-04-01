@@ -5,11 +5,14 @@
  */
 package com.sg.flashcardapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,6 +26,7 @@ import javax.persistence.OneToMany;
  * @authors Mike Betzler, Jacob Duerr, Anna Maxam, Jeff Peterson
  */
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,31 +43,38 @@ public class User {
     @Column(nullable = false)
     private boolean active;
 
-    @ManyToMany
+    
+    
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name= "UserRole",
             joinColumns = {@JoinColumn(name = "userId")},
-            inverseJoinColumns = {@JoinColumn(name = "deckId")}
+            inverseJoinColumns = {@JoinColumn(name = "roleId")}
     )
-    List<Role> roles = new ArrayList<>();
+    @JsonIgnore
+    private List<Role> roles = new ArrayList<>();
     
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "UserDeck",
             joinColumns = {@JoinColumn(name = "userId")},
             inverseJoinColumns = {@JoinColumn(name = "deckId")}
     )
-    List<Deck> decks = new ArrayList<>();
+    @JsonIgnore
+    private List<Deck> decks = new ArrayList<>();
     
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name="userCard", 
     joinColumns={ @JoinColumn(name = "userId") },
     inverseJoinColumns={ @JoinColumn(name = "cardId") } 
     )
-    List<Card> cards = new ArrayList<>();
+    @JsonIgnore
+    private List<Card> cards = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
+    @JsonIgnore
     List<Review> reviews = new ArrayList<>();
     
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
+    @JsonIgnore
     List<CardRating> ratings = new ArrayList<>();
 
     public User() {

@@ -3,7 +3,7 @@
 <html>
     <head>
         <title>Flashcard App</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
 
         <link rel='stylesheet' type='text/css' href='css/style.css'/>
     </head>
@@ -23,8 +23,8 @@
                             <div class="col-sm-12">
                                 <div class="btn-group header-login-button-group" role="group" aria-label="Header buttons for login">
                                     <span id="user-name">Hi, "${userName}!"</span>
-                                    
-                                    <button class="btn btn-default" id="header-login-button"><a href= "html/loggedInHome.html">Log In</a></button>
+
+                                    <a href= "html/loggedInHome.html" class="btn btn-default" role="button">Log In</a>
                                     <button id="header-logout-button">Logout</button>
                                     <button id="header-signup-button">Sign Up</button>
                                 </div>
@@ -37,7 +37,11 @@
                 <div class="box sidebar">
                     <h2>Sidebar</h2>
                     <div class="sidebar-content">
-                    	
+                        <div class="container-fluid">
+                            <h1>FlashCard App</h1>
+                            <hr/>
+                            
+                        </div>
                     </div>
 
                     <div class="sidebar-buttons"></div>

@@ -5,6 +5,8 @@
  */
 package com.sg.flashcardapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -21,6 +23,7 @@ import javax.persistence.OneToMany;
  * @authors Mike Betzler, Jacob Duerr, Anna Maxam, Jeff Peterson
  */
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Card {
   
   
@@ -39,6 +42,7 @@ public class Card {
   private String cardAnswer;
   
   @OneToMany
+  @JsonIgnore
   private List<CardRating> ratings = new ArrayList<>();
   
 

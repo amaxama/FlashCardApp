@@ -5,11 +5,14 @@
  */
 package com.sg.flashcardapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,6 +26,7 @@ import javax.persistence.ManyToOne;
  * @authors Mike Betzler, Jacob Duerr, Anna Maxam, Jeff Peterson
  */
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Folder {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,14 +37,17 @@ public class Folder {
     @Column(nullable = false)
     private String folderName;
 
+    
+//    COME BACK TO - MAY NEED USERID AS COLUMN
     @ManyToOne
     private User user;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "DeckFolder",
             joinColumns = {@JoinColumn(name = "deckId")}, 
             inverseJoinColumns = { @JoinColumn(name = "folderId")}
     )
+    @JsonIgnore
     private List<Deck> decks = new ArrayList<>();
 
     public Folder() {
