@@ -20,6 +20,21 @@ body {
   #deck-form-div {
     margin-top: 5%;
   }
+
+  #edit-deck {
+    border-style: solid;
+    border-color: cornflowerblue;
+    display: block;
+    margin: auto;
+    width: 30%;
+    background-color: rgba(16, 202, 248, 0.322);
+    margin-top: 10%;
+  
+  }
+  
+  #edit-form-div {
+    margin-top: 5%;
+  }
   
   #cancel, #submit {
     margin: 3%;
