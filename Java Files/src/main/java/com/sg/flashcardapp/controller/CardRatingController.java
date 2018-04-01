@@ -5,7 +5,9 @@
  */
 package com.sg.flashcardapp.controller;
 
+import com.sg.flashcardapp.dao.CardRatingRepository;
 import com.sg.flashcardapp.dao.CategoryRepository;
+import com.sg.flashcardapp.model.CardRating;
 import com.sg.flashcardapp.model.Category;
 import java.util.List;
 import javax.validation.Valid;
@@ -28,40 +30,40 @@ import org.springframework.web.bind.annotation.RestController;
 public class CardRatingController {
 
     @Autowired
-    private CategoryRepository categories;
+    private CardRatingRepository cardRatings;
 
-    @GetMapping(value = "/category/{id}")
-    public Category getCategory(@PathVariable("id") int id) {
-        return categories.findOne(id);
+    @GetMapping(value = "/cardrating/{id}")
+    public CardRating getCardRating(@PathVariable("id") int id) {
+        return cardRatings.findOne(id);
     }
 
-    @PostMapping(value = "/category")
+    @PostMapping(value = "/cardrating")
     @ResponseStatus(HttpStatus.CREATED)
-    public Category createCategory(@Valid @RequestBody Category category) {
-        return categories.save(category);
+    public CardRating createCardRating(@Valid @RequestBody CardRating cardRating) {
+        return cardRatings.save(cardRating);
     }
 
-    @DeleteMapping(value = "/category/{id}")
+    @DeleteMapping(value = "/cardrating/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteCategory(@PathVariable("id") int id) {
-        categories.delete(id);
+    public void deleteCardRating(@PathVariable("id") int id) {
+        cardRatings.delete(id);
     }
 
-    @PutMapping(value = "/category/{id}")
+    @PutMapping(value = "/cardrating/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public Category updateCategory(@PathVariable("id") int id, @Valid @RequestBody Category category) throws UpdateIntegrityException {
+    public CardRating updateCardRating(@PathVariable("id") int id, @Valid @RequestBody CardRating cardRating) throws UpdateIntegrityException {
         // favor the path variable over the id in the object if they differ
-        if (id != category.getCategoryId()) {
+        if (id != cardRating.getCardId()) {
             throw new UpdateIntegrityException("Card Id on URL must match Card Id in submitted data.");
         }
-        categories.save(category);
+        cardRatings.save(cardRating);
 
-        return category;
+        return cardRating;
     }
 
-    @GetMapping(value = "/categories")
-    public List<Category> getAllCards() {
-        return categories.findAll();
+    @GetMapping(value = "/cardratings")
+    public List<CardRating> getAllCardRatings() {
+        return cardRatings.findAll();
     }
 
 }
