@@ -138,7 +138,7 @@ table, th, td {
 	display: flex;
 	width: 20vw;
 	height: 12vh;
-	background-color: tan;
+	background-color: transparent;
 	margin: 0 auto;
 	justify-content: center;
 }
@@ -148,9 +148,9 @@ table, th, td {
 }
 
 .icons {
- 	width: 3.5rem;
-	height: 3.5rem;
-	background-color: tan;
+	width: 3.1rem;
+	height: 3.1rem;
+	background-color: transparent;
 	background-repeat: no-repeat;
 	background-size: 100%;
   display: block;
@@ -170,6 +170,27 @@ table, th, td {
 
 .trash-button {
 	background-image: url(../images/trash-alt.png);
+}
+
+.left-button {
+	background-image: url(../images/left_arrow.png);
+	width: 5.5rem;
+	height: 5.5rem;
+	margin: 2px;
+}
+
+.right-button {
+	background-image: url(../images/right_arrow.png);
+	width: 5.5rem;
+	height: 5.5rem;
+	margin: 2px;
+}
+
+.rotate-button {
+	background-image: url(../images/rotate.png);
+	width: 5.5rem;
+	height: 5.5rem;
+	margin: 2px;
 }
 
 /*#main-content {
