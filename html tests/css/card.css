@@ -1,0 +1,34 @@
+body {
+  background-color: gainsboro;
+}
+
+textarea {
+  resize: none;
+}
+
+#create-card {
+  border-style: solid;
+  border-color: cornflowerblue;
+  display: block;
+  margin: auto;
+  width: 30%;
+  background-color: rgba(16, 202, 248, 0.322);
+  margin-top: 10%;
+
+}
+
+#card-form-div {
+  margin-top: 5%;
+}
+
+#cancel, #submit {
+  margin: 3%;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}

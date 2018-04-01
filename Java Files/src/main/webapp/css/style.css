@@ -127,8 +127,19 @@ table, th, td {
 	margin-right: 15px;
 }
 
+.sidebar-content {
+	width: 90%;
+	height: 65vh;
+	background-color: gray;
+	margin: 0 auto;
+}
 
-
+.sidebar-buttons {
+	width: 90%;
+	height: 12vh;
+	background-color: tan;
+	margin: 0 auto;
+}
 
 /*#main-content {
 	width: 80%;
