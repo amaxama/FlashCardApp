@@ -9,6 +9,7 @@ import com.sg.flashcardapp.dao.CardRatingRepository;
 import com.sg.flashcardapp.dao.CategoryRepository;
 import com.sg.flashcardapp.model.CardRating;
 import com.sg.flashcardapp.model.Category;
+import com.sg.flashcardapp.service.FlashCardService;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,23 +31,24 @@ import org.springframework.web.bind.annotation.RestController;
 public class CardRatingController {
 
     @Autowired
-    private CardRatingRepository cardRatings;
+//    private CardRatingRepository cardRatings;
+    private FlashCardService service;
 
     @GetMapping(value = "/cardrating/{id}")
     public CardRating getCardRating(@PathVariable("id") int id) {
-        return cardRatings.findOne(id);
+        return service.getCardRating(id);
     }
 
     @PostMapping(value = "/cardrating")
     @ResponseStatus(HttpStatus.CREATED)
     public CardRating createCardRating(@Valid @RequestBody CardRating cardRating) {
-        return cardRatings.save(cardRating);
+        return service.createCardRating(cardRating);
     }
 
     @DeleteMapping(value = "/cardrating/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteCardRating(@PathVariable("id") int id) {
-        cardRatings.delete(id);
+        service.deleteCardRating(id);
     }
 
     @PutMapping(value = "/cardrating/{id}")
@@ -56,14 +58,14 @@ public class CardRatingController {
         if (id != cardRating.getCardId()) {
             throw new UpdateIntegrityException("Card Id on URL must match Card Id in submitted data.");
         }
-        cardRatings.save(cardRating);
+        
 
-        return cardRating;
+        return service.updateCardRating(id, cardRating);
     }
 
     @GetMapping(value = "/cardratings")
     public List<CardRating> getAllCardRatings() {
-        return cardRatings.findAll();
+        return service.getAllCardRatings();
     }
 
 }
