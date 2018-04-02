@@ -11,17 +11,17 @@
     <div class="container-fluid">
         <h1>FlashCard App</h1>
         <hr/>
-        <div id="create-deck" class="row">
-            <h2>Create A Deck</h2>
-            <div id="deck-form-div" class="col-md-12">
-                <form id="deck-card-form" class="form-horizontal" role="form">
+        <div id="edit-deck" class="row">
+            <h2>Edit A Deck</h2>
+            <div id="edit-form-div" class="col-md-12">
+                <form id="edit-deck-form" class="form-horizontal" role="form">
                     <div class="form-group">
-                        <label for="deckName">Deck Name:</label>
-                        <input type="text" class="form-control" id="deck-name" placeholder="Name" />
+                        <label for="editDeckName">Edit Deck Name:</label>
+                        <input type="text" class="form-control" id="edit-deck-name"/>
                     </div>
                     <div class="form-group">
-                        <label for="deckDiscription">Deck Description:</label>
-                        <textarea class="form-control" rows="4" id="deck-challenge" placeholder="Description"></textarea>
+                        <label for="editDeckDiscription">Edit Deck Description:</label>
+                        <textarea class="form-control" rows="4" id="edit-deck-description"></textarea>
                         <!-- <div class="col-md-9">
                             <input type="text" class="form-control" id="deck-description" placeholder="Description" />
                         </div> -->
@@ -29,7 +29,7 @@
                     <div class="form-group">
                         <div>
                             <button type="button" id="cancel" class="btn btn-outline-danger">Cancel</button>
-                            <button type="button" id="submit" class="btn btn-outline-primary">Create</button>
+                            <button type="button" id="submit" class="btn btn-outline-primary">Submit Edit</button>
                         </div>
                     </div>
                 </form>

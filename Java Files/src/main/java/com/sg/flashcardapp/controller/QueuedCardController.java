@@ -29,23 +29,23 @@ import com.sg.flashcardapp.dao.QueuedCardRepository;
 public class QueuedCardController {
     
         @Autowired
-    private QueuedCardRepository queuedcards;
+    private QueuedCardRepository queuedCards;
 
     @GetMapping(value = "/queuedcard/{id}")
     public QueuedCard getQueuedCard(@PathVariable("id") int id) {
-        return queuedcards.findOne(id);
+        return queuedCards.findOne(id);
     }
 
     @PostMapping(value = "/queuedcard")
     @ResponseStatus(HttpStatus.CREATED)
     public QueuedCard createQueuedCard(@Valid @RequestBody QueuedCard queuedcard) {
-        return queuedcards.save(queuedcard);
+        return queuedCards.save(queuedcard);
     }
 
     @DeleteMapping(value = "/queuedcard/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteQueueCard(@PathVariable("id") int id) {
-        queuedcards.delete(id);
+        queuedCards.delete(id);
     }
 
     @PutMapping(value = "/queuedcard/{id}")
@@ -55,13 +55,13 @@ public class QueuedCardController {
         if (id != queuedcard.getQueuedCardId()) {
             throw new UpdateIntegrityException("Card Id on URL must match Card Id in submitted data.");
         }
-        queuedcards.save(queuedcard);
+        queuedCards.save(queuedcard);
         
         return queuedcard;
     }
 
     @GetMapping(value = "/queuedcards")
     public List<QueuedCard> getAllQueuedCards() {
-        return queuedcards.findAll();
+        return queuedCards.findAll();
     }
 }

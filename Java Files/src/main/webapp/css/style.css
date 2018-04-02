@@ -22,23 +22,22 @@ body {
    color: black;
 }
 
-
-/*.wrapper {
+.container {
    height: 100%;
    display: table;
    width: 100%;
    text-align: center;
-}*/
-/*.header {
+}
+.header {
    display: inline-block;
    height: 15px;
    width: 100%;
    background-color: lightblue;
-}*/
+}
 
 #header-login-button, #header-logout-button, #header-signup-button {
-	/*display: inline-block;*/
-	/*width: 4.3em;*/
+	display: inline-block;
+	width: 4.3em;
 }
 
 #header-title {
@@ -46,12 +45,12 @@ body {
 	padding: 5px 0;
 	font-size: 2.2em;
 }
-/*.main {
+.main {
    height: 100%;
    display: table;
    width: 100%;
    background-color: lightpink;
-}*/
+}
 .box {
    display: table-cell;
 }
@@ -135,10 +134,62 @@ table, th, td {
 }
 
 .sidebar-buttons {
-	width: 90%;
+	display: flex;
+	width: 20vw;
 	height: 12vh;
-	background-color: tan;
+	background-color: transparent;
 	margin: 0 auto;
+	justify-content: center;
+}
+
+.icon:hover {
+	filter: hue-rotate(45deg);
+}
+
+.icons {
+	width: 3.1rem;
+	height: 3.1rem;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: 100%;
+  display: block;
+  border: none;
+  outline: none;
+  margin: 18px;
+
+}
+
+.add-button {
+	background-image: url(../images/plus-circle.png);
+}
+
+.edit-button {
+	background-image: url(../images/pencil-alt.png);
+}
+
+.trash-button {
+	background-image: url(../images/trash-alt.png);
+}
+
+.left-button {
+	background-image: url(../images/left_arrow.png);
+	width: 5.5rem;
+	height: 5.5rem;
+	margin: 2px;
+}
+
+.right-button {
+	background-image: url(../images/right_arrow.png);
+	width: 5.5rem;
+	height: 5.5rem;
+	margin: 2px;
+}
+
+.rotate-button {
+	background-image: url(../images/rotate.png);
+	width: 5.5rem;
+	height: 5.5rem;
+	margin: 2px;
 }
 
 /*#main-content {
