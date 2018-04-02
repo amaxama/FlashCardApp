@@ -5,31 +5,45 @@
  */
 package com.sg.flashcardapp.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @authors Mike Betzler, Jacob Duerr, Anna Maxam, Jeff Peterson
  */
 @Entity
-@IdClass(CompositeKeyRating.class)
+//@IdClass(CompositeKeyRating.class)
 public class CardRating {
     
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @Column
+    private int cardRatingId;
+    
+    @Column(nullable = false)
     private int userId;
-    @Id
+    
+    @Column(nullable = false)
     private int cardId;
-    
-    
     
     @Column(nullable = false)
     private Integer rating;
 
-    
+    public int getCardRatingId() {
+        return cardRatingId;
+    }
+
+    public void setCardRatingId(int cardRatingId) {
+        this.cardRatingId = cardRatingId;
+    }
+
     public int getUserId() {
         return userId;
     }
@@ -57,9 +71,10 @@ public class CardRating {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 89 * hash + this.userId;
-        hash = 89 * hash + this.cardId;
-        hash = 89 * hash + Objects.hashCode(this.rating);
+        hash = 29 * hash + this.cardRatingId;
+        hash = 29 * hash + this.userId;
+        hash = 29 * hash + this.cardId;
+        hash = 29 * hash + Objects.hashCode(this.rating);
         return hash;
     }
 
@@ -75,6 +90,9 @@ public class CardRating {
             return false;
         }
         final CardRating other = (CardRating) obj;
+        if (this.cardRatingId != other.cardRatingId) {
+            return false;
+        }
         if (this.userId != other.userId) {
             return false;
         }
@@ -86,9 +104,7 @@ public class CardRating {
         }
         return true;
     }
-    
-    
-    
+
     
     
 }

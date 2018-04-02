@@ -25,7 +25,7 @@ import javax.persistence.OneToMany;
  * @authors Mike Betzler, Jacob Duerr, Anna Maxam, Jeff Peterson
  */
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Deck {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,16 +39,16 @@ public class Deck {
     @Column
     private String deckDesc;
     
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "DeckCard",
             joinColumns = {@JoinColumn(name = "deckId")}, 
             inverseJoinColumns = { @JoinColumn(name = "cardId")}
     )
-    @JsonIgnore
     private List<Card> cards = new ArrayList<>();
     
-    @OneToMany
-    private List<Review> reviews = new ArrayList<>();
+//    (fetch = FetchType.EAGER)
+//    @OneToMany
+//    private List<Review> reviews = new ArrayList<>();
 
     public Deck() {
 
@@ -78,12 +78,29 @@ public class Deck {
         this.deckDesc = deckDesc;
     }
 
+    public List<Card> getCards() {
+        return cards;
+    }
+
+    public void setCards(List<Card> cards) {
+        this.cards = cards;
+    }
+
+//    public List<Review> getReviews() {
+//        return reviews;
+//    }
+//
+//    public void setReviews(List<Review> reviews) {
+//        this.reviews = reviews;
+//    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 89 * hash + this.deckId;
-        hash = 89 * hash + Objects.hashCode(this.deckName);
-        hash = 89 * hash + Objects.hashCode(this.deckDesc);
+        int hash = 3;
+        hash = 97 * hash + this.deckId;
+        hash = 97 * hash + Objects.hashCode(this.deckName);
+        hash = 97 * hash + Objects.hashCode(this.deckDesc);
+        hash = 97 * hash + Objects.hashCode(this.cards);
         return hash;
     }
 
@@ -108,7 +125,13 @@ public class Deck {
         if (!Objects.equals(this.deckDesc, other.deckDesc)) {
             return false;
         }
+        if (!Objects.equals(this.cards, other.cards)) {
+            return false;
+        }
         return true;
     }
+
+    
+    
 
 }

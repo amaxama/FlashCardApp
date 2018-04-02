@@ -23,7 +23,7 @@ import javax.persistence.OneToMany;
  * @authors Mike Betzler, Jacob Duerr, Anna Maxam, Jeff Peterson
  */
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Card {
   
   
@@ -41,9 +41,8 @@ public class Card {
   @Column(nullable = false)
   private String cardAnswer;
   
-  @OneToMany
-  @JsonIgnore
-  private List<CardRating> ratings = new ArrayList<>();
+  
+//  private List<CardRating> ratings = new ArrayList<>();
   
 
   public Card() {
@@ -82,22 +81,13 @@ public class Card {
         this.cardAnswer = cardAnswer;
     }
 
-    public List<CardRating> getRatings() {
-        return ratings;
-    }
-
-    public void setRatings(List<CardRating> ratings) {
-        this.ratings = ratings;
-    }
-
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 79 * hash + this.cardId;
-        hash = 79 * hash + Objects.hashCode(this.cardName);
-        hash = 79 * hash + Objects.hashCode(this.cardChallenge);
-        hash = 79 * hash + Objects.hashCode(this.cardAnswer);
-        hash = 79 * hash + Objects.hashCode(this.ratings);
+        int hash = 7;
+        hash = 23 * hash + this.cardId;
+        hash = 23 * hash + Objects.hashCode(this.cardName);
+        hash = 23 * hash + Objects.hashCode(this.cardChallenge);
+        hash = 23 * hash + Objects.hashCode(this.cardAnswer);
         return hash;
     }
 
@@ -125,14 +115,11 @@ public class Card {
         if (!Objects.equals(this.cardAnswer, other.cardAnswer)) {
             return false;
         }
-        if (!Objects.equals(this.ratings, other.ratings)) {
-            return false;
-        }
         return true;
     }
-    
-    
 
+
+    
     
   
   

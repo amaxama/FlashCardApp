@@ -18,16 +18,25 @@ import javax.persistence.IdClass;
  * @authors Mike Betzler, Jacob Duerr, Anna Maxam, Jeff Peterson
  */
 @Entity
-@IdClass(CompositeKeyReview.class)
+//@IdClass(CompositeKeyReview.class)
 public class Review {
+    
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Id
+//    @Column
+//    private int reviewId;
+//    @Id
+//    private int userId;
+//    @Id
+//    private int deckId;
     
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column
+    @Column(nullable = false)
     private int reviewId;
-    @Id
+    @Column(nullable = false)
     private int userId;
-    @Id
+    @Column(nullable = false)
     private int deckId;
     
     @Column(nullable = false)

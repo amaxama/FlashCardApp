@@ -52,3 +52,4 @@ nbactions.xml
  
 # DS_Store Files 
 .DS_Store
+/Java Files/nbproject/

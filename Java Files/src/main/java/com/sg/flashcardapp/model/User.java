@@ -29,6 +29,8 @@ import javax.persistence.OneToMany;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User {
 
+//    (fetch = FetchType.LAZY)
+    
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column
@@ -45,7 +47,7 @@ public class User {
 
     
     
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     @JoinTable(name= "UserRole",
             joinColumns = {@JoinColumn(name = "userId")},
             inverseJoinColumns = {@JoinColumn(name = "roleId")}
@@ -53,29 +55,25 @@ public class User {
     @JsonIgnore
     private List<Role> roles = new ArrayList<>();
     
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     @JoinTable(name = "UserDeck",
             joinColumns = {@JoinColumn(name = "userId")},
             inverseJoinColumns = {@JoinColumn(name = "deckId")}
     )
-    @JsonIgnore
     private List<Deck> decks = new ArrayList<>();
     
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     @JoinTable(name="userCard", 
     joinColumns={ @JoinColumn(name = "userId") },
     inverseJoinColumns={ @JoinColumn(name = "cardId") } 
     )
-    @JsonIgnore
     private List<Card> cards = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JsonIgnore
-    List<Review> reviews = new ArrayList<>();
+//    @OneToMany
+//    List<Review> reviews = new ArrayList<>();
     
-    @OneToMany(fetch = FetchType.LAZY)
-    @JsonIgnore
-    List<CardRating> ratings = new ArrayList<>();
+//    @OneToMany  
+//    List<CardRating> ratings = new ArrayList<>();
 
     public User() {
 
@@ -137,21 +135,21 @@ public class User {
         this.cards = cards;
     }
 
-    public List<Review> getReviews() {
-        return reviews;
-    }
+//    public List<Review> getReviews() {
+//        return reviews;
+//    }
+//
+//    public void setReviews(List<Review> reviews) {
+//        this.reviews = reviews;
+//    }
 
-    public void setReviews(List<Review> reviews) {
-        this.reviews = reviews;
-    }
-
-    public List<CardRating> getRatings() {
-        return ratings;
-    }
-
-    public void setRatings(List<CardRating> ratings) {
-        this.ratings = ratings;
-    }
+//    public List<CardRating> getRatings() {
+//        return ratings;
+//    }
+//
+//    public void setRatings(List<CardRating> ratings) {
+//        this.ratings = ratings;
+//    }
 
     
     
@@ -162,15 +160,13 @@ public class User {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 37 * hash + this.userId;
-        hash = 37 * hash + Objects.hashCode(this.userName);
-        hash = 37 * hash + Objects.hashCode(this.password);
-        hash = 37 * hash + (this.active ? 1 : 0);
-        hash = 37 * hash + Objects.hashCode(this.roles);
-        hash = 37 * hash + Objects.hashCode(this.decks);
-        hash = 37 * hash + Objects.hashCode(this.cards);
-        hash = 37 * hash + Objects.hashCode(this.reviews);
-        hash = 37 * hash + Objects.hashCode(this.ratings);
+        hash = 17 * hash + this.userId;
+        hash = 17 * hash + Objects.hashCode(this.userName);
+        hash = 17 * hash + Objects.hashCode(this.password);
+        hash = 17 * hash + (this.active ? 1 : 0);
+        hash = 17 * hash + Objects.hashCode(this.roles);
+        hash = 17 * hash + Objects.hashCode(this.decks);
+        hash = 17 * hash + Objects.hashCode(this.cards);
         return hash;
     }
 
@@ -207,15 +203,13 @@ public class User {
         if (!Objects.equals(this.cards, other.cards)) {
             return false;
         }
-        if (!Objects.equals(this.reviews, other.reviews)) {
-            return false;
-        }
-        if (!Objects.equals(this.ratings, other.ratings)) {
-            return false;
-        }
         return true;
     }
 
+    
+    
+
+    
     
 
 }

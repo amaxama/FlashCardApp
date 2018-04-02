@@ -35,7 +35,7 @@
             </div>		
             <div class="main">
                 <ul id="error-messages">
-                    
+
                 </ul>
                 <div class="box sidebar">
                     <h2>Sidebar</h2>
@@ -48,7 +48,7 @@
                             <hr/>
                             <div id="main-library">
                                 <ul id="cards-list">
-                                    
+
                                 </ul>
                             </div>
                             <div id="accordion">
@@ -76,10 +76,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                             </div>
+                            <input type='hidden' id='deck-id'>
+                            <button type="button" id="view-deck-button" class="btn btn-outline-primary">Study Deck</button>
                         </div>
-                            
+
                     </div>
 
                     <div class="sidebar-buttons">
@@ -88,38 +90,59 @@
                         <button id="delete-button" class="icons trash-button" type="button"></button>
                     </div>
                 </div>
-                <div id="main-content" class="box content">
-                    <div class="row main-header-group">
-                        <h2 id="user-bucket-name">${userName}'s Bucket</h2>
-                        <div class="btn-group btn-group-sm main-button-group" role="group" aria-label="Basic example">
-                            <button id="name-button" type="button" class="btn btn-secondary active">Name</button>
-                            <button id="category-button" type="button" class="btn btn-secondary">Category</button>
-                            <button id="rating-button" type="button" class="btn btn-secondary">Rating</button>
+                <div id="table-div">
+                    <div id="main-content" class="box content">
+                        <div class="row main-header-group">
+                            <h2 id="user-bucket-name">${userName}'s Bucket</h2>
+                            <div class="btn-group btn-group-sm main-button-group" role="group" aria-label="Basic example">
+                                <button id="name-button" type="button" class="btn btn-secondary active">Name</button>
+                                <button id="category-button" type="button" class="btn btn-secondary">Category</button>
+                                <button id="rating-button" type="button" class="btn btn-secondary">Rating</button>
+                            </div>
+                        </div>
+                        <div class="row cards-table">
+                            <div class="col-sm-12" id="main-table-div">
+                                <table id="main-page-table">
+                                    <tr id="name-row">
+                                        <th>Name</th>
+                                        <th>Category</th>
+                                        <th>Rating</th>
+                                    </tr>
+                                    <tr id="category-row">
+                                        <td>Card1</td>
+                                        <td>Java</td> 
+                                        <td>3</td>
+                                    </tr>
+                                    <tr id="rating-row">
+                                        <td>Eve</td>
+                                        <td>Jackson</td> 
+                                        <td>94</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="card-div">
+                    <div id="card-front">
+                        <h2>Card Challenge Side</h2>
+                        <div class="row">
+                            <div class="card-front-side-content">
+                            </div>
                         </div>
                     </div>
-                    <div class="row cards-table">
-                        <div class="col-sm-12" id="main-table-div">
-                            <table id="main-page-table">
-                                <tr id="name-row">
-                                    <th>Name</th>
-                                    <th>Category</th>
-                                    <th>Rating</th>
-                                </tr>
-                                <tr id="category-row">
-                                    <td>Card1</td>
-                                    <td>Java</td> 
-                                    <td>3</td>
-                                </tr>
-                                <tr id="rating-row">
-                                    <td>Eve</td>
-                                    <td>Jackson</td> 
-                                    <td>94</td>
-                                </tr>
-                            </table>
+                    <div id="card-back">
+                        <h2>Card Answer Side</h2>
+                        <div class="row">
+                            <div class="card-back-side-content">
+                                <div class="card-toggle-button">
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="rotate-div">
-                        <button class="icons rotate-button" type="button"></button>
+                        <button id="toggle-card-button" class="icons rotate-button" type="button"></button>
                     </div>
                 </div>
                 <div class="container box feed">

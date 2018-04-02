@@ -127,14 +127,34 @@ CONSTRAINT fk_ReviewDeckID FOREIGN KEY (DeckID) REFERENCES Deck(DeckID),
 CONSTRAINT fk_ReviewUserID FOREIGN KEY (UserID) REFERENCES `User`(UserID)
 );
 
-CREATE TABLE IF NOT EXISTS CardRating
-(UserID INT UNSIGNED NOT NULL,
+-- CREATE TABLE IF NOT EXISTS CardRating
+-- (UserID INT UNSIGNED NOT NULL,
+-- CardID MEDIUMINT UNSIGNED NOT NULL,
+-- Rating TINYINT UNSIGNED NOT NULL,
+-- PRIMARY KEY(UserID, CardID),
+-- CONSTRAINT fk_CardRatingUserID FOREIGN KEY (UserID) REFERENCES `User`(UserID),
+-- CONSTRAINT fk_CardRatingCardID FOREIGN KEY (CardID) REFERENCES Card(CardID)
+-- );
+
+-- CREATE TABLE IF NOT EXISTS CardRating
+-- (CardRatingID INT UNSIGNED NOT NULL AUTO_INCREMENT,
+-- UserID MEDIUMINT UNSIGNED NOT NULL,
+-- CardID MEDIUMINT UNSIGNED NOT NULL,
+-- Rating TINYINT UNSIGNED NOT NULL,
+-- PRIMARY KEY(CardRatingID),
+-- CONSTRAINT fk_CardRatingUserID FOREIGN KEY (UserID) REFERENCES `User`(UserID),
+-- CONSTRAINT fk_CardRatingCardID FOREIGN KEY (CardID) REFERENCES Card(CardID)
+-- );
+
+CREATE TABLE IF NOT EXISTS CardRating (
+CardRatingID INT PRIMARY KEY auto_increment,
+UserID INT(10) UNSIGNED NOT NULL,
 CardID MEDIUMINT UNSIGNED NOT NULL,
 Rating TINYINT UNSIGNED NOT NULL,
-PRIMARY KEY(UserID, CardID),
-CONSTRAINT fk_CardRatingUserID FOREIGN KEY (UserID) REFERENCES `User`(UserID),
-CONSTRAINT fk_CardRatingCardID FOREIGN KEY (CardID) REFERENCES Card(CardID)
+FOREIGN KEY(UserID) REFERENCES `User`(UserID),
+FOREIGN KEY(CardID) REFERENCES Card(CardID)
 );
+
 
 INSERT INTO `User`
 (UserID, UserName, `Password`)
@@ -164,3 +184,11 @@ UPDATE `User`
 SET
 `password` = '$2a$10$DH/hmF4yOLIR9cxnEzO5yus75EPOkCezs0O7g8ybPl211/0VcwcRS'
 WHERE `userId` = 1;
+
+insert into card (cardName, cardChallenge, cardAnswer)
+values ('Variables', 'What is a variable?', 'A variable is the name given to a memory location. It is the basic unit of storage in a program. 
+The value stored in a variable can be changed during program execution.');
+
+INSERT INTO deck(deckName, deckDesc) VALUES('deck 4', 'deck 4 desc');
+
+INSERT INTO deckCard(deckId, cardId) VALUES (1,1); 

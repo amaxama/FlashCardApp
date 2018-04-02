@@ -27,7 +27,7 @@
         <property name="url" 
                   value="jdbc:mysql://localhost:3306/FlashCards" />
         <property name="username" value="root" />
-        <property name="password" value="rgjHo+:mt5-B13" />
+        <property name="password" value="root" />
         <property name="initialSize" value="5" />
         <property name="maxTotal" value="10" />
     </bean>
@@ -38,6 +38,8 @@
     </bean>
     
     <jpa:repositories base-package="com.sg.flashcardapp.dao" />
+    
+    
     
     <bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
     
