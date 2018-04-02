@@ -190,7 +190,7 @@ table, th, td {
 	background-size: 60%;
 	width: 5.5rem;
 	height: 5.5rem;
-	margin: 2px;
+	margin: 2px 2px 2px 30px;
 }
 
 .rotate-button {
