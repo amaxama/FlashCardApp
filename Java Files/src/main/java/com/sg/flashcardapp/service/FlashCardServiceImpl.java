@@ -10,11 +10,17 @@ import com.sg.flashcardapp.dao.CardRepository;
 import com.sg.flashcardapp.dao.CategoryRepository;
 import com.sg.flashcardapp.dao.DeckRepository;
 import com.sg.flashcardapp.dao.FolderRepository;
+import com.sg.flashcardapp.dao.QueuedCardRepository;
+import com.sg.flashcardapp.dao.RoleRepository;
+import com.sg.flashcardapp.dao.UserRepository;
 import com.sg.flashcardapp.model.Card;
 import com.sg.flashcardapp.model.CardRating;
 import com.sg.flashcardapp.model.Category;
 import com.sg.flashcardapp.model.Deck;
 import com.sg.flashcardapp.model.Folder;
+import com.sg.flashcardapp.model.QueuedCard;
+import com.sg.flashcardapp.model.Role;
+import com.sg.flashcardapp.model.User;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -36,6 +42,12 @@ public class FlashCardServiceImpl implements FlashCardService {
     private DeckRepository decks;
     @Autowired
     private FolderRepository folders;
+    @Autowired
+    private QueuedCardRepository queuedCards;
+    @Autowired
+    private RoleRepository roles;
+    @Autowired
+    private UserRepository users;
 
     //CARD
     @Override
@@ -166,5 +178,88 @@ public class FlashCardServiceImpl implements FlashCardService {
     @Override
     public List<Folder> getAllFolders() {
         return folders.findAll();
+    }
+
+    //QUEUED CARDS
+    @Override
+    public QueuedCard getQueuedCard(int id) {
+        return queuedCards.findOne(id);
+    }
+
+    @Override
+    public QueuedCard createQueuedCard(QueuedCard queuedCard) {
+        return queuedCards.save(queuedCard);
+    }
+
+    @Override
+    public void deleteQueueCard(int id) {
+        queuedCards.delete(id);
+    }
+
+    @Override
+    public QueuedCard updateQueuedCard(int id, QueuedCard queuedCard) {
+        return queuedCards.save(queuedCard);
+    }
+
+    @Override
+    public List<QueuedCard> getAllQueuedCards() {
+        return queuedCards.findAll();
+    }
+
+    //ROLES
+    @Override
+    public Role getRole(int id) {
+        return roles.findOne(id);
+    }
+
+    @Override
+    public Role createRole(Role role) {
+        return roles.save(role);
+    }
+
+    @Override
+    public void deleteRole(int id) {
+        roles.delete(id);
+    }
+
+    @Override
+    public Role updateRole(int id, Role role) {
+        return roles.save(role);
+    }
+
+    @Override
+    public List<Role> getAllRoles() {
+        return roles.findAll();
+    }
+
+    //USERS
+    @Override
+    public User getUser(int id) {
+        return users.findOne(id);
+    }
+
+    @Override
+    public User createUser(User user) {
+        return users.save(user);
+    }
+
+    @Override
+    public void deleteUser(int id) {
+        users.delete(id);
+    }
+
+    @Override
+    public User updateUser(int id, User user) {
+        return users.save(user);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return users.findAll();
+    }
+    
+    @Override
+    public List<Folder> getAllFolderByUserId(int id) {
+        return folders.findByUser_Id(id); 
     }
 }

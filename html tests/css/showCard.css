@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+.card-front, .card-back {
+  width: 45vw;
+  height: 60vh;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.card-front-side-content, .card-back-side-content {
+  width: 35vw;
+  height: 45vh;
+  background-color: blue;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 0 auto;
+}
+
+.card-toggle-button {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.card-toggle-button img {
+  width: 5rem;
+}

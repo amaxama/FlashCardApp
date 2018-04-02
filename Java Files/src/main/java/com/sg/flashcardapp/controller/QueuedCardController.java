@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.sg.flashcardapp.dao.QueuedCardRepository;
+import com.sg.flashcardapp.service.FlashCardService;
 
 /**
  *
@@ -29,39 +30,38 @@ import com.sg.flashcardapp.dao.QueuedCardRepository;
 public class QueuedCardController {
     
         @Autowired
-    private QueuedCardRepository queuedCards;
+    private FlashCardService service;
 
     @GetMapping(value = "/queuedcard/{id}")
     public QueuedCard getQueuedCard(@PathVariable("id") int id) {
-        return queuedCards.findOne(id);
+        return service.getQueuedCard(id);
     }
 
     @PostMapping(value = "/queuedcard")
     @ResponseStatus(HttpStatus.CREATED)
-    public QueuedCard createQueuedCard(@Valid @RequestBody QueuedCard queuedcard) {
-        return queuedCards.save(queuedcard);
+    public QueuedCard createQueuedCard(@Valid @RequestBody QueuedCard queuedCard) {
+        return service.createQueuedCard(queuedCard);
     }
 
     @DeleteMapping(value = "/queuedcard/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteQueueCard(@PathVariable("id") int id) {
-        queuedCards.delete(id);
+        service.deleteQueueCard(id);
     }
 
     @PutMapping(value = "/queuedcard/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public QueuedCard updateQueuedCard(@PathVariable("id") int id, @Valid @RequestBody QueuedCard queuedcard) throws UpdateIntegrityException {
+    public QueuedCard updateQueuedCard(@PathVariable("id") int id, @Valid @RequestBody QueuedCard queuedCard) throws UpdateIntegrityException {
         // favor the path variable over the id in the object if they differ
-        if (id != queuedcard.getQueuedCardId()) {
+        if (id != queuedCard.getQueuedCardId()) {
             throw new UpdateIntegrityException("Card Id on URL must match Card Id in submitted data.");
         }
-        queuedCards.save(queuedcard);
         
-        return queuedcard;
+        return service.updateQueuedCard(id, queuedCard);
     }
 
     @GetMapping(value = "/queuedcards")
     public List<QueuedCard> getAllQueuedCards() {
-        return queuedCards.findAll();
+        return service.getAllQueuedCards();
     }
 }
