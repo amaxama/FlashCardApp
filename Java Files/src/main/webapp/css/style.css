@@ -234,6 +234,7 @@ table, th, td {
 	grid-row: 4 / 6;
 	width: 65%;
 	justify-content: center;
+	margin: 0;
 }
 
 .cards-table {
