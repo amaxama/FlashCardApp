@@ -6,6 +6,8 @@
 package com.sg.flashcardapp.dao;
 
 import com.sg.flashcardapp.model.Folder;
+import com.sg.flashcardapp.model.User;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -13,5 +15,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author JP
  */
 public interface FolderRepository extends JpaRepository<Folder, Integer> {
+    
+    List<Folder> findByUser_Id(int id);
   
 }

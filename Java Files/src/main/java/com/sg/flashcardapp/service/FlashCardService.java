@@ -10,6 +10,9 @@ import com.sg.flashcardapp.model.CardRating;
 import com.sg.flashcardapp.model.Category;
 import com.sg.flashcardapp.model.Deck;
 import com.sg.flashcardapp.model.Folder;
+import com.sg.flashcardapp.model.QueuedCard;
+import com.sg.flashcardapp.model.Role;
+import com.sg.flashcardapp.model.User;
 import java.util.List;
 
 /**
@@ -72,4 +75,40 @@ public interface FlashCardService {
     Folder updateFolder(int id, Folder folder);
 
     List<Folder> getAllFolders();
+    
+    List<Folder> getAllFolderByUserId(int id);
+
+    //QUEUED CARDS
+    QueuedCard getQueuedCard(int it);
+
+    QueuedCard createQueuedCard(QueuedCard queuedCard);
+
+    void deleteQueueCard(int id);
+
+    QueuedCard updateQueuedCard(int id, QueuedCard queuedCard);
+
+    List<QueuedCard> getAllQueuedCards();
+
+    //ROLES
+    Role getRole(int id);
+
+    Role createRole(Role role);
+
+    void deleteRole(int id);
+
+    Role updateRole(int id, Role role);
+
+    List<Role> getAllRoles();
+
+    //USERS
+    User getUser(int id);
+
+    User createUser(User user);
+
+    void deleteUser(int id);
+
+    User updateUser(int id, User user);
+
+    List<User> getAllUsers();
+
 }
