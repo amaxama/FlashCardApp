@@ -1,3 +1,7 @@
+selector {
+  --var-name: brown;
+}
+
 
 #try {
     font-size: 120px;
@@ -99,7 +103,9 @@ h2 {
 
 #user-bucket-name {
 	font-size: 1.5em;
-	margin-top: 10px;
+	display: block;
+	width: 75%;
+	margin: 10px auto;
 }
 
 .cards-list {
@@ -112,7 +118,7 @@ h2 {
 
 #main-page-table {
 	width: 100%;
-	margin: 0 auto;
+	margin: 10px auto;
 }
 
 th {
@@ -148,7 +154,7 @@ table, th, td {
 }
 
 .icons {
-	width: 3.1rem;
+ 	width: 3.1rem;
 	height: 3.1rem;
 	background-color: transparent;
 	background-repeat: no-repeat;
@@ -173,14 +179,16 @@ table, th, td {
 }
 
 .left-button {
-	background-image: url(../images/left_arrow.png);
+	background-image: url(../images/left.png);
+	background-size: 60%;
 	width: 5.5rem;
 	height: 5.5rem;
 	margin: 2px;
 }
 
 .right-button {
-	background-image: url(../images/right_arrow.png);
+	background-image: url(../images/right.png);
+	background-size: 60%;
 	width: 5.5rem;
 	height: 5.5rem;
 	margin: 2px;
@@ -192,6 +200,64 @@ table, th, td {
 	height: 5.5rem;
 	margin: 2px;
 }
+
+#main-content {
+	display: grid;
+	width: 98%;
+	height: 65vh;
+	background-color: gray;
+	margin: 0 auto;
+	grid-template-columns: repeat(8, 1fr);
+	grid-template-rows: repeat(5, 1fr);
+}
+
+.main-header-group {
+	grid-column: 1 / 9;
+	grid-row: 1 / 2;
+	background-color: green;
+}
+
+.main-button-group {
+	display: block;
+	width: 70%;
+	margin: 0 auto;
+}
+
+.left-div {
+	grid-column: 1 / 2;
+	grid-row: 4 / 6;
+	width: 65%;
+	justify-content: center;
+}
+
+.right-div {
+	grid-column: 8 / 9;
+	grid-row: 4 / 6;
+	width: 65%;
+	justify-content: center;
+}
+
+.cards-table {
+	grid-column: 2 / 8;
+	grid-row: 2 / 5;
+}
+
+.rotate-div {
+	grid-column: 1 / 6;
+	grid-row: 8 / 9;
+}
+
+.item {
+	border: solid 1px black;
+}
+
+
+
+
+
+
+
+
 
 /*#main-content {
 	width: 80%;
