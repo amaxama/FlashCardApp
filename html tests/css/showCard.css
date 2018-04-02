@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+#card {
+  width: 45vw;
+  height: 60vh;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.c-side-content {
+  width: 35vw;
+  height: 45vh;
+  background-color: blue;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.card-toggle-button {
+  display: block;
+  background-image: url(../images/rotate.png);
+  background-repeat: no-repeat;
+  background-size: 60%;
+  margin-top: 20px;
+  width: 5.5rem;
+  height: 5.5rem;
+  margin: 0 auto;
+}
