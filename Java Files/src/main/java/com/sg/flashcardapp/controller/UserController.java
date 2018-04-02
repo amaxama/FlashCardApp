@@ -7,6 +7,7 @@ package com.sg.flashcardapp.controller;
 
 import com.sg.flashcardapp.dao.UserRepository;
 import com.sg.flashcardapp.model.User;
+import com.sg.flashcardapp.service.FlashCardService;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,14 +31,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @Autowired
-    private UserRepository users;
-    
+    private FlashCardService service;
+
     @Autowired
     private PasswordEncoder encoder;
 
     @GetMapping(value = "/user/{id}")
     public User getUser(@PathVariable("id") int id) {
-        return users.findOne(id);
+        return service.getUser(id);
     }
 
     @PostMapping(value = "/user")
@@ -47,10 +48,9 @@ public class UserController {
         String clearPw = user.getPassword();
         String hashPw = encoder.encode(clearPw);
         newUser.setPassword(hashPw);
-        return users.save(user);
-        
+        return service.createUser(user);
+
 //        Treat user as if already finished - set role in ajax call 
-        
         // All users have ROLE_USER, only add ROLE_ADMIN if the isAdmin 
         // box is checked
 //        newUser.addAuthority("ROLE_USER");
@@ -61,7 +61,7 @@ public class UserController {
     @DeleteMapping(value = "/user/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteUser(@PathVariable("id") int id) {
-        users.delete(id);
+        service.deleteUser(id);
     }
 
     @PutMapping(value = "/user/{id}")
@@ -71,15 +71,13 @@ public class UserController {
         if (id != user.getUserId()) {
             throw new UpdateIntegrityException("User Id on URL must match User Id in submitted data.");
         }
-        users.save(user);
-        
-        return user;
+
+        return service.updateUser(id, user);
     }
 
     @GetMapping(value = "/users")
     public List<User> getAllUsers() {
-        return users.findAll();
+        return service.getAllUsers();
     }
-    
 
 }

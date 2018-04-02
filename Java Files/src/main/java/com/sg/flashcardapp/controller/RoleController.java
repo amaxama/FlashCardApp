@@ -7,6 +7,7 @@ package com.sg.flashcardapp.controller;
 
 import com.sg.flashcardapp.dao.RoleRepository;
 import com.sg.flashcardapp.model.Role;
+import com.sg.flashcardapp.service.FlashCardService;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,23 +29,23 @@ import org.springframework.web.bind.annotation.RestController;
 public class RoleController {
 
     @Autowired
-    private RoleRepository roles;
+    private FlashCardService service;
 
     @GetMapping(value = "/role/{id}")
     public Role getRole(@PathVariable("id") int id) {
-        return roles.findOne(id);
+        return service.getRole(id);
     }
 
     @PostMapping(value = "/role")
     @ResponseStatus(HttpStatus.CREATED)
     public Role createRole(@Valid @RequestBody Role role) {
-        return roles.save(role);
+        return service.createRole(role);
     }
 
     @DeleteMapping(value = "/role/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteRole(@PathVariable("id") int id) {
-        roles.delete(id);
+        service.deleteRole(id);
     }
 
     @PutMapping(value = "/role/{id}")
@@ -54,14 +55,13 @@ public class RoleController {
         if (id != role.getRoleId()) {
             throw new UpdateIntegrityException("Card Id on URL must match Card Id in submitted data.");
         }
-        roles.save(role);
 
-        return role;
+        return service.updateRole(id, role);
     }
 
     @GetMapping(value = "/roles")
     public List<Role> getAllRoles() {
-        return roles.findAll();
+        return service.getAllRoles();
     }
 
 }
