@@ -7,7 +7,15 @@
 
 $(document).ready(function () {
 
+    $('[data-toggle="popover"]').popover();   
+
     $('#user-name').append('Username');
+    
+//    Check id
+    $('#add-button').click(function(event) {
+        
+        
+    });
     
 
 //    $('#name-button').onclick(function)

@@ -4,18 +4,10 @@
     <head>
         <title>Flashcard App</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <link rel="stylesheet" href="../css/style.css"/>
     </head>
-    
-<!--<!DOCTYPE html>
-<html>
-    <head>
-        <title>Super Sightings</title>
-        <link rel = 'stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
-        <link rel = 'stylesheet' href='css/superSightings.css'>
-        
-    </head>-->
 
     <body>
         <div class="wrapper">
@@ -76,22 +68,25 @@
                                 
                             </div>
                         </div>
+                            
                     </div>
 
-                    <div class="sidebar-buttons"></div>
+                    <div class="sidebar-buttons">
+                        <a id="add-button" class="icons add-button" href="#" data-toggle="popover" title="Popover Header" data-content="Add Folder Add Deck Add Card"></a>
+                        <button id="edit-button" class="icons edit-button" type="button"></button>
+                        <button id="delete-button" class="icons trash-button" type="button"></button>
+                    </div>
                 </div>
                 <div id="main-content" class="box content">
-                    <div class="row">
-                        <div id="dialog-menu" class="col-sm-12">
-                            <h2 id="user-bucket-name">${userName}'s Bucket</h2>
-                            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                                <button id="name-button" type="button" class="btn btn-secondary active">Name</button>
-                                <button id="category-button" type="button" class="btn btn-secondary">Category</button>
-                                <button id="rating-button" type="button" class="btn btn-secondary">Rating</button>
-                            </div>
+                    <div class="row main-header-group">
+                        <h2 id="user-bucket-name">${userName}'s Bucket</h2>
+                        <div class="btn-group btn-group-sm main-button-group" role="group" aria-label="Basic example">
+                            <button id="name-button" type="button" class="btn btn-secondary active">Name</button>
+                            <button id="category-button" type="button" class="btn btn-secondary">Category</button>
+                            <button id="rating-button" type="button" class="btn btn-secondary">Rating</button>
                         </div>
                     </div>
-                    <div class="row cards-list">
+                    <div class="row cards-table">
                         <div class="col-sm-12" id="main-table-div">
                             <table id="main-page-table">
                                 <tr id="name-row">
@@ -111,6 +106,9 @@
                                 </tr>
                             </table>
                         </div>
+                    </div>
+                    <div class="rotate-div">
+                        <button class="icons rotate-button" type="button"></button>
                     </div>
                 </div>
                 <div class="container box feed">
