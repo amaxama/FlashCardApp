@@ -16,6 +16,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -29,9 +31,13 @@ public class Role {
     @Column
     private int roleId;
     
+    @NotEmpty(message = "Please enter a name.")
+    @Length(max = 50, message = "Name must be no more than 30 characters in length.")
     @Column(nullable = false)
     private String roleName;
     
+    @NotEmpty(message = "Please enter a description for the Role.")
+    @Length(max = 100, message = "Role description must be no more than 100 characters in length.")
     @Column(nullable = false)
     private String roleDesc;
     

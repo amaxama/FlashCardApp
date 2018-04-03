@@ -9,7 +9,6 @@
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet"> 
         <style>
-            
             #login-div {
                 border-style: solid;
                 border-color: rgba(54,100,139);
@@ -38,8 +37,6 @@
             h1, h2, h3 {
                 text-align: center;
             }
-
-            
         </style>
     </head>
     <body>
