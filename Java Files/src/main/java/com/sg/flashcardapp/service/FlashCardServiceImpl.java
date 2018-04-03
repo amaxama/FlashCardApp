@@ -11,6 +11,7 @@ import com.sg.flashcardapp.dao.CategoryRepository;
 import com.sg.flashcardapp.dao.DeckRepository;
 import com.sg.flashcardapp.dao.FolderRepository;
 import com.sg.flashcardapp.dao.QueuedCardRepository;
+import com.sg.flashcardapp.dao.ReviewRepository;
 import com.sg.flashcardapp.dao.RoleRepository;
 import com.sg.flashcardapp.dao.UserRepository;
 import com.sg.flashcardapp.model.Card;
@@ -19,6 +20,7 @@ import com.sg.flashcardapp.model.Category;
 import com.sg.flashcardapp.model.Deck;
 import com.sg.flashcardapp.model.Folder;
 import com.sg.flashcardapp.model.QueuedCard;
+import com.sg.flashcardapp.model.Review;
 import com.sg.flashcardapp.model.Role;
 import com.sg.flashcardapp.model.User;
 import java.util.List;
@@ -48,6 +50,8 @@ public class FlashCardServiceImpl implements FlashCardService {
     private RoleRepository roles;
     @Autowired
     private UserRepository users;
+    @Autowired
+    private ReviewRepository reviews;
 
     //CARD
     @Override
@@ -76,7 +80,7 @@ public class FlashCardServiceImpl implements FlashCardService {
     public List<Card> getAllCards() {
         return cards.findAll();
     }
-    
+
     @Override
     public List<Card> getCardsByRating(int rating) {
         return cards.getCardsByRating(rating);
@@ -158,12 +162,11 @@ public class FlashCardServiceImpl implements FlashCardService {
     public List<Deck> getAllDecks() {
         return decks.findAll();
     }
-    
+
 //    @Override
 //    public List<Deck> findDeckByCategory(int id) {
 //        return decks.findDeckByCategory(id);
 //    }
-
     //FOLDER
     @Override
     public Folder getFolder(int id) {
@@ -216,6 +219,32 @@ public class FlashCardServiceImpl implements FlashCardService {
         return queuedCards.findAll();
     }
 
+    //REVIEWS
+    @Override
+    public Review getReview(int id) {
+        return reviews.findOne(id);
+    }
+
+    @Override
+    public Review createReview(Review review) {
+        return reviews.save(review);
+    }
+
+    @Override
+    public void deleteReview(int id) {
+        reviews.delete(id);
+    }
+
+    @Override
+    public Review updateReview(int id, Review review) {
+        return reviews.save(review);
+    }
+
+    @Override
+    public List<Review> getAllReviews() {
+        return reviews.findAll();
+    }
+
     //ROLES
     @Override
     public Role getRole(int id) {
@@ -242,14 +271,13 @@ public class FlashCardServiceImpl implements FlashCardService {
         return roles.findAll();
     }
 
-    
     //USERS
     @Override
     public int getUserId(String username) {
         User user = users.findByUserName(username);
         return user.getUserId();
     }
-    
+
     @Override
     public User getUser(int id) {
         return users.findOne(id);
@@ -274,9 +302,9 @@ public class FlashCardServiceImpl implements FlashCardService {
     public List<User> getAllUsers() {
         return users.findAll();
     }
-    
+
     @Override
     public List<Folder> getAllFoldersByUserId(int id) {
-        return folders.findByUserId(id); 
+        return folders.findByUserId(id);
     }
 }

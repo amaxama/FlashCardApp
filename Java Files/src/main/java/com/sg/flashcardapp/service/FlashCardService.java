@@ -11,6 +11,7 @@ import com.sg.flashcardapp.model.Category;
 import com.sg.flashcardapp.model.Deck;
 import com.sg.flashcardapp.model.Folder;
 import com.sg.flashcardapp.model.QueuedCard;
+import com.sg.flashcardapp.model.Review;
 import com.sg.flashcardapp.model.Role;
 import com.sg.flashcardapp.model.User;
 import java.util.List;
@@ -92,6 +93,17 @@ public interface FlashCardService {
     QueuedCard updateQueuedCard(int id, QueuedCard queuedCard);
 
     List<QueuedCard> getAllQueuedCards();
+    
+    //REVIEWS
+    Review getReview(int id);
+    
+    Review createReview(Review review);
+    
+    void deleteReview(int id);
+    
+    Review updateReview(int id, Review review);
+    
+    List<Review> getAllReviews();
 
     //ROLES
     Role getRole(int id);
