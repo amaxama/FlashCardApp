@@ -260,6 +260,7 @@ public class FlashCardServiceImpl implements FlashCardService {
     
     @Override
     public List<Folder> getAllFolderByUserId(int id) {
-        return folders.findByUser_Id(id); 
+        return null;
+//        return folders.findByUser_Id(id); 
     }
 }

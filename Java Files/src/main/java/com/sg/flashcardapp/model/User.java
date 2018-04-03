@@ -26,7 +26,6 @@ import javax.persistence.OneToMany;
  * @authors Mike Betzler, Jacob Duerr, Anna Maxam, Jeff Peterson
  */
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User {
 
 //    (fetch = FetchType.LAZY)

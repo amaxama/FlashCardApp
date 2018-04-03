@@ -24,7 +24,7 @@ import javax.persistence.ManyToMany;
  * @authors Mike Betzler, Jacob Duerr, Anna Maxam, Jeff Peterson
  */
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Category {
     
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,7 +43,6 @@ public class Category {
             joinColumns = {@JoinColumn(name = "categoryId")}, 
             inverseJoinColumns = { @JoinColumn(name = "cardId")}
     )
-//    @JsonIgnore
     private List<Card> cards = new ArrayList<>();
     
 

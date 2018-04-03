@@ -26,7 +26,7 @@ import javax.persistence.ManyToOne;
  * @authors Mike Betzler, Jacob Duerr, Anna Maxam, Jeff Peterson
  */
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Folder {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +34,6 @@ public class Folder {
     @Column
     private int folderId;
 
-    //    COME BACK TO - MAY NEED USERID AS COLUMN
     @Column(nullable = false)
     private int userId;
     
@@ -79,10 +78,6 @@ public class Folder {
     public void setUserId(int userId) {
         this.userId = userId;
     }
-
-    
-
-    
 
     public List<Deck> getDecks() {
         return decks;

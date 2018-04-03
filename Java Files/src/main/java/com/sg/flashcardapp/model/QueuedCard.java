@@ -25,7 +25,7 @@ import javax.persistence.ManyToMany;
  * @authors Mike Betzler, Jacob Duerr, Anna Maxam, Jeff Peterson
  */
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class QueuedCard {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,14 +45,13 @@ public class QueuedCard {
     @Column(nullable = false)
     private String cardAnswer;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     @JoinTable(name = "QueuedCardCategory",
             joinColumns = {
                 @JoinColumn(name = "queuedCardId")},
             inverseJoinColumns = {
                 @JoinColumn(name = "categoryId")}
     )
-    @JsonIgnore
     private List<Category> categories = new ArrayList<>();
 
     public int getQueuedCardId() {

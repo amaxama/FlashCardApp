@@ -20,18 +20,32 @@ html,
 body {
    height: 100%;
 }
+.container {
+    margin: 0;
+    padding: 0px,10px;
+    width: 100%;
+    
+}
 
 body {
    background-color: lightblue;
    color: black;
 }
 
-.container {
+/*.container {
+   height: 100%;
+   display: table;
+   width: 100%;
+   text-align: center;
+}*/
+
+.holder {
    height: 100%;
    display: table;
    width: 100%;
    text-align: center;
 }
+
 .header {
    display: inline-block;
    height: 15px;
@@ -53,7 +67,7 @@ body {
    height: 100%;
    display: table;
    width: 100%;
-   background-color: lightpink;
+   /*background-color: lightpink;*/
 }
 .box {
    display: table-cell;
@@ -69,7 +83,7 @@ body {
 }
 
 .footer {
-   display: table-row;
+    display: table-row;
    height: 20px;
    background: gray;
    color: #FFFAD5;
@@ -205,7 +219,7 @@ table, th, td {
 	width: 98%;
 	height: 65vh;
 	background-color: gray;
-	margin: 0 auto;
+	margin: auto;
 	grid-template-columns: repeat(8, 1fr);
 	grid-template-rows: repeat(5, 1fr);
 }

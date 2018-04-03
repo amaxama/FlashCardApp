@@ -45,12 +45,28 @@ public class Review {
     @Column(nullable = false)
     private String reviewContent;
 
-    public Integer getReviewId() {
+    public int getReviewId() {
         return reviewId;
     }
 
-    public void setReviewId(Integer reviewId) {
+    public void setReviewId(int reviewId) {
         this.reviewId = reviewId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getDeckId() {
+        return deckId;
+    }
+
+    public void setDeckId(int deckId) {
+        this.deckId = deckId;
     }
 
     public String getReviewName() {
@@ -71,10 +87,12 @@ public class Review {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 47 * hash + Objects.hashCode(this.reviewId);
-        hash = 47 * hash + Objects.hashCode(this.reviewName);
-        hash = 47 * hash + Objects.hashCode(this.reviewContent);
+        int hash = 7;
+        hash = 53 * hash + this.reviewId;
+        hash = 53 * hash + this.userId;
+        hash = 53 * hash + this.deckId;
+        hash = 53 * hash + Objects.hashCode(this.reviewName);
+        hash = 53 * hash + Objects.hashCode(this.reviewContent);
         return hash;
     }
 
@@ -90,18 +108,24 @@ public class Review {
             return false;
         }
         final Review other = (Review) obj;
+        if (this.reviewId != other.reviewId) {
+            return false;
+        }
+        if (this.userId != other.userId) {
+            return false;
+        }
+        if (this.deckId != other.deckId) {
+            return false;
+        }
         if (!Objects.equals(this.reviewName, other.reviewName)) {
             return false;
         }
         if (!Objects.equals(this.reviewContent, other.reviewContent)) {
             return false;
         }
-        if (!Objects.equals(this.reviewId, other.reviewId)) {
-            return false;
-        }
         return true;
     }
-    
+
     
     
     
