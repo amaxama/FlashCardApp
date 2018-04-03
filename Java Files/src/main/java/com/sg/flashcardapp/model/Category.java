@@ -38,12 +38,12 @@ public class Category {
     @Column
     private String categoryDesc;
     
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     @JoinTable(name = "CardCategory",
             joinColumns = {@JoinColumn(name = "categoryId")}, 
             inverseJoinColumns = { @JoinColumn(name = "cardId")}
     )
-    @JsonIgnore
+//    @JsonIgnore
     private List<Card> cards = new ArrayList<>();
     
 
@@ -75,12 +75,21 @@ public class Category {
         this.categoryDesc = categoryDesc;
     }
 
+    public List<Card> getCards() {
+        return cards;
+    }
+
+    public void setCards(List<Card> cards) {
+        this.cards = cards;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 89 * hash + this.categoryId;
-        hash = 89 * hash + Objects.hashCode(this.categoryName);
-        hash = 89 * hash + Objects.hashCode(this.categoryDesc);
+        int hash = 7;
+        hash = 97 * hash + this.categoryId;
+        hash = 97 * hash + Objects.hashCode(this.categoryName);
+        hash = 97 * hash + Objects.hashCode(this.categoryDesc);
+        hash = 97 * hash + Objects.hashCode(this.cards);
         return hash;
     }
 
@@ -105,10 +114,15 @@ public class Category {
         if (!Objects.equals(this.categoryDesc, other.categoryDesc)) {
             return false;
         }
+        if (!Objects.equals(this.cards, other.cards)) {
+            return false;
+        }
         return true;
     }
-  
-  
+    
+    
+
+    
     
   
 }

@@ -39,6 +39,8 @@
     
     <jpa:repositories base-package="com.sg.flashcardapp.dao" />
     
+    
+    
     <bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
     
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">

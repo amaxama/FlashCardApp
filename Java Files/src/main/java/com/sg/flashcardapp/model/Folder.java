@@ -34,20 +34,22 @@ public class Folder {
     @Column
     private int folderId;
 
+    //    COME BACK TO - MAY NEED USERID AS COLUMN
+    @Column(nullable = false)
+    private int userId;
+    
+    
     @Column(nullable = false)
     private String folderName;
 
     
-//    COME BACK TO - MAY NEED USERID AS COLUMN
-    @ManyToOne
-    private User user;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+
+    @ManyToMany
     @JoinTable(name = "DeckFolder",
             joinColumns = {@JoinColumn(name = "deckId")}, 
             inverseJoinColumns = { @JoinColumn(name = "folderId")}
     )
-    @JsonIgnore
     private List<Deck> decks = new ArrayList<>();
 
     public Folder() {
@@ -70,13 +72,17 @@ public class Folder {
         this.folderName = folderName;
     }
 
-    public User getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
+
+    
+
+    
 
     public List<Deck> getDecks() {
         return decks;
@@ -88,11 +94,11 @@ public class Folder {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 31 * hash + this.folderId;
-        hash = 31 * hash + Objects.hashCode(this.folderName);
-        hash = 31 * hash + Objects.hashCode(this.user);
-        hash = 31 * hash + Objects.hashCode(this.decks);
+        int hash = 3;
+        hash = 83 * hash + this.folderId;
+        hash = 83 * hash + Objects.hashCode(this.folderName);
+        hash = 83 * hash + Objects.hashCode(this.userId);
+        hash = 83 * hash + Objects.hashCode(this.decks);
         return hash;
     }
 
@@ -114,7 +120,7 @@ public class Folder {
         if (!Objects.equals(this.folderName, other.folderName)) {
             return false;
         }
-        if (!Objects.equals(this.user, other.user)) {
+        if (!Objects.equals(this.userId, other.userId)) {
             return false;
         }
         if (!Objects.equals(this.decks, other.decks)) {

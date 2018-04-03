@@ -15,14 +15,24 @@ $(document).ready(function () {
     $('[data-toggle="popover"]').popover();
 
     $('#user-name').append('Username');
-
+    $('#table-div').show();
+    $('#card-div').hide();
+    $('#card-back').hide();
+    $('#toggle-card-button').click(function(event) {
+        $('#card-back').toggle();
+        $('#card-front').toggle();
+    });
+    
+    
+    
+    
+    
 //    Check id
     $('#add-button').click(function (event) {
 
-
     });
 
-
+    
 
 // =============================================================================
 // ==== CARD BUTTONS ===========================================================
@@ -33,23 +43,15 @@ $(document).ready(function () {
     
 //    Check id!!
     $('#view-deck-button').click(function(event) {
+        $('#table-div').toggle();
+        $('#card-div').toggle();
+        $('#deck-id').val("1");
         var deckId = $('#deck-id').val(); 
-        getAllCardsByDeckId(deckId);
+        getDeck(1);
         
-        deckLength = currentDeck.length;
-        var i;
-        while(i >=0 && i<deckLength) {
-            if (i === 0) {
-                $('#left-button').disabled = true;
-                $('#right-button').disabled = false;
-            } else {
-                $('#left-button').disabled = false;
-                $('#right-button').disabled = true;
-            }
-            card = currentDeck[i];
-//            put in card side 1 
-//            put in card side 2
-        }
+        
+        
+        
         
     });
 
@@ -187,24 +189,25 @@ function getAllCards() {
     });
 }
 
-function getAllCardsByDeckId(deckId) {
-    $.ajax({
-        type: 'GET',
-        url: 'http://localhost:8080/FlashCardApp/cards/deck/' + deckId,
-        success: function (cardsArray) {
-            $.each(cardsArray, function (index, card) {
-                currentDeck.push(card);
-            });
-//            getAllCards();
-        },
-        error: function () {
-            $('#error-messages')
-                    .append($('<li>')
-                            .attr({class: 'list-group-item list-group-item-danger'})
-                            .text('Error calling web service.  Please try again later.'));
-        }
-    });
-}
+//function getAllCardsByDeckId(deckId) {
+//    currentDeck.empty();
+//    $.ajax({
+//        type: 'GET',
+//        url: 'http://localhost:8080/FlashCardApp/cards/deck/' + deckId,
+//        success: function (cardsArray) {
+//            $.each(cardsArray, function (index, card) {
+//                currentDeck.push(card);
+//            });
+////            getAllCards();
+//        },
+//        error: function () {
+//            $('#error-messages')
+//                    .append($('<li>')
+//                            .attr({class: 'list-group-item list-group-item-danger'})
+//                            .text('Error calling web service.  Please try again later.'));
+//        }
+//    });
+//}
 
 function getCard(cardId) {
     $('#errorMessages').empty();
@@ -420,10 +423,38 @@ function getDeck(deckId) {
         type: 'GET',
         url: 'http://localhost:8080/FlashCardApp/deck/' + deckId,
         success: function (deck, status) {
-            var id = deck.deckId;
-            var name = deck.deckName;
-            var desc = deck.desc;
-            var reviews = deck.reviews;
+            currentDeck = deck.cards;
+            deckLength = currentDeck.length;
+            console.log(deckLength);
+            var i;
+            while(i >= 0 && i < deckLength) {
+                if (i === 0) {
+                    $('#left-button').disabled = true;
+                    $('#right-button').disabled = false;
+                } else {
+                    $('#left-button').disabled = false;
+                    $('#right-button').disabled = true;
+                }
+                card = currentDeck[i];
+                    var challenge = card.cardChallenge;
+                    var answer = card.cardAnswer;
+        //        var challenge = "card.cardChallenge";
+        //        var answer = "card.cardAnswer";
+
+                $('#card-back').hide();
+                $('#card-front').append($('<p>')
+                                      .text(challenge));
+                $('#card-back').append($('<p>')
+                                      .text(answer));
+
+            }
+            
+            
+            
+//            var id = deck.deckId;
+//            var name = deck.deckName;
+//            var desc = deck.desc;
+//            var reviews = deck.reviews;
 //            set values in id spots
         },
         error: function () {

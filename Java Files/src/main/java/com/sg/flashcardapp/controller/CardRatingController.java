@@ -51,17 +51,17 @@ public class CardRatingController {
         service.deleteCardRating(id);
     }
 
-    @PutMapping(value = "/cardrating/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public CardRating updateCardRating(@PathVariable("id") int id, @Valid @RequestBody CardRating cardRating) throws UpdateIntegrityException {
-        // favor the path variable over the id in the object if they differ
-        if (id != cardRating.getCardId()) {
-            throw new UpdateIntegrityException("Card Id on URL must match Card Id in submitted data.");
-        }
-        
-
-        return service.updateCardRating(id, cardRating);
-    }
+//    @PutMapping(value = "/cardrating/{id}")
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    public CardRating updateCardRating(@PathVariable("id") int id, @Valid @RequestBody CardRating cardRating) throws UpdateIntegrityException {
+//        // favor the path variable over the id in the object if they differ
+//        if (id != cardRating..getCard().getCardId()) {
+//            throw new UpdateIntegrityException("Card Id on URL must match Card Id in submitted data.");
+//        }
+//        
+//
+//        return service.updateCardRating(id, cardRating);
+//    }
 
     @GetMapping(value = "/cardratings")
     public List<CardRating> getAllCardRatings() {
