@@ -697,11 +697,11 @@ function createFolder(userId) {
             url: 'http://localhost:8080/FlashCardApp/folder/user/' + userId,
             data: JSON.stringify({
                 folderName: $('#edit-folder-name').val(),
-                userId: $('#current-user-id').val()
+                userId: userId
             }),
             headers: {
-            'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             },
             'dataType': 'json',
             success: function (data, status) {
