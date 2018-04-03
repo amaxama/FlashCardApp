@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 var cardArray = [];
+var cardRatingArray = [];
 var deckArray = [];
 var folderArray = [];
 var catArray = [];
@@ -13,6 +14,8 @@ var cards = [];
 $(document).ready(function () {
     loadCardsToArray(cardArray);
     getCardsListByRating();
+    loadCardRatingsToArray(cardRatingArray);
+    getAllCardRatings();
 
     getCurrentUser();
 
@@ -333,13 +336,9 @@ var topCardsList = $('#card-ratings');
         cardArray.forEach(card => {
             var id = card.cardId;
             var name = card.cardName;
-//            var chal = card.cardChallenge;
-//            var ans = card.cardAnswer;
-            var ratings = card.ratings;
                 topCardsList.append($('<li>')
                         .attr({class: 'list-group-item', id: id})
-                        .text(name)
-                        .text(ratings));
+                        .text(name));
         });
         
         
@@ -509,6 +508,7 @@ type: 'GET',
         $.each(cardRatingsArray, function (index, cardRating) {
         cardRatingArray.push(cardRating);
         });
+        getAllCardRatings();
         
 //                getAllCards();
 //                getCardsListByRating();
@@ -522,7 +522,22 @@ type: 'GET',
 });
 }
 
-
+function getAllCardRatings() {
+    var cardRatingList = $('#card-ratings');
+        cardRatingList.empty();
+        cardRatingArray.forEach(cardRating => {
+//            console.log(card);
+            var userId = cardRating.userId;
+            var cardId = cardRating.cardId;
+            var rating = cardRating.rating;
+            var card = findItemById(cardArray, "cardId", cardId);
+            var cardName = card.cardName;
+                cardRatingList.append($('<li>')
+                        .attr({class: 'list-group-item', id: cardId})
+                        .text(cardName + ' - ' + rating + '/5'));
+        });
+        
+}
 
 // =============================================================================
 // ==== CATEGORY METHODS =======================================================
@@ -582,7 +597,7 @@ $('#error-messages').empty();
 // =============================================================================
 
 
-function getAllDecksByUser() {
+function getAllDecks() {
 //    clearDecksList();
 //    CHECK ON ID NAME
 var decksList = $('#decks-list');

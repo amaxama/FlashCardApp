@@ -153,6 +153,11 @@ public class FlashCardServiceImpl implements FlashCardService {
     public List<Deck> getAllDecks() {
         return decks.findAll();
     }
+    
+//    @Override
+//    public List<Deck> findDeckByCategory(int id) {
+//        return decks.findDeckByCategory(id);
+//    }
 
     //FOLDER
     @Override
@@ -266,7 +271,7 @@ public class FlashCardServiceImpl implements FlashCardService {
     }
     
     @Override
-    public List<Folder> getAllFolderByUserId(int id) {
+    public List<Folder> getAllFoldersByUserId(int id) {
         return folders.findByUserId(id); 
     }
 }

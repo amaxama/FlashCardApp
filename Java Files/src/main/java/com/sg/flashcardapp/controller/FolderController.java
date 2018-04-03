@@ -37,11 +37,18 @@ public class FolderController {
         return service.getFolder(id);
     }
 
-    @PostMapping(value = "/folder")
+    @PostMapping(value = "/folder/user/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public Folder createFolder(@Valid @RequestBody Folder folder) {
+    public Folder createFolder(@PathVariable("id") int id, @Valid @RequestBody Folder folder) {
+        folder.setUserId(id);
         return service.createFolder(folder);
     }
+    
+//        @PostMapping(value = "/folder")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public Folder createFolder(@Valid @RequestBody Folder folder) {
+//        return service.createFolder(folder);
+//    }
 
     @DeleteMapping(value = "/folder/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -54,7 +61,7 @@ public class FolderController {
     public Folder updateFolder(@PathVariable("id") int id, @Valid @RequestBody Folder folder) throws UpdateIntegrityException {
         // favor the path variable over the id in the object if they differ
         if (id != folder.getFolderId()) {
-            throw new UpdateIntegrityException("Contact Id on URL must match Contact Id in submitted data.");
+            throw new UpdateIntegrityException("Folder Id on URL must match Folder Id in submitted data.");
         }
 
         return service.updateFolder(id, folder);
@@ -65,4 +72,8 @@ public class FolderController {
         return service.getAllFolders();
     }
 
+    @GetMapping(value = "/folders/user/{id}")
+    public List<Folder> getAllFoldersByUserId(int id) {
+        return service.getAllFoldersByUserId(id);
+    }
 }
