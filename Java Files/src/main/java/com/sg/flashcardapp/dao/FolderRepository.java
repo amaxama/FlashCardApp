@@ -16,6 +16,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface FolderRepository extends JpaRepository<Folder, Integer> {
     
-    List<Folder> findByUserId(int id);
+    List<Folder> findByUserId(int userId);
   
 }

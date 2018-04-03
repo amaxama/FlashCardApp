@@ -31,6 +31,8 @@ public interface FlashCardService {
     Card updateCard(int id, Card card);
 
     List<Card> getAllCards();
+    
+    List<Card> getCardsByRating(int rating);
 
     //CARD RATING
     CardRating getCardRating(int id);

@@ -73,7 +73,7 @@ public class FolderController {
     }
 
     @GetMapping(value = "/folders/user/{id}")
-    public List<Folder> getAllFoldersByUserId(int id) {
+    public List<Folder> getAllFoldersByUserId(@PathVariable("id") int id) {
         return service.getAllFoldersByUserId(id);
     }
 }

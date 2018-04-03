@@ -76,6 +76,11 @@ public class FlashCardServiceImpl implements FlashCardService {
     public List<Card> getAllCards() {
         return cards.findAll();
     }
+    
+    @Override
+    public List<Card> getCardsByRating(int rating) {
+        return cards.getCardsByRating(rating);
+    }
 
     //CARD RATING
     public CardRating getCardRating(int id) {
