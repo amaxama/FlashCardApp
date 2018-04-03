@@ -49,8 +49,8 @@ public class Folder {
 
     @ManyToMany
     @JoinTable(name = "DeckFolder",
-            joinColumns = {@JoinColumn(name = "deckId")}, 
-            inverseJoinColumns = { @JoinColumn(name = "folderId")}
+            joinColumns = {@JoinColumn(name = "folderId")}, 
+            inverseJoinColumns = { @JoinColumn(name = "deckId")}
     )
     private List<Deck> decks = new ArrayList<>();
 

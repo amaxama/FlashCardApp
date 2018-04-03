@@ -5,12 +5,16 @@
  */
 package com.sg.flashcardapp.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;                                                              
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -43,8 +47,10 @@ public class Card {
   @Length(max = 1000, message = "Answer must be no more than 1000 characters in length.")
   @Column(nullable = false)
   private String cardAnswer;
-          
-//  private List<CardRating> ratings = new ArrayList<>();
+        
+    @Transient
+    @JsonInclude
+    private List<CardRating> ratings = new ArrayList<>();
   
 
   public Card() {
@@ -83,13 +89,22 @@ public class Card {
         this.cardAnswer = cardAnswer;
     }
 
+    public List<CardRating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(List<CardRating> ratings) {
+        this.ratings = ratings;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 23 * hash + this.cardId;
-        hash = 23 * hash + Objects.hashCode(this.cardName);
-        hash = 23 * hash + Objects.hashCode(this.cardChallenge);
-        hash = 23 * hash + Objects.hashCode(this.cardAnswer);
+        int hash = 3;
+        hash = 47 * hash + this.cardId;
+        hash = 47 * hash + Objects.hashCode(this.cardName);
+        hash = 47 * hash + Objects.hashCode(this.cardChallenge);
+        hash = 47 * hash + Objects.hashCode(this.cardAnswer);
+        hash = 47 * hash + Objects.hashCode(this.ratings);
         return hash;
     }
 
@@ -117,16 +132,15 @@ public class Card {
         if (!Objects.equals(this.cardAnswer, other.cardAnswer)) {
             return false;
         }
+        if (!Objects.equals(this.ratings, other.ratings)) {
+            return false;
+        }
         return true;
     }
-
-
     
     
-  
-  
-  
-  
+
+    
     
   
 }

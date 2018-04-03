@@ -92,6 +92,8 @@ public interface FlashCardService {
     QueuedCard updateQueuedCard(int id, QueuedCard queuedCard);
 
     List<QueuedCard> getAllQueuedCards();
+    
+    
 
     //ROLES
     Role getRole(int id);
