@@ -101,6 +101,8 @@ public interface FlashCardService {
     List<Role> getAllRoles();
 
     //USERS
+    int getUserId(String username);
+    
     User getUser(int id);
 
     User createUser(User user);

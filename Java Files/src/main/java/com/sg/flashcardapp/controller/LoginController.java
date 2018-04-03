@@ -5,8 +5,14 @@
  */
 package com.sg.flashcardapp.controller;
 
+import com.sg.flashcardapp.model.User;
+import com.sg.flashcardapp.service.FlashCardService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
@@ -15,10 +21,27 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class LoginController {
     
+    @Autowired
+    private FlashCardService service;
+    
     @GetMapping("/login")
     public String showLoginForm() {
         return "login";
     }
+    
+    @GetMapping("/currentuser/userId")
+    @ResponseBody
+    public int currentUserId(Authentication authentication) {
+        String username = authentication.getName();
+        int id = service.getUserId(username);
+        return id;
+//        User user = (User) authentication.getPrincipal();
+//        String id = Integer.toString(user.getUserId());
+//        return id;
+    }
+    
+    
+    
     
     
     

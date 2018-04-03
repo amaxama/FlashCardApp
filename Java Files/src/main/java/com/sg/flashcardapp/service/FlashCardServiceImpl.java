@@ -232,7 +232,14 @@ public class FlashCardServiceImpl implements FlashCardService {
         return roles.findAll();
     }
 
+    
     //USERS
+    @Override
+    public int getUserId(String username) {
+        User user = users.findByUserName(username);
+        return user.getUserId();
+    }
+    
     @Override
     public User getUser(int id) {
         return users.findOne(id);
@@ -260,7 +267,6 @@ public class FlashCardServiceImpl implements FlashCardService {
     
     @Override
     public List<Folder> getAllFolderByUserId(int id) {
-        return null;
-//        return folders.findByUser_Id(id); 
+        return folders.findByUserId(id); 
     }
 }

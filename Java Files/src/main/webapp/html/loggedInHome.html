@@ -4,6 +4,7 @@
     <head>
         <title>Flashcard App</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <link rel="stylesheet" href="../css/style.css"/>
@@ -28,7 +29,8 @@
                 <div class="col-sm-4">
                     <div class="row" id="header-button-row">
                         <div class="col-sm-12">
-                            <span id="user-name">Hi, </span>
+                            <!--<input type="hidden" id="current-user-id"/>-->
+                            <input id="current-user-id"/>
                             <div class="btn-group header-login-button-group" role="group" aria-label="Header buttons for login">
                                 <a href= "html/loggedInHome.html" class="btn btn-primary" role="button">Log In</a>
                                 <button class="btn btn-primary" id="header-logout-button">Logout</button>
@@ -57,32 +59,43 @@
                                     </ul>
                                 </div>
                                 <div id="accordion">
-                                    <div class="card" id="first-folder">
-                                        <div class="card-header">
-                                            <a class="card-link" data-toggle="collapse" href="#collapseOne">
-                                                Folder #1
-                                            </a>
-                                        </div>
-                                        <div id="collapseOne" class="collapse" data-parent="#accordion">
-                                            <div class="card-body">
-                                                Decks
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card" id="second-folder">
-                                        <div class="card-header">
-                                            <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-                                                Folder #2
-                                            </a>
-                                        </div>
-                                        <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                                            <div class="card-body">
-                                                Decks
-                                            </div>
-                                        </div>
-                                    </div>
 
                                 </div>
+<!--===========================-->
+<!-- Create Folder Modal -->
+<div class="modal fade" id="create-folder-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h2 class="modal-title">Create Folder</h2>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div id="folder-form-div" class="col-md-12">
+            <form id="create-folder-form" class="form-horizontal" role="form">
+               <div class="form-group">
+                  <label for="add-folder-name">Folder Name:</label>
+                  <input type="text" class="form-control" id="add-folder-name" placeholder="Folder Name" />
+               </div>
+               <div class="form-group">
+                  <div>
+                     <!--<button type="button" id="cancel" class="btn btn-outline-danger">Cancel</button>-->
+                     <button type="button" id="create-folder-button" class="btn btn-outline-primary">Create</button>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+                                
                                 <input type='hidden' id='deck-id'>
                                 <button type="button" id="view-deck-button" class="btn btn-outline-primary">Study Deck</button>
                             </div>
@@ -90,9 +103,19 @@
                         </div>
 
                         <div class="sidebar-buttons">
-                            <a id="add-button" class="icons add-button" href="#" data-toggle="popover" title="Popover Header" data-content="Add Folder Add Deck Add Card"></a>
+                            <div class="popover__wrapper">
+                                <a href="#">
+                                  <h2 class="popover__title icons add-button">Plus</h2>
+                                </a>
+                                <div class="push popover__content">
+                                    <button data-toggle="modal" data-target="#create-folder-modal" id="add-folder-button" type="button" class="close" >Add Folder</button>
+                                    <button onclick=addDeck() id="add-deck-button" type="button" class="close" data-dismiss="modal" >Add Deck</button>
+                                    <button onclick=addCard() id="add-card-button" type="button" class="close" data-dismiss="modal" >Add Card</button>
+                                </div>
+                              </div>
+<!--                            <a id="add-button" class="icons add-button" href="#" data-toggle="popover" title="Popover Header" data-content="Add Folder Add Deck Add Card"></a>
                             <button id="edit-button" class="icons edit-button" type="button"></button>
-                            <button id="delete-button" class="icons trash-button" type="button"></button>
+                            <button id="delete-button" class="icons trash-button" type="button"></button>-->
                         </div>
                     </div>
                 </div>
@@ -182,7 +205,11 @@
                                     <button type="button" class="btn btn-secondary">Most Recent</button>
                                     <button type="button" class="btn btn-secondary">Name</button>
                                 </div>
-                                <div id="card-content-box"></div>
+                                <div id="rating-feed">
+                                    <ul id="card-ratings">
+                                        
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
