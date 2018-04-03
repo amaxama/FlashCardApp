@@ -16,10 +16,7 @@ $(document).ready(function () {
 
     getCurrentUser();
 
-    $('#show-all-cards-button').click(function (event) {
-        getAllCards();
-        
-    });
+    
     
     $('#create-folder-button').click(function(event) {
         console.log("buttonclicked");
@@ -28,7 +25,6 @@ $(document).ready(function () {
     
     
     getAllDecksByUser();
-    $('[data-toggle="popover"]').popover();
     $('#user-name').append('Username');
     $('#table-div').show();
     $('#card-div').hide();
@@ -65,6 +61,7 @@ $(document).ready(function () {
 
 
     });
+    
 // =============================================================================
 // ==== CARD BUTTONS ===========================================================
 // =============================================================================
@@ -119,7 +116,9 @@ $(document).ready(function () {
 
 });
 
-
+function showCards() {
+    $('#cards-list').toggle();
+}
 
 
 function todoOnClick(i) {
@@ -173,6 +172,11 @@ function addFolder() {
     $('#create-folder-modal').modal('hide');
 
   }
+  
+  
+function addDeckToFolder() {
+    
+}
 
 // =============================================================================
 // ==== USER METHODS ===========================================================
@@ -324,12 +328,9 @@ var cardsList = $('#cards-list');
 }
 
 function getCardsListByRating() {
-    console.log("method called");
 var topCardsList = $('#card-ratings');
         topCardsList.empty();
-        console.log(cardArray);        
         cardArray.forEach(card => {
-            console.log(card);
             var id = card.cardId;
             var name = card.cardName;
 //            var chal = card.cardChallenge;
