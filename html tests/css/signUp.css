@@ -14,14 +14,23 @@ body {
 }
 
 #cancel, #submit {
+	display: inline-block;
    margin: 3%;
 }
 
-h1 {
+.signup-buttons {
+	display: block;
+	margin: 0 auto;
+}
+
+#sign-up-form {
+	display: block;
+	width: 85%;
+	margin: 0 auto;
+}
+
+h1, h2 {
    text-align: center;
 }
 
-h2 {
-   text-align: center;
-}
 
