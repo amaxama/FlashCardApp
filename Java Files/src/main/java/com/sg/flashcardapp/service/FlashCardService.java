@@ -64,6 +64,8 @@ public interface FlashCardService {
     Deck updateDeck(int id, Deck deck);
 
     List<Deck> getAllDecks();
+    
+//    List<Deck> findDeckByCategory(int id);
 
     //FOLDER
     Folder getFolder(int id);
@@ -76,7 +78,7 @@ public interface FlashCardService {
 
     List<Folder> getAllFolders();
     
-    List<Folder> getAllFolderByUserId(int id);
+    List<Folder> getAllFoldersByUserId(int id);
 
     //QUEUED CARDS
     QueuedCard getQueuedCard(int it);
