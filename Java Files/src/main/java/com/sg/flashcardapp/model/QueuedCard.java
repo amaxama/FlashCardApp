@@ -19,6 +19,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -36,14 +38,20 @@ public class QueuedCard {
     @Column(nullable = false)
     private int cardId;
 
-    @Column(nullable = false)
-    private String cardName;
-
-    @Column(nullable = false)
-    private String cardChallenge;
-
-    @Column(nullable = false)
-    private String cardAnswer;
+  @NotEmpty(message = "Please enter a name.")
+  @Length(max = 30, message = "Name must be no more than 30 characters in length.")
+  @Column(nullable = false)
+  private String cardName;
+  
+  @NotEmpty(message = "Please enter a Challenge.")
+  @Length(max = 300, message = "Name must be no more than 300 characters in length.")
+  @Column(nullable = false)
+  private String cardChallenge;
+  
+  @NotEmpty(message = "Please enter an Answer.")
+  @Length(max = 1000, message = "Answer must be no more than 1000 characters in length.")
+  @Column(nullable = false)
+  private String cardAnswer;
 
     @ManyToMany
     @JoinTable(name = "QueuedCardCategory",

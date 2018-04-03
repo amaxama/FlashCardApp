@@ -5,17 +5,14 @@
  */
 package com.sg.flashcardapp.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;                                                              
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 
 /**
@@ -32,16 +29,21 @@ public class Card {
   @Column
   private int cardId;
   
+  @NotEmpty(message = "Please enter a name.")
+  @Length(max = 30, message = "Name must be no more than 30 characters in length.")
   @Column(nullable = false)
   private String cardName;
   
+  @NotEmpty(message = "Please enter a Challenge.")
+  @Length(max = 300, message = "Name must be no more than 300 characters in length.")
   @Column(nullable = false)
   private String cardChallenge;
   
+  @NotEmpty(message = "Please enter an Answer.")
+  @Length(max = 1000, message = "Answer must be no more than 1000 characters in length.")
   @Column(nullable = false)
   private String cardAnswer;
-  
-  
+          
 //  private List<CardRating> ratings = new ArrayList<>();
   
 
