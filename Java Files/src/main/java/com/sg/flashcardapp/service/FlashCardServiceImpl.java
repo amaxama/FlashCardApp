@@ -237,7 +237,14 @@ public class FlashCardServiceImpl implements FlashCardService {
         return roles.findAll();
     }
 
+    
     //USERS
+    @Override
+    public int getUserId(String username) {
+        User user = users.findByUserName(username);
+        return user.getUserId();
+    }
+    
     @Override
     public User getUser(int id) {
         return users.findOne(id);

@@ -20,6 +20,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -37,7 +39,8 @@ public class Folder {
     @Column(nullable = false)
     private int userId;
     
-    
+    @NotEmpty(message = "Please enter a name.")
+    @Length(max = 30, message = "Name must be no more than 30 characters in length.")
     @Column(nullable = false)
     private String folderName;
 
