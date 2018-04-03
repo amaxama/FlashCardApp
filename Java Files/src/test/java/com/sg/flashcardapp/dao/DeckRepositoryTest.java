@@ -42,19 +42,18 @@ public class DeckRepositoryTest {
     public void tearDown() {
     }
 
-    @Test
-    public void testGetDeck() throws JsonProcessingException {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-persistence.xml");
-        DeckRepository dr = ctx.getBean("deckRepository", DeckRepository.class);
-        
-        Deck result = dr.findOne(1);
-        ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(result);
-        assertEquals(1, result.getCards().size());
-        
-//        dr.findOne(1);
-        
-        
-    }
+//    @Test
+//    public void testGetDeck() throws JsonProcessingException {
+//        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-persistence.xml");
+//        DeckRepository dr = ctx.getBean("deckRepository", DeckRepository.class);
+//        
+//        Deck result = dr.findOne(1);
+//        ObjectMapper mapper = new ObjectMapper();
+//        String json = mapper.writeValueAsString(result);
+//        assertEquals(1, result.getCards().size());
+//        
+//        
+//        
+//    }
     
 }
