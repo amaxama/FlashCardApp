@@ -11,9 +11,12 @@ var ratingArray = [];
 var currentDeck = [];
 var cards = [];
 $(document).ready(function () {
+    loadCardsToArray(cardArray);
+    getCardsListByRating();
 
 $   ('#show-all-cards-button').click(function (event) {
         getAllCards();
+        
     });
     getAllDecksByUser();
     $('[data-toggle="popover"]').popover();
@@ -242,10 +245,11 @@ $.ajax({
 type: 'GET',
         url: 'http://localhost:8080/FlashCardApp/cards',
         success: function (cardsArray) {
-        $.each(cardArray, function (index, card) {
+        $.each(cardsArray, function (index, card) {
         cardArray.push(card);
         });
                 getAllCards();
+                getCardsListByRating();
         },
         error: function () {
         $('#error-messages')
@@ -260,17 +264,51 @@ function getAllCards() {
 var cardsList = $('#cards-list');
         cardsList.empty();
         cardArray.forEach(card => {
-        var id = card.cardId;
-                var name = card.cardName;
-                var chal = card.cardChallenge;
-                var ans = card.cardAnswer;
-                var ratings = card.ratings;
+//            console.log(card);
+            var id = card.cardId;
+            var name = card.cardName;
+            var chal = card.cardChallenge;
+            var ans = card.cardAnswer;
+            var ratings = card.ratings;
                 cardsList.append($('<li>')
                         .attr({class: 'list-group-item', id: id})
                         .text(name));
         });
 }
 
+function getCardsListByRating() {
+    console.log("method called");
+var topCardsList = $('#card-ratings');
+        topCardsList.empty();
+        console.log(cardArray);        
+        cardArray.forEach(card => {
+            console.log(card);
+            var id = card.cardId;
+            var name = card.cardName;
+//            var chal = card.cardChallenge;
+//            var ans = card.cardAnswer;
+            var ratings = card.ratings;
+                topCardsList.append($('<li>')
+                        .attr({class: 'list-group-item', id: id})
+                        .text(name)
+                        .text(ratings));
+        });
+        
+        
+//        cardArray.forEach(card => {
+//            console.log(card);
+//                var id = card.cardId;
+//                var name = card.cardName;
+//                var ratings = card.ratings;
+//                var list = '<li> ' + name + '</li>';
+//                
+//                topCardsList.append(list);
+//        });
+}
+
+//buttons += 'Item #' + id + '<br/>';
+//                buttons += name + '<br/>';
+//                itemDiv.append(buttons);
 //function getAllCardsByDeckId(deckId) {
 //    currentDeck.empty();
 //    $.ajax({
@@ -410,6 +448,33 @@ function clearCardsList() {
 //    CHECK IDS!
 $('#cards-list').empty();
 }
+
+// =============================================================================
+// ==== RATING METHODS ===========================================================
+// =============================================================================
+
+function loadCardRatingsToArray(cardRatingArray) {
+$.ajax({
+type: 'GET',
+        url: 'http://localhost:8080/FlashCardApp/cardratings',
+        success: function (cardRatingsArray) {
+        $.each(cardRatingsArray, function (index, cardRating) {
+        cardRatingArray.push(cardRating);
+        });
+        
+//                getAllCards();
+//                getCardsListByRating();
+        },
+        error: function () {
+        $('#error-messages')
+                .append($('<li>')
+                        .attr({class: 'list-group-item list-group-item-danger'})
+                        .text('Error calling web service.  Please try again later.'));
+        }
+});
+}
+
+
 
 // =============================================================================
 // ==== CATEGORY METHODS =======================================================
