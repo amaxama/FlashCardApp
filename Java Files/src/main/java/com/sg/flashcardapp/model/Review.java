@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -39,9 +41,13 @@ public class Review {
     @Column(nullable = false)
     private int deckId;
     
+    @NotEmpty(message = "Please enter a name.  (Example: Python Deck Review)")
+    @Length(max = 100, message = "Name must be no more than 100 characters in length.")
     @Column(nullable = false)
     private String reviewName;
     
+    @NotEmpty(message = "Please enter a short review, up to 500 characters in length.")
+    @Length(max = 500, message = "Review must be no more than 500 characters in length.")
     @Column(nullable = false)
     private String reviewContent;
 

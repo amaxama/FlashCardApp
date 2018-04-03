@@ -13,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -33,6 +35,8 @@ public class CardRating {
     @Column(nullable = false)
     private int cardId;
     
+    @NotEmpty(message = "Please enter a rating: 1 is the lowest and 5 is the highest.")
+    @Length(max = 1, message = "Rating cannot exceed 5.")
     @Column(nullable = false)
     private Integer rating;
 

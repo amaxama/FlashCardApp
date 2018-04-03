@@ -20,6 +20,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -35,9 +37,13 @@ public class User {
     @Column
     private int userId;
 
+    @NotEmpty(message = "Please enter a name.")
+    @Length(max = 50, message = "Name must be no more than 50 characters in length.")
     @Column(nullable = false)
     private String userName;
 
+    @NotEmpty(message = "Please enter a password.")
+    @Length(max = 100, message = "Password must be no more than 100 characters in length.")
     @Column(nullable = false)
     private String password;
 
