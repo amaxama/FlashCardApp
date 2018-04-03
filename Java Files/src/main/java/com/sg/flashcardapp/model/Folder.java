@@ -57,6 +57,10 @@ public class Folder {
     public Folder() {
 
     }
+    
+    public Folder(User user) {
+        this.userId = user.getUserId();
+    }
 
     public int getFolderId() {
         return folderId;
