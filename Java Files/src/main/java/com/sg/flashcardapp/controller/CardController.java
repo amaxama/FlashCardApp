@@ -70,8 +70,11 @@ public class CardController {
 //        return cards.findAll();
         return service.getAllCards();
     }
-    
-     //@GetMapping(value = "/cards/deck/{id}")
-    
-    
+
+    //@GetMapping(value = "/cards/deck/{id}")
+    @GetMapping(value = "/cards/rating/{rating}")
+    public List<Card> getCardsByRating(@PathVariable("rating") int rating) {
+        return service.getCardsByRating(rating);
+    }
+
 }
