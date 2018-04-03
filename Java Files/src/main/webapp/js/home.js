@@ -336,9 +336,13 @@ var topCardsList = $('#card-ratings');
         cardArray.forEach(card => {
             var id = card.cardId;
             var name = card.cardName;
+//            var chal = card.cardChallenge;
+//            var ans = card.cardAnswer;
+            var ratings = card.ratings;
                 topCardsList.append($('<li>')
                         .attr({class: 'list-group-item', id: id})
-                        .text(name));
+                        .text(name)
+                        .text(ratings));
         });
         
         

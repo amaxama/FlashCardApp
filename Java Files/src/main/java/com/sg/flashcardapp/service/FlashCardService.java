@@ -72,7 +72,7 @@ public interface FlashCardService {
 
     Folder createFolder(Folder folder);
 
-    void deleteFolder(int idd);
+    void deleteFolder(int id);
 
     Folder updateFolder(int id, Folder folder);
 
