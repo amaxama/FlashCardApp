@@ -10,7 +10,7 @@
     <beans:bean id="webexpressionHandler"
                 class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler"/> 
                 
-
+    <http pattern="/html/signUp.html" security="none" />           
     <http pattern="/login" security="none" />
     <http pattern="/error" security="none" />
     <http pattern="/css/**" security="none" />
@@ -23,7 +23,7 @@
                     login-page="/login"
                     authentication-failure-url="/login?login_error=1"/>
         <intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY"/>     
-        <!--<intercept-url pattern="/home.html" access="IS_AUTHENTICATED_ANONYMOUSLY"/>-->
+        <intercept-url pattern="html/signUp.html" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/homeReal.html" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <!--<intercept-url pattern="/content" access="ROLE_USER"/>-->
         <intercept-url pattern="/admin" access="ROLE_ADMIN"/>        
