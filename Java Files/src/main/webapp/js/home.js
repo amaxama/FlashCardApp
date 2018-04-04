@@ -25,7 +25,7 @@ $(document).ready(function () {
 
     $('#create-deck-button').click(function (event) {
         console.log("buttonclicked");
-        addDeck();
+        addDeckToFolder();
     });
 
     $('#create-card-button').click(function (event) {
@@ -170,8 +170,7 @@ function addFolder() {
             .append($('<div>')
                     .attr({id: 'collapseOne', class: 'collapse', 'data-parent': '#accordion'})
                     .append($('<div>')
-                            .attr({id: 'folder-one-decks' class: 'card-body'})
-                            .text("Decks"))));
+                            .attr({id: 'folder-one-decks', class: 'card-body'}))));
     $('#create-folder-modal').modal('hide');
 
 }
@@ -726,8 +725,31 @@ function getAllUserFolders() {
         folderId = folder.folderId;
         folderName = folder.folderName;
         foldersAccordion.append($('<div>')
-                .attr({class: 'card', id: folderId}))
+            .attr({class: 'card', id: folderId})
+            .append($('<div>')
+                    .attr({class: 'card-header'})
+                    .append($('<a>')
+                            .attr({class: 'card-link', 'data-toggle': 'collapse', href: '#collapseOne'}).text(folderName)))
+            .append($('<div>')
+                    .attr({id: 'collapseOne', class: 'collapse', 'data-parent': '#accordion'})
+                    .append($('<div>')
+                            .attr({id: folderName + '-decks', class: 'card-body'}))));
     });
+    
+    $('#accordion').append($('<div>')
+            .attr({class: 'card', id: 'first-folder'})
+            .append($('<div>')
+                    .attr({class: 'card-header'})
+                    .append($('<a>')
+                            .attr({class: 'card-link', 'data-toggle': 'collapse', href: '#collapseOne'}).text($('#add-folder-name').val())))
+            .append($('<div>')
+                    .attr({id: 'collapseOne', class: 'collapse', 'data-parent': '#accordion'})
+                    .append($('<div>')
+                            .attr({id: 'folder-one-decks', class: 'card-body'}))));
+    $('#create-folder-modal').modal('hide');
+    
+    
+    
 }
 
 
