@@ -58,7 +58,7 @@ public interface FlashCardService {
     List<Category> getAllCategories();
 
     //DECK
-    Deck getDeck(int it);
+    Deck getDeck(int id);
 
     Deck createDeck(Deck deck);
 
