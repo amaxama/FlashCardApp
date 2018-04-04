@@ -6,6 +6,7 @@
 var cardArray = [];
 var cardRatingArray = [];
 var deckArray = [];
+var reviewArray = [];
 var folderArray = [];
 var catArray = [];
 var ratingArray = [];
@@ -894,6 +895,42 @@ function addFolderToAccordion(folderName) {
 // =============================================================================
 //
 //FIX REVIEW OBJECT IN JAVA BEFORE DOING JS METHODS
+
+function loadReviewsToArray(reviewArray) {
+    $.ajax({
+        type: 'GET',
+        url: 'http://localhost:8080/FlashCardApp/reviews',
+        success: function (reviewsArray) {
+            $.each(reviewsArray, function (index, review) {
+                reviewArray.push(review);
+            });
+            //loadDecksToArray(deckArray);
+            getAllReviews();
+            
+            
+        },
+        error: function () {
+            $('#error-messages')
+                    .append($('<li>')
+                            .attr({class: 'list-group-item list-group-item-danger'})
+                            .text('Error calling web service.  Please try again later.'));
+        }
+    });
+}
+
+function getAllReviews() {
+    var reviewList = $('#deck-reviews');
+    reviewList.empty();
+    reviewArray.forEach(review => {
+        var reviewId = review.reviewId;
+        var deckId = review.deckId;
+        var name = review.reviewName;
+        var content = review.reviewContent;
+        reviewList.append($('<li>')
+                .attr({class: 'list-group-item', id: reviewId})
+                .text(content));
+    });
+}
 
 function getReview(reviewId) {
     $('#errorMessages').empty();
