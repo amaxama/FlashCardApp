@@ -867,7 +867,7 @@ function deleteFolder(folderId) {
         url: 'http://localhost:8080/FlashCardApp/folder/' + folderId,
         success: function (status) {
             showDeleteSuccessBanner();
-            getAllFoldersByUser();
+//            getAllFoldersByUser();
         }
     });
 }
