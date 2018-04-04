@@ -3,8 +3,12 @@
 
 <head>
    <title>FlashCard App Sign Up</title>
-   <link href="css/bootstrap.css" rel="stylesheet">
-   <link href="css/signUp.css" rel="stylesheet">
+<!--   <link href="css/bootstrap.css" rel="stylesheet">
+   <link href="css/signUp.css" rel="stylesheet">-->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 </head>
 
 <body>
@@ -14,6 +18,9 @@
       <div id="form-row" class="row">
          <div id="form-div" class="col-md-12">
             <h2>Welcome!</h2>
+            <ul id="signup-error-messages">
+
+                        </ul>
             <form id="sign-up-form" class="form-horizontal" role="form">
                <!-- <div class="form-group">
                         <label for="firstName" class="col-md-3 control-label">First Name:</label>
@@ -48,7 +55,7 @@
                <div class="form-group">
                   <div class="signup-buttons">
                      <button type="button" id="cancel" class="btn btn-outline-danger">Cancel</button>
-                     <button type="button" id="submit" class="btn btn-outline-primary">Submit</button>
+                     <button type="button" id="submit" class="btn btn-outline-primary" onclick=createUser() >Submit</button>
                   </div>
                </div>
             </form>
@@ -56,9 +63,9 @@
       </div>
    </div>
 
-   <script src="js/jquery-2.2.4.min.js"></script>
-   <script src="js/bootstrap.js"></script>
-   <script src="js/home.js"></script>
+   <script src="../js/jquery-3.1.1.min.js"></script>
+   <script src="../js/bootstrap.js"></script>
+   <script src="../js/home.js"></script>
 </body>
 
 </html>

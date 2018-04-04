@@ -210,20 +210,20 @@ table, th, td {
 	margin: 0 auto;
 }
 
-/*.sidebar-buttons {
+.sidebar-buttons {
 	display: flex;
 	width: 20vw;
 	height: 12vh;
 	background-color: transparent;
 	margin: 0 auto;
 	justify-content: center;
-}*/
+}
 
-/*.icon:hover {
+.icon:hover {
 	filter: hue-rotate(45deg);
-}*/
+}
 
-/*.icons {
+.icons {
  	width: 3.1rem;
 	height: 3.1rem;
 	background-color: transparent;
@@ -234,7 +234,7 @@ table, th, td {
   outline: none;
   margin: 18px;
 
-}*/
+}
 
 .add-button {
 	background-image: url(../images/plus-circle.png);
