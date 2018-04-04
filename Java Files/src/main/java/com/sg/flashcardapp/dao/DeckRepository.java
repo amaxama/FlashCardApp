@@ -15,5 +15,4 @@ import org.springframework.data.jpa.repository.Query;
  * @author JP
  */
 public interface DeckRepository extends JpaRepository<Deck, Integer> {
-    
 }
