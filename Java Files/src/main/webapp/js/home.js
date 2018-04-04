@@ -18,6 +18,10 @@ $(document).ready(function () {
     loadUserFoldersToArray(folderArray);
     loadCardsToArray(cardArray);
 
+    $("#header-signup-button").on('click', function(){
+     window.location = "../html/signUp.html";    
+		});
+
     $('#create-folder-button').click(function(event) {
         console.log("buttonclicked");
         addFolder();
@@ -212,16 +216,14 @@ $('#errorMessages').empty();
 }
 
 function createUser() {
-
-$.ajax({
-type: 'POST',
+$('#submit').click(function(event) {
+	$.ajax({
+	type: 'POST',
         url: 'http://localhost:8080/FlashCardApp/user',
         data: JSON.stringify({
-//            userName: $id on form
-//            password: $id on form
+           userName: $('#user-name').val(),
+           password: $('#password').val(),
 //            roles: make their default role User 
-
-            
 
         }),
         headers: {
@@ -239,7 +241,9 @@ type: 'POST',
                         .attr({class: 'list-group-item list-group-item-danger'})
                         .text('Error calling web service.  Please try again later.'));
         }
+	})
 });
+
 }
 
 function updateUser(userId) {
