@@ -18,6 +18,4 @@ public interface CardRepository extends JpaRepository<Card, Integer> {
 @Query("SELECT c FROM Card c INNER JOIN CardRating cr ON c.cardId = cr.cardId WHERE cr.rating = ?1")
 List<Card> getCardsByRating(int rating);
 
-//@Query("SELECT c FROM Card c INNER JOIN UserCard uc ON uc.cardId = c.cardId INNER JOIN User u ON uc.userId = u.userId WHERE u.userId = ?1")
-//List<Card> getCardsByUserId(int id);
 }
