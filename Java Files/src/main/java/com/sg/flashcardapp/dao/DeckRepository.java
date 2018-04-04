@@ -15,7 +15,5 @@ import org.springframework.data.jpa.repository.Query;
  * @author JP
  */
 public interface DeckRepository extends JpaRepository<Deck, Integer> {
-//    @Query("SELECT d FROM Deck d INNER JOIN UserDeck ud ON d.deckId = ud.deckId INNER JOIN User u ON ud.userId = u.userId WHERE u.userId = ?1")
-//    List<Deck> getDecksByUserId(int id);
     
 }
