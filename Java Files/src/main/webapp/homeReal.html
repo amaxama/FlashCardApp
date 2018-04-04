@@ -12,19 +12,21 @@
         <div class="container">
             <div class="header">
                 <div class="row">
-                    <div class="col-sm-4">  
+                    <div class="col-sm-4 header-column">  
+                    	<span id="user-name">Hi, "${userName}!"</span>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 header-column">
                         <h1 id="header-title">Flashcard App</h1>
                     </div>
 
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 header-column">
                         <div class="row" id="header-button-row">
                             <div class="col-sm-12">
                                 <div class="btn-group header-login-button-group" role="group" aria-label="Header buttons for login">
-                                    <span id="user-name">Hi, "${userName}!"</span>
+                                    
 
                                     <a href= "html/loggedInHome.html" class="btn btn-default" role="button">Log In</a>
+                                    <a href= "html/signUp.html" class="btn btn-default" role="button">Sign Up</a>
                                     <button id="header-logout-button">Logout</button>
                                     <button id="header-signup-button">Sign Up</button>
                                 </div>

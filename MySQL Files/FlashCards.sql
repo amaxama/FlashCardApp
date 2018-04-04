@@ -253,7 +253,8 @@ values (1,1),
 insert into folder (userID, folderName)
 values (1, 'Java and Python'),
 (1, 'Turkey'),
-(1, 'Beer');
+(1, 'Beer'),
+(2, 'Java');
 
 insert into DeckFolder (deckID, FolderID)
 values (1,1),

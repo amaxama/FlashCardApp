@@ -94,6 +94,7 @@ public interface FlashCardService {
 
     List<QueuedCard> getAllQueuedCards();
     
+
     //REVIEWS
     Review getReview(int id);
     
@@ -104,6 +105,7 @@ public interface FlashCardService {
     Review updateReview(int id, Review review);
     
     List<Review> getAllReviews();
+
 
     //ROLES
     Role getRole(int id);

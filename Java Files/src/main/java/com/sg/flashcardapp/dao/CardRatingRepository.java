@@ -15,6 +15,6 @@ import org.springframework.data.jpa.repository.Query;
  * @author betzler
  */
 public interface CardRatingRepository  extends JpaRepository<CardRating, Integer> {
-    @Query("SELECT cr FROM CardRating cr INNER JOIN User u ON cr.userId = u.userId WHERE u.userId = ?1")
-    List<CardRating> getCardRatingsByUserId(int id);
+    
+    List<CardRating> findByCardId(int cardId);
 }
