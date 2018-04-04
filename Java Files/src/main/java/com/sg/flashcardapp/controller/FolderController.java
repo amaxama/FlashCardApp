@@ -5,12 +5,13 @@
  */
 package com.sg.flashcardapp.controller;
 
-import com.sg.flashcardapp.dao.FolderRepository;
 import com.sg.flashcardapp.model.Folder;
 import com.sg.flashcardapp.service.FlashCardService;
+import java.security.Principal;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -72,8 +73,9 @@ public class FolderController {
         return service.getAllFolders();
     }
 
-    @GetMapping(value = "/folders/user/{id}")
-    public List<Folder> getAllFoldersByUserId(@PathVariable("id") int id) {
-        return service.getAllFoldersByUserId(id);
+    @GetMapping(value = "/folders/user")
+    public List<Folder> getAllFoldersByUserId(Principal principal) {
+        int userId = service.getUserId(principal.getName());
+        return service.getAllFoldersByUserId(userId);
     }
 }

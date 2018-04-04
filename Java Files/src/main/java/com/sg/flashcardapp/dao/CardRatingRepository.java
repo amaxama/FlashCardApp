@@ -6,6 +6,7 @@
 package com.sg.flashcardapp.dao;
 
 import com.sg.flashcardapp.model.CardRating;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -13,5 +14,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author betzler
  */
 public interface CardRatingRepository  extends JpaRepository<CardRating, Integer> {
+    
+    List<CardRating> findByCardId(int cardId);
     
 }

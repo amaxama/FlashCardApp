@@ -12,24 +12,17 @@ var catArray = [];
 var ratingArray = [];
 var currentDeck = [];
 var cards = [];
+var userId;
+
 $(document).ready(function () {
-    loadCardsToArray(cardArray);
-    loadCardRatingsToArray(cardRatingArray);
-    //loadDecksToArray(deckArray);
-    loadReviewsToArray(reviewArray);
-//    getAllCardRatings();
-
     getCurrentUser();
-
-
-
-    $('#create-folder-button').click(function (event) {
+    loadUserFoldersToArray(folderArray);
+    loadCardsToArray(cardArray);
+    $('#create-folder-button').click(function(event) {
         console.log("buttonclicked");
         addFolder();
     });
-
-
-    //getAllDecksByUser();
+    
     $('#user-name').append('Username');
     $('#table-div').show();
     $('#card-div').hide();
@@ -48,10 +41,8 @@ $(document).ready(function () {
         console.log(cards);
         cardsLength = cards.length;
         var i = 0;
-        $('#left-button').prop('disabled', true);
-//        $('#left-button').disabled = true;
-//        $('#right-button').disabled = false;
-        $('#card-number').val(i + 1);
+        $('#left-button').prop('disabled',true);
+        $('#card-number').val(i+1);
 //        $('#number-in-deck-front').val(i+1);
         var card = cards[i];
         console.log(card);
@@ -61,10 +52,7 @@ $(document).ready(function () {
         $('#front-content').append($('<p>')
                 .text(challenge));
         $('#back-content').append($('<p>')
-                .text(answer));
-
-
-
+            .text(answer));
     });
 
 // =============================================================================
@@ -96,8 +84,7 @@ $(document).ready(function () {
     });
     $('#left-button').click(function (event) {
         console.log("click");
-        var i = parseInt($('#card-number').val()) - 1;
-//        var i = $('#number-in-deck-back').val()-1;
+        var i = parseInt($('#card-number').val())-1;
         console.log(i);
         $('#card-number').val('');
         $('#card-number').val(i);
@@ -191,16 +178,18 @@ function getCurrentUser() {
     $.ajax({
         type: 'GET',
         url: 'http://localhost:8080/FlashCardApp/currentuser/userId',
-        success: function (userId, status) {
-            $('#current-user-id').val(userId);
+        success: function(id, status) {
+            $('#current-user-id').val(id);
+            userId = id;
+
         },
         error: function () {
             $('#errorMessages')
-                    .append($('<li>')
-                            .attr({class: 'list-group-item list-group-item-danger'})
-                            .text('Error calling web service.  Please try again later.'));
-        }
-    });
+                .append($('<li>')
+                    .attr({class: 'list-group-item list-group-item-danger'})
+                    .text('Error calling web service.  Please try again later.'));
+            }
+        });
 }
 
 
@@ -227,10 +216,11 @@ function createUser() {
         type: 'POST',
         url: 'http://localhost:8080/FlashCardApp/user',
         data: JSON.stringify({
-//            userName:
-//            password:
-//                map from role object on page to - index -1 = id
-//              roles: [{role[id of form element]  : #div , role 2 }]
+//            userName: $id on form
+//            password: $id on form
+//            roles: make their default role User 
+
+            
 
         }),
         headers: {
@@ -302,10 +292,10 @@ function loadCardsToArray(cardArray) {
         url: 'http://localhost:8080/FlashCardApp/cards',
         success: function (cardsArray) {
             $.each(cardsArray, function (index, card) {
-                cardArray.push(card);
+            cardArray.push(card);
             });
-            getAllCards();
-            getCardsListByRating();
+                getAllCards();
+//                getCardsListByRating();
         },
         error: function () {
             $('#error-messages')
@@ -317,20 +307,6 @@ function loadCardsToArray(cardArray) {
 }
 
 function getAllCards() {
-    var cardsList = $('#');
-    cardsList.empty();
-    cardArray.forEach(card => {
-//            console.log(card);
-        var id = card.cardId;
-        var name = card.cardName;
-        var chal = card.cardChallenge;
-        var ans = card.cardAnswer;
-        var ratings = card.ratings;
-        cardsList.append($('<li>')
-                .attr({class: 'list-group-item', id: id})
-                .text(name));
-    });
-}
 
 //function getCardsListByRating() {
 //var topCardsList = $('#card-ratings');
@@ -362,6 +338,27 @@ function getAllCards() {
 //buttons += 'Item #' + id + '<br/>';
 //                buttons += name + '<br/>';
 //                itemDiv.append(buttons);
+
+var cardsList = $('#cards-list');
+var ratingsFeed = $('#card-ratings');
+        cardsList.empty();
+        cardArray.forEach(card => {
+            var id = card.cardId;
+            var name = card.cardName;
+            var chal = card.cardChallenge;
+            var ans = card.cardAnswer;
+            var ratings = card.ratings;
+            cardsList.append($('<li>')
+                    .attr({class: 'list-group-item', id: id})
+                    .text(name));
+            ratings.forEach(rating => {
+             ratingsFeed.append($('<li>')
+                    .attr({class: 'list-group-item', id: id + 'rating'})
+                    .text(name + '- ' + rating.rating + '/5'));
+        })    
+    });
+}
+  
 //function getAllCardsByDeckId(deckId) {
 //    currentDeck.empty();
 //    $.ajax({
@@ -502,46 +499,6 @@ function clearCardsList() {
     $('#cards-list').empty();
 }
 
-// =============================================================================
-// ==== RATING METHODS ===========================================================
-// =============================================================================
-
-function loadCardRatingsToArray(cardRatingArray) {
-    $.ajax({
-        type: 'GET',
-        url: 'http://localhost:8080/FlashCardApp/cardratings',
-        success: function (cardRatingsArray) {
-            $.each(cardRatingsArray, function (index, cardRating) {
-                cardRatingArray.push(cardRating);
-            });
-            getAllCardRatings();
-//            getAllCards();
-//            getCardsListByRating();
-        },
-        error: function () {
-            $('#error-messages')
-                    .append($('<li>')
-                            .attr({class: 'list-group-item list-group-item-danger'})
-                            .text('Error calling web service.  Please try again later.'));
-        }
-    });
-}
-
-function getAllCardRatings() {
-    var cardRatingList = $('#card-ratings');
-    cardRatingList.empty();
-    cardRatingArray.forEach(cardRating => {
-        var userId = cardRating.userId;
-        var cardId = cardRating.cardId;
-        var rating = cardRating.rating;
-        var card = findItemById(cardArray, "cardId", cardId);
-        var cardName = card.cardName;
-        cardRatingList.append($('<li>')
-                .attr({class: 'list-group-item', id: cardId})
-                .text(cardName + ' - ' + rating + '/5'));
-    });
-
-}
 
 // =============================================================================
 // ==== CATEGORY METHODS =======================================================
@@ -624,7 +581,7 @@ function loadDecksToArray(deckArray) {
 }
 
 function getAllDecksOutOfArray() {
-    var deckList = $('# ');
+    var deckList = $(' ');
     deckList.empty();
     deckArray.forEach(deck => {
         var deckId = deck.deckId;
@@ -643,7 +600,7 @@ function getAllDecks() {
 //    clearDecksList();
 //    CHECK ON ID NAME
     var decksList = $('#decks-list');
-    $.ajax({
+        $.ajax({
         type: 'GET',
         url: 'http://localhost:8080/FlashCardApp/decks',
         success: function (decksArray, status) {
@@ -772,23 +729,62 @@ function deleteDeck(deckId) {
 // ==== FOLDER METHODS =========================================================
 // =============================================================================
 
-// GET THIS FUNCTION IN CONTROLLER
-function getAllFoldersByUser(userId) {
+function loadUserFoldersToArray(folderArray) {
     $.ajax({
         type: 'GET',
-        url: 'http://localhost:8080/FlashCardApp/folders/user' + userId,
-        success: function (folder, status) {
-
-        },
-        error: function () {
-            $('#errorMessages')
-                    .append($('<li>')
-                            .attr({class: 'list-group-item list-group-item-danger'})
-                            .text('Error calling web service.  Please try again later.'));
-        }
-    });
-
+            url: 'http://localhost:8080/FlashCardApp/folders/user',
+            success: function (foldersArray, status) {
+                $.each(foldersArray, function (index, folder) {
+                    folderArray.push(folder);
+                });
+                getAllUserFolders();
+            },
+            error: function () {
+                $('#errorMessages')
+                        .append($('<li>')
+                                .attr({class: 'list-group-item list-group-item-danger'})
+                                .text('Error calling web service.  Please try again later.'));
+            }
+        });
 }
+
+function getAllUserFolders() {
+    var foldersAccordion = $('#accordion');
+        foldersAccordion.empty();
+        folderArray.forEach(folder => {
+            folderId = folder.folderId;
+            folderName = folder.folderName;
+            foldersAccordion.append($('<div>')
+                           .attr({class: 'card', id: folderId}))
+               });
+}
+           
+                           
+//            console.log(card);
+//            var id = card.cardId;
+//            var name = card.cardName;
+//            var chal = card.cardChallenge;
+//            var ans = card.cardAnswer;
+//            var ratings = card.ratings;
+//                cardsList.append($('<li>')
+//                        .attr({class: 'list-group-item', id: id})
+//                        .text(name));
+
+
+//
+//                            .append($('<div>')
+//                                   .attr({class: 'card-header'})
+//                                   .append($('<a>')
+//                                           .attr({class: 'card-link', 'data-toggle':'collapse', href: '#collapseOne'}).text($('#add-folder-name').val())))
+//                           .append($('<div>')
+//                                   .attr({id: 'collapseOne', class: 'collapse', 'data-parent':'#accordion'})
+//                                   .append($('<div>')
+//                                          .attr({class: 'card-body'})
+//                                          .text("Decks"))));  
+//    $('#create-folder-modal').modal('hide');
+
+
+
 
 function getFolder(folderId) {
     $('#errorMessages').empty();
@@ -914,7 +910,7 @@ function loadReviewsToArray(reviewArray) {
             $.each(reviewsArray, function (index, review) {
                 reviewArray.push(review);
             });
-            loadDecksToArray(deckArray);
+            //loadDecksToArray(deckArray);
             getAllReviews();
             
             
@@ -935,11 +931,10 @@ function getAllReviews() {
         var reviewId = review.reviewId;
         var deckId = review.deckId;
         var name = review.reviewName;
-        var deck = findItemById(deckArray, "deckId", deckId);
         var content = review.reviewContent;
         reviewList.append($('<li>')
                 .attr({class: 'list-group-item', id: reviewId})
-                .text(name));
+                .text(content));
     });
 }
 
@@ -952,10 +947,10 @@ function getReview(reviewId) {
 //            set values in id spots
         },
         error: function () {
-            $('#errorMessages')
-                    .append($('<li>')
-                            .attr({class: 'list-group-item list-group-item-danger'})
-                            .text('Error calling web service.  Please try again later.'));
+        $('#errorMessages')
+                .append($('<li>')
+                        .attr({class: 'list-group-item list-group-item-danger'})
+                        .text('Error calling web service.  Please try again later.'));
         }
     });
 }
@@ -963,10 +958,80 @@ function getReview(reviewId) {
 
 
 
-function toggleCard() {
-    $('#toggle-card').click(function (event) {
-        $('#front').toggle();
-        $('#back').toggle();
-    });
-}
 
+//    loadCardRatingsToArray(cardRatingArray);
+//    getAllCardRatings();
+//    getAllDecksByUser();
+
+
+//function getCardsListByRating() {
+//var topCardsList = $('#card-ratings');
+//        topCardsList.empty();
+//        cardArray.forEach(card => {
+//            var id = card.cardId;
+//            var name = card.cardName;
+////            var chal = card.cardChallenge;
+////            var ans = card.cardAnswer;
+//            var ratings = card.ratings;
+//                topCardsList.append($('<li>')
+//                        .attr({class: 'list-group-item', id: id})
+//                        .text(name)
+//                        .text(ratings));
+//        });
+//}
+
+
+//buttons += 'Item #' + id + '<br/>';
+//                buttons += name + '<br/>';
+//                itemDiv.append(buttons);
+//                
+//         
+
+// =============================================================================
+// ==== RATING METHODS ===========================================================
+// =============================================================================
+
+//function loadCardRatingsToArray(cardRatingArray) {
+//$.ajax({
+//type: 'GET',
+//        url: 'http://localhost:8080/FlashCardApp/cardratings',
+//        success: function (cardRatingsArray) {
+//        $.each(cardRatingsArray, function (index, cardRating) {
+//        cardRatingArray.push(cardRating);
+//        });
+//        getAllCardRatings();
+//        
+////                getAllCards();
+////                getCardsListByRating();
+//        },
+//        error: function () {
+//        $('#error-messages')
+//                .append($('<li>')
+//                        .attr({class: 'list-group-item list-group-item-danger'})
+//                        .text('Error calling web service.  Please try again later.'));
+//        }
+//});
+//}
+//
+//function getAllCardRatings() {
+//    var cardRatingList = $('#card-ratings');
+//        cardRatingList.empty();
+//        console.log(cardRatingArray);
+//        cardRatingArray.forEach(cardRating => {
+//            console.log(cardRating);
+//            var userId = cardRating.userId;
+//            var cardId = cardRating.cardId;
+//            var rating = cardRating.rating;
+//            console.log(cardArray);
+//            console.log(cardId);
+//            var card = findItemById(cardArray, "cardId", cardId);
+//            console.log(cardId);
+//            console.log(card);
+//            var cardName = card.cardName;
+//            console.log(rating);
+//                cardRatingList.append($('<li>')
+//                        .attr({class: 'list-group-item', id: cardId})
+//                        .text(cardName + ' - ' + rating + '/5'));
+//        });
+//        
+//}
