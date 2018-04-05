@@ -343,7 +343,7 @@ table, th, td {
 
 #main-table-div {
     display: grid;
-    width: 1012px;
+    width: 880px;
     height: 826px;
     /*height: 90side0px;*/
     background-color: rgba(236,253,255);
@@ -353,12 +353,12 @@ table, th, td {
 }
 
 #main-page-table {
-    width: 980px;
+    width: 855px;
 }
 
 .main-header-group {
-    width: 1012px;
-    height: 75px;
+    width: 895px;
+    height: 80px;
     /*	grid-column: 1 / 9;
             grid-row: 1 / 2;*/
     background-color: rgba(54,100,139);
@@ -406,6 +406,7 @@ table, th, td {
 }
 
 .col-md-6 {
+    width: 900px;
     text-align: center;
     align-content: center;
     /*margin: auto;*/
@@ -420,12 +421,12 @@ table, th, td {
 }
 
 #front-content {
-    width: 600px;
+    width: 700px;
     /*height: 550px;*/
 }
 
 #back-content {
-    width: 600px;
+    width: 700px;
     /*height: 550px;*/
 
 }
