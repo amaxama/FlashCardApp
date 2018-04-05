@@ -423,7 +423,6 @@ table, th, td {
 }
 
 .col-md-6 {
-    width: 900px;
     text-align: center;
     align-content: center;
     /*margin: auto;*/
