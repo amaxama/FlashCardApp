@@ -30,10 +30,11 @@ $(document).ready(function () {
     });
     $('#create-deck-button').click(function (event) {
         console.log("buttonclicked");
+        createDeck();
     });
     $('#create-card-button').click(function (event) {
         console.log("buttonclicked");
-        addCard();
+        createCard();
     });
     $('#user-name').append('Username');
 //    $('#table-div').show();
@@ -336,7 +337,15 @@ function displayCardRatings() {
     var ratingsFeed = $('#card-ratings');
     cardsList.empty();
     ratingsFeed.empty();
-    cardsToDisplayArray = cardArray.slice(0, 5);
+    cardArray.forEach(card => {
+        var id = card.cardId;
+        var name = card.cardName;
+        cardsList.append($('<li>')
+                .attr({class: 'list-group-item', id: id})
+                .text(name));
+    });
+    cardsList.hide();
+    cardsToDisplayArray = cardArray.slice(0,5);
     cardsToDisplayArray.forEach(card => {
         var id = card.cardId;
         var name = card.cardName;
@@ -348,14 +357,12 @@ function displayCardRatings() {
             sum += rating.rating;
         });
         var avgRating = sum / ratings.length;
-        cardsList.append($('<li>')
-                .attr({class: 'list-group-item', id: id})
-                .text(name));
+        
         ratingsFeed.append($('<li>')
                 .attr({class: 'list-group-item', id: id + 'rating'})
                 .text(name + ' - ' + avgRating + '/5'));
     });
-    cardsList.hide();
+    
 }
 
 
@@ -385,24 +392,28 @@ function getCard(cardId) {
 
 function createCard() {
 
+    console.log("create card");
     $.ajax({
         type: 'POST',
         url: 'http://localhost:8080/FlashCardApp/card',
         data: JSON.stringify({
-//            cardName:
-//            cardChallenge:
-//            cardAnswer:
-
+            cardName: $('#card-name').val(),
+            cardChallenge: $('#card-challenge').val(),
+            cardAnswer: $('#card-answer').val()
         }),
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
         'dataType': 'json',
-        success: function (data, status) {
+        success: function (card, status) {
             $('#errorMessages').empty();
 //            Set card values to ('')
-            getAllCards();
+            cardArray.push(card);
+//            Change this name later!
+            displayCardRatings();
+            $('#create-card-modal').modal('hide');
+            
         },
         error: function () {
             $('#errorMessages')
@@ -663,13 +674,26 @@ function getDeck(deckId) {
 
 function createDeck() {
 
+//id= $('#current-user-id').val();
+//    console.log("create folder");
+//    $.ajax({
+//        type: 'POST',
+//        url: 'http://localhost:8080/FlashCardApp/folder/user/' + id,
+//        data: JSON.stringify({
+//            folderName: $('#add-folder-name').val(),
+//            userId: $('#current-user-id').val()
+//        }),
+
+
+
+
     $.ajax({
         type: 'POST',
         url: 'http://localhost:8080/FlashCardApp/deck',
         data: JSON.stringify({
-//            deckName: $('#edit-deck-name').val(),
-//            deckDesc: $('#edit-deck-desc').val(),
-
+            deckName: $('#deck-name').val(),
+            deckDesc: $('#deck-desc').val()
+//            cards: $('#deck-cards').val()
         }),
         headers: {
             'Accept': 'application/json',
@@ -678,6 +702,9 @@ function createDeck() {
         'dataType': 'json',
         success: function (data, status) {
             $('#errorMessages').empty();
+            $('#deck-name').val('');
+            $('#deck-desc').val('');
+//            $('#deck-cards').val('');
 //            Set deck values to ('')
 //      WHERE GET USER ID FROM?
 //                getAllDecksByUser();
@@ -788,7 +815,6 @@ function studyDeck(deck) {
                     .attr({class: "card-block"})
                     .append($("<p>")
                             .attr({class: "card-text"}).text(challenge))));
-
     $('#back-content').append($('<div>')
             .attr({class: "card cta cta--featured"})
             .append($('<div>')
@@ -802,7 +828,6 @@ function studyDeck(deck) {
                     .attr({class: "card-block"})
                     .append($("<p>")
                             .attr({class: "card-text"}).text(answer))));
-
     $('.card-text').css({'height': '550px', 'text-align': 'center'});
     $('.card-block').css({'text-align': 'center'});
 }
@@ -857,8 +882,6 @@ function getAllUserFolders() {
 
 
     });
-
-    $('#create-folder-modal').modal('hide');
 }
 
 function getFolder(folderId) {
@@ -885,7 +908,6 @@ function getFolder(folderId) {
 }
 
 function createFolder() {
-
     id= $('#current-user-id').val();
     console.log("create folder");
     $.ajax({
@@ -905,6 +927,7 @@ function createFolder() {
             $('#add-folder-name').val('');
             folderArray.push(folder);
             getAllUserFolders();
+            $('#create-folder-modal').modal('hide');
         },
         error: function () {
             $('#error-messages')
