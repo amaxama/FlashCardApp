@@ -45,11 +45,11 @@ public class FolderController {
         return service.createFolder(folder);
     }
     
-//        @PostMapping(value = "/folder")
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public Folder createFolder(@Valid @RequestBody Folder folder) {
-//        return service.createFolder(folder);
-//    }
+    @PostMapping(value = "/folder")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Folder createFolder(@Valid @RequestBody Folder folder) {
+        return service.createFolder(folder);
+    }
 
     @DeleteMapping(value = "/folder/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

@@ -159,8 +159,8 @@ FOREIGN KEY(CardID) REFERENCES Card(CardID)
 INSERT INTO `User`
 (UserID, UserName, `Password`)
 VALUES
-(1,'admin','password'),
-(2,'user','password');
+(2,'admin','password'),
+(1,'user','password');
 
 INSERT INTO Role
 (RoleID, RoleName, RoleDesc)
