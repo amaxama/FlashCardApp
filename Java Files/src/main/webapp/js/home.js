@@ -901,7 +901,7 @@ function getAllUserFolders() {
             $('.ED').css({'padding': '5px','background-color': 'white','color': 'black','border': 'none'});
             $('.ED').hover(function (){
                         // $('span').css({'color':'black'});
-                $(this).css({'background-color': 'black', 'color':'white'});
+                $(this).css({'background-color': 'lightblue', 'color':'white'});
                 }, function(){
                 $(this).css({"background-color": 'white', 'color':'black'});  
             });
