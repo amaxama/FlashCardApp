@@ -5,7 +5,6 @@
  */
 package com.sg.flashcardapp.controller;
 
-import com.sg.flashcardapp.dao.UserRepository;
 import com.sg.flashcardapp.model.User;
 import com.sg.flashcardapp.service.FlashCardService;
 import java.util.List;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -48,6 +46,8 @@ public class UserController {
         String clearPw = user.getPassword();
         String hashPw = encoder.encode(clearPw);
         newUser.setPassword(hashPw);
+        newUser.addRole(service.getRoleByName("ROLE_USER"));
+        newUser.setActive(true);;
         return service.createUser(user);
 
 //        Treat user as if already finished - set role in ajax call 

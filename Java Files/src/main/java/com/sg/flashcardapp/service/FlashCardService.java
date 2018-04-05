@@ -58,7 +58,7 @@ public interface FlashCardService {
     List<Category> getAllCategories();
 
     //DECK
-    Deck getDeck(int it);
+    Deck getDeck(int id);
 
     Deck createDeck(Deck deck);
 
@@ -115,6 +115,8 @@ public interface FlashCardService {
     void deleteRole(int id);
 
     Role updateRole(int id, Role role);
+    
+    Role getRoleByName(String roleName);
 
     List<Role> getAllRoles();
 

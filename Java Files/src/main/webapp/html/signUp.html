@@ -9,6 +9,39 @@
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <style>
+            body {
+                background-color: lightblue;
+            }
+            #form-row {
+                border-style: solid;
+                border-color: rgba(54,100,139);
+                display: block;
+                margin: auto;
+                width: 38%;
+                background-color: rgba(184,206,217);
+                margin-top: 2%;
+
+            }
+
+            #sign-up-form {
+                margin-top: 3%;
+            }
+
+            #signup-buttons {
+                background-color: rgba(236,253,255);
+                margin-left: 68%;
+                margin-bottom: 3%;
+            }
+
+            #search-button:hover {
+                background-color: rgba(54,100,139);
+            }
+
+            h1, h2, h3 {
+                text-align: center;
+            }
+        </style>
 </head>
 
 <body>
@@ -35,9 +68,9 @@
                         </div>
                     </div> -->
                <div class="form-group">
-                  <label for="userName" class="col-md-3 control-label">UserName:</label>
+                  <label for="user-name" class="col-md-3 control-label">Username:</label>
                   <div class="col-md-9">
-                     <input type="text" class="form-control" id="user-name" placeholder="UserName" />
+                     <input type="text" class="form-control" id="user-name" placeholder="Username" required/>
                   </div>
                </div>
                <!-- <div class="form-group">
@@ -49,12 +82,13 @@
                <div class="form-group">
                   <label for="password" class="col-md-3 control-label">Password:</label>
                   <div class="col-md-9">
-                     <input type="text" class="form-control" id="password" placeholder="Password" />
+                     <input type="text" class="form-control" id="password" placeholder="Password" required/>
                   </div>
                </div>
                <div class="form-group">
                   <div class="signup-buttons">
-                     <button type="button" id="cancel" class="btn btn-outline-danger">Cancel</button>
+                      <a href= "../homeReal.html" class="btn btn-outline-danger" role="button">Cancel</a>
+                     <!--<button type="button" id="cancel" class="btn btn-outline-danger">Cancel</button>-->
                      <button type="button" id="submit" class="btn btn-outline-primary" onclick=createUser() >Submit</button>
                   </div>
                </div>
@@ -65,7 +99,8 @@
 
    <script src="../js/jquery-3.1.1.min.js"></script>
    <script src="../js/bootstrap.js"></script>
-   <script src="../js/home.js"></script>
+   <script src="../js/signUp.js"></script>
 </body>
 
 </html>
+

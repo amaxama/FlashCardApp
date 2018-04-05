@@ -255,7 +255,12 @@ public class FlashCardServiceImpl implements FlashCardService {
     public Role getRole(int id) {
         return roles.findOne(id);
     }
-
+    
+    @Override
+    public Role getRoleByName(String roleName) {
+        return roles.findByRoleName(roleName);
+    }
+        
     @Override
     public Role createRole(Role role) {
         return roles.save(role);

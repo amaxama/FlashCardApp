@@ -5,14 +5,19 @@
  */
 package com.sg.flashcardapp.dao;
 
-import com.sg.flashcardapp.model.Role;
-import org.springframework.data.jpa.repository.JpaRepository;
-
 /**
  *
- * @author JP
+ * @author betzler
  */
-public interface RoleRepository extends JpaRepository<Role, Integer> {
-  
-    Role findByRoleName(String roleName);
+public class ErrorMessage {
+
+    private String message;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

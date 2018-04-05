@@ -26,7 +26,8 @@
         <intercept-url pattern="html/signUp.html" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/homeReal.html" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <!--<intercept-url pattern="/content" access="ROLE_USER"/>-->
-        <intercept-url pattern="/admin" access="ROLE_ADMIN"/>        
+        <intercept-url pattern="/admin" access="ROLE_ADMIN"/>
+        <intercept-url pattern="/user" access="IS_AUTHENTICATED_ANONYMOUSLY"/>        
         <intercept-url pattern="/**" access="ROLE_USER"/> 
         <intercept-url pattern="/html/loggedInHome.html" access="ROLE_USER"/> 
 
