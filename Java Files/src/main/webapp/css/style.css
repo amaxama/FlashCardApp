@@ -1,19 +1,19 @@
 .text-center{
-  text-align: center;
+    text-align: center;
 }
 .card-img-top{
-  width: 100%;
+    width: 100%;
 }
 /*Call to Action*/
 
 .header-line {
-  height: 5px;
-  width: 100%;
-  content: '';
-  display: block;
+    height: 5px;
+    width: 100%;
+    content: '';
+    display: block;
 }
 .gradient-color-1{
-     background: -webkit-linear-gradient(left,#fc636b 0,#ff6d92 60%,#fd9a00 100%);
+    background: -webkit-linear-gradient(left,#fc636b 0,#ff6d92 60%,#fd9a00 100%);
     background: linear-gradient(to right,#fc636b 0,#ff6d92 60%,#fd9a00 100%);
 }
 .gradient-color-2{
@@ -24,23 +24,23 @@
 /**/
 /*Utility Class*/
 .text-white{
-  color: white;
+    color: white;
 }
 .no-margin{
-  margin:0;
+    margin:0;
 }
 .no-margin-top{
-  margin-top:0;
+    margin-top:0;
 }
 .pad-right{
-  /*margin-right: 0.5em;*/
+    /*margin-right: 0.5em;*/
 }
 /**/
 
 
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .popover__wrapper:hover .popover__content {
@@ -52,13 +52,13 @@ a {
 }
 
 .popover__title {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 2px;
-  line-height: 20px;
-  text-decoration: none;
-  color: rgb(228, 68, 68);
-  text-align: center;
-  padding: 15px 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 2px;
+    line-height: 20px;
+    text-decoration: none;
+    color: rgb(228, 68, 68);
+    text-align: center;
+    padding: 15px 0;
 }
 
 .popover__wrapper {
@@ -70,7 +70,7 @@ a {
     opacity: 0;
     visibility: hidden;
     position: absolute;
-/*     left: -150px; */
+    /*     left: -150px; */
     transform: translate(0,10px);
     background-color: #D0CCD0;
     padding: 1.5rem;
@@ -91,43 +91,43 @@ a {
 }
 
 .popover__message {
-  text-align: center;
+    text-align: center;
 }
 
 
 
 selector {
-  --var-name: brown;
+    --var-name: brown;
 }
 
 
 #try {
     font-size: 120px;
-    
+
 }
 /*span {
     font-size: 120px;
 }*/
 
 * {
-   margin: 0;
-   padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 html,
 body {
-   height: 100%;
+    height: 100%;
 }
 .container {
     margin: 0;
     padding: 0px,10px;
     width: 100%;
-    
+
 }
 
 body {
-   background-color: lightblue;
-   color: #605856;
+    background-color: lightblue;
+    color: #605856;
 }
 
 /*.container {
@@ -138,66 +138,66 @@ body {
 }*/
 
 .holder {
-   height: 100%;
-   display: table;
-   width: 100%;
-   text-align: center;
+    height: 100%;
+    display: table;
+    width: 100%;
+    text-align: center;
 }
 
 .header {
-   display: inline-block;
-   height: 15px;
-   width: 100%;
-   background-color: lightblue;
+    display: inline-block;
+    height: 15px;
+    width: 100%;
+    background-color: lightblue;
 }
 
 #header-login-button, #header-logout-button, #header-signup-button {
-	/*display: inline-block;*/
-	/*width: 4.3em;*/
+    /*display: inline-block;*/
+    /*width: 4.3em;*/
 }
 
 #header-title {
-	margin-top: 2px;
-	/*padding: 5px 0;*/
-	font-size: 2.2em;
+    margin-top: 2px;
+    /*padding: 5px 0;*/
+    font-size: 2.2em;
 }
 .main {
-   height: 100%;
-   display: table;
-   width: 100%;
-   /*background-color: lightpink;*/
+    height: 100%;
+    display: table;
+    width: 100%;
+    /*background-color: lightpink;*/
 }
 .box {
-   display: table-cell;
+    display: table-cell;
 }
 .sidebar {
-   height: 900px;
-   width: 21%;
-   background: rgba(184,206,217);
+    height: 900px;
+    width: 21%;
+    background: rgba(184,206,217);
 }
 /*#BD4932*/
 .feed {
-	width: 21%;
-	background: rgba(184,206,217);
+    width: 21%;
+    background: rgba(184,206,217);
 }
 
 .footer {
     display: table-row;
-   height: 20px;
-   background: gray;
-   color: #FFFAD5;
+    height: 20px;
+    background: gray;
+    color: #FFFAD5;
 }
 
 h2 {
-	/*margin-top: 5px;*/
-	font-size: 24px;
-        color: #1C6E8C;
+    /*margin-top: 5px;*/
+    font-size: 24px;
+    color: #1C6E8C;
 }
 
 h1 {
     text-align: center;
     font-size: 24px;
-        color: #1C6E8C;
+    color: #1C6E8C;
 }
 
 .card-section, .deck-section {
@@ -218,192 +218,224 @@ h1 {
 }
 
 #card-content-box {
-	margin-top: 6px;
-	border: solid 1px black;
-	height: 35vh;
+    margin-top: 6px;
+    border: solid 1px black;
+    height: 35vh;
 }
 
 #deck-content-box {
-	margin-top: 6px;
-	border: solid 1px black;
-	height: 35vh;
+    margin-top: 6px;
+    border: solid 1px black;
+    height: 35vh;
 }
 
 #name-button, #category-button, #rating-button {
-	width: 33%;
+    width: 33%;
 }
 
 #user-bucket-name {
-	font-size: 1.5em;
-	display: block;
-	width: 100%;
-	margin: 10px auto;
+    font-size: 1.5em;
+    display: block;
+    width: 100%;
+    margin: 10px auto;
 }
 
 .cards-list {
-	width: 80%;
-	/*height: 70%;*/
-	background-color: lavender;
-	padding-top: 20px;
-	margin: 15px auto 0 auto;
+    width: 80%;
+    /*height: 70%;*/
+    background-color: lavender;
+    padding-top: 20px;
+    margin: 15px auto 0 auto;
 }
 
 #main-page-table {
-	width: 100%;
-	margin: 10px auto;
+    width: 100%;
+    margin: 10px auto;
 }
 
 th {
-	text-align: center;
+    text-align: center;
 }
 
 table, th, td {
-	border: 1px solid black;
+    border: 1px solid black;
 }
 
 #user-name {
-    
+
 }
 
 .sidebar-content {
-        width: 90%;
-	background-color: rgba(84,102,107);
-	margin: 0 auto;
-/*	height: 65vh;
-	background-color: gray;
-	margin: 0 auto;*/
+    width: 90%;
+    background-color: rgba(54,100,139);
+    margin: 0 auto;
+    /*	height: 65vh;
+            background-color: gray;
+            margin: 0 auto;*/
 }
-
+/*rgba(84,102,107)*/
 /*#accordion {
     width: 100%;*/
 /*}*/
 
 .sidebar-buttons {
-	display: flex;
-	width: 20vw;
-	height: 12vh;
-	background-color: transparent;
-        color: #1C6E8C;
-	margin: 0 auto;
-	justify-content: center;
+    display: flex;
+    width: 20vw;
+    height: 12vh;
+    background-color: transparent;
+    color: #1C6E8C;
+    margin: 0 auto;
+    justify-content: center;
 }
 
 .icon:hover {
-	filter: hue-rotate(45deg);
+    filter: hue-rotate(45deg);
 }
 
 .icons {
- 	width: 3.1rem;
-	height: 3.1rem;
-	background-color: transparent;
-	background-repeat: no-repeat;
-	background-size: 100%;
-  display: block;
-  border: none;
-  outline: none;
-  margin: 18px;
+    width: 3.1rem;
+    height: 3.1rem;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: block;
+    border: none;
+    outline: none;
+    margin: 18px;
 
 }
 
 .add-button {
-	background-image: url(../images/plus-circle.png);
-        color: #1C6E8C;
+    background-image: url(../images/plus-circle.png);
+    color: #1C6E8C;
 }
 
 .edit-button {
-	background-image: url(../images/pencil-alt.png);
+    background-image: url(../images/pencil-alt.png);
 }
 
 .trash-button {
-	background-image: url(../images/trash-alt.png);
+    background-image: url(../images/trash-alt.png);
 }
 
 .left-button {
-	background-image: url(../images/left.png);
-	background-size: 60%;
-	width: 5.5rem;
-	height: 5.5rem;
-	margin: 2px;
+    background-image: url(../images/left.png);
+    background-size: 60%;
+    width: 5.5rem;
+    height: 5.5rem;
+    margin: 2px;
 }
 
 .right-button {
-	background-image: url(../images/right.png);
-	background-size: 60%;
-	width: 5.5rem;
-	height: 5.5rem;
-	margin: 2px 2px 2px 30px;
+    background-image: url(../images/right.png);
+    background-size: 60%;
+    width: 5.5rem;
+    height: 5.5rem;
+    margin: 2px 2px 2px 30px;
 }
 
 .rotate-button {
-	background-image: url(../images/rotate.png);
-	width: 5.5rem;
-	height: 5.5rem;
-	margin: 2px;
+    background-image: url(../images/rotate.png);
+    width: 5.5rem;
+    height: 5.5rem;
+    margin: 2px;
 }
 
 #main-table-div {
-	display: grid;
-	width: 100%;
-        /*height: 90side0px;*/
-	background-color: rgba(236,253,255);
-	margin: auto;
-	grid-template-columns: repeat(8, 1fr);
-	grid-template-rows: repeat(5, 1fr);
+    display: grid;
+    width: 1012px;
+    height: 826px;
+    /*height: 90side0px;*/
+    background-color: rgba(236,253,255);
+    margin: auto;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(5, 1fr);
 }
 
 #main-page-table {
-    width: 400%;
+    width: 980px;
 }
 
 .main-header-group {
-        width: 115%;
-        height: 200px;
-/*	grid-column: 1 / 9;
-	grid-row: 1 / 2;*/
-	background-color: rgba(54,100,139);
+    width: 1012px;
+    height: 75px;
+    /*	grid-column: 1 / 9;
+            grid-row: 1 / 2;*/
+    background-color: rgba(54,100,139);
 }
 
 .main-button-group {
-	display: block;
-	width: 183px;
-        align-content: center;
-	margin: 0 auto;
+    display: block;
+    width: 183px;
+    align-content: center;
+    margin: 0 auto;
 }
 
 .left-div {
-	grid-column: 1 / 2;
-	grid-row: 4 / 6;
-	width: 65%;
-	justify-content: center;
+    grid-column: 1 / 2;
+    grid-row: 4 / 6;
+    width: 65%;
+    justify-content: center;
 }
 
 .right-div {
-	grid-column: 8 / 9;
-	grid-row: 4 / 6;
-	width: 65%;
-	justify-content: center;
-	margin: 0;
+    grid-column: 8 / 9;
+    grid-row: 4 / 6;
+    width: 65%;
+    justify-content: center;
+    margin: 0;
 }
 
-/*.cards-table {
-	grid-column: 2 / 8;
-	grid-row: 2 / 5;
-}*/
+.cards-table {
+        grid-column: 2 / 8;
+        grid-row: 2 / 5;
+}
 
 .rotate-div {
-	grid-column: 5 / 6;
-	grid-row: 8 / 9;
+    text-align: center;
+    align-content: center;
+    
+/*    grid-column: 5 / 6;
+    grid-row: 8 / 9;*/
+}
+
+#toggle-card-button {
+    text-align: center;
+    align-content: center;
+    
+}
+
+.col-md-6 {
+    text-align: center;
+    align-content: center;
+    /*margin: auto;*/
 }
 
 .item {
-	border: solid 1px black;
+    border: solid 1px black;
 }
 
 .header-login-button-group {
     border-style: solid;
 }
 
+#front-content {
+    width: 600px;
+    /*height: 550px;*/
+}
 
+#back-content {
+    width: 600px;
+    /*height: 550px;*/
+
+}
+
+#category-div {
+    text-align: center;
+    align-content: center;
+    margin: auto;
+    
+}
 
 
 
@@ -413,104 +445,104 @@ table, th, td {
 
 
 /*#main-content {
-	width: 80%;
-	height: 500px;
-	background-color: gray;
+        width: 80%;
+        height: 500px;
+        background-color: gray;
 }*/
 
 
 
 /*html, h1, div, hr {
-	margin: 0;
-	padding: 0;
+        margin: 0;
+        padding: 0;
 }
 
 h2 {
-	font-size: 20px;
+        font-size: 20px;
 }
 
 .container-fluid {
-	margin: 0;
-	padding: 0;
+        margin: 0;
+        padding: 0;
 }
 
 .title-header {
-	background-color: red;
-	width: 100%;
-	height: 70px;
-	margin: 0 auto;
-	padding-top: 10px;
+        background-color: red;
+        width: 100%;
+        height: 70px;
+        margin: 0 auto;
+        padding-top: 10px;
 }
 
 #sidebar-section {
-	background-color: lightgreen;
-	width: 20%;
-	padding: 5px;
-	height: 100vh;
+        background-color: lightgreen;
+        width: 20%;
+        padding: 5px;
+        height: 100vh;
 }
 
 #main-section {
-	background-color: tan;
-	width: 60%;
-	height: 100vh;
+        background-color: tan;
+        width: 60%;
+        height: 100vh;
 }
 
 #feed-section {
-	background-color: lightpink;
-	width: 20%;
-	height: 100vh;
-	padding: 2px;
+        background-color: lightpink;
+        width: 20%;
+        height: 100vh;
+        padding: 2px;
 }
 
 #header-buttons-section{
-	padding-top: 8px;
+        padding-top: 8px;
 }
 
 #login-button {
-	margin-right: 10px;
-	width: 75px;
+        margin-right: 10px;
+        width: 75px;
 }
 
 #signup-button {
-	margin-right: 10px;
-	width: 75px;
+        margin-right: 10px;
+        width: 75px;
 }
 
 .demo-deck-list {
-	display: inline-block;
-	margin: 0 auto;
-	margin-top: 45%;
-	width: 80%;
-	list-style-type: none;
-	border: solid 2px black;
+        display: inline-block;
+        margin: 0 auto;
+        margin-top: 45%;
+        width: 80%;
+        list-style-type: none;
+        border: solid 2px black;
 }
 
 #card-feed-section {
-	width: 95%;
-	height: 30vh;
+        width: 95%;
+        height: 30vh;
 }
 
 #deck-feed-section {
-	width: 95%;
-	height: 45vh;
+        width: 95%;
+        height: 45vh;
 }
 
 #card-feed-box {
-	width: 85%;
-	height: 130%;
-	margin: 0 auto;
-	margin-bottom: 10px;
-	padding 5px;
-	border: 1px solid black;
+        width: 85%;
+        height: 130%;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        padding 5px;
+        border: 1px solid black;
 }
 
 #deck-feed-box {
-	width: 85%;
-	height: 105%;
-	margin-top: 5px;
-	margin: 0 auto;
-	padding: 5px;
-	border: 1px solid black;
+        width: 85%;
+        height: 105%;
+        margin-top: 5px;
+        margin: 0 auto;
+        padding: 5px;
+        border: 1px solid black;
 }
 
 #card-feed-heading {
@@ -518,10 +550,10 @@ h2 {
 }
 
 #deck-feed-heading {
-	margin-top: 90px;
+        margin-top: 90px;
 }
 
 .btn-group {
-	margin: 0 auto;
-	padding-left: 40px;
+        margin: 0 auto;
+        padding-left: 40px;
 }*/
