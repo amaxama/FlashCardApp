@@ -18,6 +18,8 @@ $(document).ready(function () {
     getCurrentUser();
     loadUserFoldersToArray(folderArray);
     loadCardsToArray(cardArray);
+    loadReviewsToArray(reviewArray);
+
 
     $('#create-folder-button').click(function (event) {
         console.log("buttonclicked");
@@ -335,8 +337,9 @@ function loadCardsToArray(cardArray) {
             $.each(cardsArray, function (index, card) {
                 cardArray.push(card);
             });
-            getAllCards();
-//                getCardsListByRating();
+
+            displayCardRatings();
+
         },
         error: function () {
             $('#error-messages')
@@ -347,24 +350,31 @@ function loadCardsToArray(cardArray) {
     });
 }
 
-function getAllCards() {
+function displayCardRatings() {
     var cardsList = $('#cards-list');
     var ratingsFeed = $('#card-ratings');
     cardsList.empty();
-    cardArray.forEach(card => {
+    ratingsFeed.empty();
+    cardsToDisplayArray = cardArray.slice(0,5);
+    cardsToDisplayArray.forEach(card => {
         var id = card.cardId;
         var name = card.cardName;
         var chal = card.cardChallenge;
         var ans = card.cardAnswer;
         var ratings = card.ratings;
+        var sum = 0;
+        ratings.forEach(rating => {
+            sum += rating.rating;
+        });
+
+        var avgRating = sum / ratings.length;
+
         cardsList.append($('<li>')
                 .attr({class: 'list-group-item', id: id})
                 .text(name));
-        ratings.forEach(rating => {
-            ratingsFeed.append($('<li>')
-                    .attr({class: 'list-group-item', id: id + 'rating'})
-                    .text(name + '- ' + rating.rating + '/5'));
-        })
+        ratingsFeed.append($('<li>')
+                .attr({class: 'list-group-item', id: id + 'rating'})
+                .text(name + ' - ' + avgRating + '/5'));
     });
 }
 
@@ -726,17 +736,17 @@ function getAllUserFolders() {
         folderId = folder.folderId;
         folderName = folder.folderName;
         foldersAccordion.append($('<div>')
-            .attr({class: 'card', id: folderId})
-            .append($('<div>')
-                    .attr({class: 'card-header'})
-                    .append($('<a>')
-                            .attr({class: 'card-link', 'data-toggle': 'collapse', href: '#collapseOne'}).text(folderName)))
-            .append($('<div>')
-                    .attr({id: 'collapseOne', class: 'collapse', 'data-parent': '#accordion'})
-                    .append($('<div>')
-                            .attr({id: folderName + '-decks', class: 'card-body'}))));
+                .attr({class: 'card', id: folderId})
+                .append($('<div>')
+                        .attr({class: 'card-header'})
+                        .append($('<a>')
+                                .attr({class: 'card-link', 'data-toggle': 'collapse', href: '#collapseOne'}).text(folderName)))
+                .append($('<div>')
+                        .attr({id: 'collapseOne', class: 'collapse', 'data-parent': '#accordion'})
+                        .append($('<div>')
+                                .attr({id: folderName + '-decks', class: 'card-body'}))));
     });
-    
+
     $('#accordion').append($('<div>')
             .attr({class: 'card', id: 'first-folder'})
             .append($('<div>')
@@ -748,9 +758,9 @@ function getAllUserFolders() {
                     .append($('<div>')
                             .attr({id: 'folder-one-decks', class: 'card-body'}))));
     $('#create-folder-modal').modal('hide');
-    
-    
-    
+
+
+
 }
 
 
@@ -906,8 +916,8 @@ function loadReviewsToArray(reviewArray) {
             });
             //loadDecksToArray(deckArray);
             getAllReviews();
-            
-            
+
+
         },
         error: function () {
             $('#error-messages')
@@ -921,7 +931,8 @@ function loadReviewsToArray(reviewArray) {
 function getAllReviews() {
     var reviewList = $('#deck-reviews');
     reviewList.empty();
-    reviewArray.forEach(review => {
+    reviewsToDisplayArray = reviewArray.slice(0, 6);
+    reviewsToDisplayArray.forEach(review => {
         var reviewId = review.reviewId;
         var deckId = review.deckId;
         var name = review.reviewName;

@@ -9,6 +9,9 @@
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet"> 
         <style>
+            body {
+                background-color: lightblue;
+            }
             #login-div {
                 border-style: solid;
                 border-color: rgba(54,100,139);

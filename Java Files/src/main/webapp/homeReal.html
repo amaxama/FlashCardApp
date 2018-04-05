@@ -13,7 +13,7 @@
             <div class="header">
                 <div class="row">
                     <div class="col-sm-4 header-column">  
-                    	<span id="user-name">Hi, "${userName}!"</span>
+                        <span id="user-name">Hi, "${userName}!"</span>
                     </div>
                     <div class="col-sm-4 header-column">
                         <h1 id="header-title">Flashcard App</h1>
@@ -23,12 +23,12 @@
                         <div class="row" id="header-button-row">
                             <div class="col-sm-12">
                                 <div class="btn-group header-login-button-group" role="group" aria-label="Header buttons for login">
-                                    
 
-                                    <a href= "html/loggedInHome.html" class="btn btn-default" role="button">Log In</a>
-                                    <a href= "html/signUp.html" class="btn btn-default" role="button">Sign Up</a>
-                                    <button id="header-logout-button">Logout</button>
-                                    <button id="header-signup-button">Sign Up</button>
+
+                                    <button class="btn btn-default" role="button"><a href= "html/loggedInHome.html">Log In</a></button>
+                                    <button class="btn btn-default" role="button"><a href= "html/signUp.html">Sign Up</a></button>
+                                    <!--                                    <button id="header-logout-button">Logout</button>
+                                                                        <button id="header-signup-button">Sign Up</button>-->
                                 </div>
                             </div>
                         </div>
@@ -37,21 +37,27 @@
             </div>      
             <div class="main">
                 <div class="box sidebar">
-                    <h2>Sidebar</h2>
-                    <div class="sidebar-content">
-                        <div class="container-fluid">
-                            <h1>FlashCard App</h1>
-                            <hr/>
+                    <center><h2>Personal Library</h2></center>
+                    <div class="container-fluid">
+                        <!--<h1>FlashCard App</h1>-->
+                        <button type='button' onclick=showCards() id='show-all-cards' class='btn btn-primary'>
+                            Show All Cards
+                        </button>
+                        <div id="main-library">
+                            <ul id="cards-list">
 
+                            </ul>
                         </div>
+                        <hr/>
+                    </div>
+                    <div id="accordion">
 
                     </div>
-
-                    <div class="sidebar-buttons">
-                        <button class="icons add-button" type="button"></button>
-                        <button class="icons edit-button" type="button"></button>
-                        <button class="icons trash-button" type="button"></button>
-                    </div>
+                    <!--                    <div class="sidebar-buttons">
+                                            <button class="icons add-button" type="button"></button>
+                                            <button class="icons edit-button" type="button"></button>
+                                            <button class="icons trash-button" type="button"></button>
+                                        </div>-->
                 </div>
                 <div id="main-content" class="box content">
                     <div class="row main-header-group">
@@ -96,10 +102,10 @@
                 </div>
 
 
-                <div class="container box feed">
+                <div class="holder box feed">
                     <div class="row">
                         <div class="col-sm-12 card-section">
-                            <h2>Top Cards</h2>
+                            <h2>Average Card Ratings</h2>
                             <!--                            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                                                             <button type="button" class="btn btn-secondary">Top </button>
                                                             <button type="button" class="btn btn-secondary">Most Recent</button>
@@ -114,7 +120,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12 deck-section">
-                            <h2>Recent Decks</h2>
+                            <h2>Deck Reviews</h2>
                             <!--                            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                                                             <button type="button" class="btn btn-secondary">Top</button>
                                                             <button type="button" class="btn btn-secondary">Most Recent</button>
