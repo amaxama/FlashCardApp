@@ -18,6 +18,7 @@ $(document).ready(function () {
     getCurrentUser();
     loadUserFoldersToArray(folderArray);
     loadCardsToArray(cardArray);
+    loadDecksToArray(deckArray);
     loadReviewsToArray(reviewArray);
     loadCategoriesToArray(catArray);
     // change this method so not relying on bringing card array in
@@ -115,8 +116,9 @@ $(document).ready(function () {
         todoOnClick(i - 1);
     });
 });
-function showCards() {
+function showDecks() {
     $('#cards-list').toggle();
+    $('#decks-list').toggle();
 }
 
 
@@ -615,35 +617,44 @@ function getCategory(categoryId) {
 // =============================================================================
 
 
-function getAllDecks() {
-//    clearDecksList();
-//    CHECK ON ID NAME
-    var decksList = $('#decks-list');
+//Need to be able to get decks 
+
+function loadDecksToArray(deckArray) {
     $.ajax({
         type: 'GET',
         url: 'http://localhost:8080/FlashCardApp/decks',
         success: function (decksArray, status) {
             $.each(decksArray, function (index, deck) {
                 deckArray.push(deck);
-                var id = deck.deckId;
-                var name = deck.deckName;
-                var deck = deck.deckDesc;
-                var cards = deck.cards;
-                var reviews = deck.reviews;
-                var row;
-//                HTML FOR WHAT CARD IS GONNA LOOK LIKE
-
-//                decksList.append(use append, attr, text etc.);
             });
+            getAllDecks();
         },
         error: function () {
-//            CHECK ON ID NAME
             $('#errorMessages')
                     .append($('<li>')
                             .attr({class: 'list-group-item list-group-item-danger'})
                             .text('Error calling web service.  Please try again later.'));
         }
     });
+}
+
+
+function getAllDecks() {
+    var decksList = $('#decks-list');
+    decksList.empty();
+    deckArray.forEach(deck => {
+        var id = deck.deckId;
+        var name = deck.deckName;
+        var deck = deck.deckDesc;
+        var cards = deck.cards;
+        var reviews = deck.reviews;
+        decksList.append($('<li>')
+                .attr({class: 'list-group-item', id: id})
+                .text(name));
+        
+    });
+    decksList.hide();
+  
 }
 
 function getDeck(deckId) {
