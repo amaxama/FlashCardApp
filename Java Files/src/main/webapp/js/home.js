@@ -475,6 +475,15 @@ function showEditCardForm(cardId) {
     $('#edit-card-form-div').show();
 }
 
+function showEditCardModal(cardId) {
+    $('#errorMessages').empty();
+
+    getCard(cardId);
+
+    $('#edit-card-modal').modal('show');
+    
+}
+
 function hideEditCardForm() {
     $('#errorMessages').empty();
 //    $('#______').val('');
@@ -881,13 +890,20 @@ function getAllUserFolders() {
                 cardId = card.cardId;
                 cardName = card.cardName;
                 $('#' + deckId + '-cards').append('<li id="' + cardId + '" class="list-group-item"><span><text>' + cardName +
-                        '</text></span>        <span id="edit-delete-buttons"> <button onclick=showEditCardModal(' + cardId +
-                        ') class="btn ED edit-button"  id="edit-card" style="font-size:14px"></button> <button onclick="deleteCard(' + cardId +
-                        ') class="btn ED trash-button btn-hover-alt" id="delete-card" style="font-size:14px"></button></span></li>');
+                        '</text></span>        <span id="edit-delete-buttons"><span> <button onclick=showEditCardModal(' + cardId +
+                        ') class="btn ED icon edit-button" id="edit-card" style="font-size:10px"></button></span><span> <button onclick=deleteCard(' + cardId +
+                        ') class="btn ED icon trash-button" id="delete-card" style="font-size:10px"></button></span></span></li>');
             });
 
             $('#view-deck-button' + deckId).click(function (event) {
                 studyDeck(deck);
+            });
+            $('.ED').css({'padding': '5px','background-color': 'white','color': 'black','border': 'none'});
+            $('.ED').hover(function (){
+                        // $('span').css({'color':'black'});
+                $(this).css({'background-color': 'black', 'color':'white'});
+                }, function(){
+                $(this).css({"background-color": 'white', 'color':'black'});  
             });
         });
 

@@ -305,9 +305,26 @@ table, th, td {
 
 }
 
+.icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    /*display: block;*/
+    border: none;
+    outline: none;
+    float: right;
+    /*margin: 18px;*/
+
+}
+
+#edit-delete-buttons {
+    float: right;
+}
+
 .add-button {
     background-image: url(../images/plus-circle.png);
-    color: #1C6E8C;
 }
 
 .edit-button {
