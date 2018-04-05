@@ -15,7 +15,10 @@
             <div class="row">
                 <!--<div class="header">-->
 
-                <div class="col-sm-4">	
+                <div class="col-sm-4">
+                    <button type='button' onclick=backButton() id='back-button' class='btn btn-primary'>
+                        Back
+                    </button>
                 </div>
                 <div class="col-sm-4">
                     <h1 id="header-title">Flashcard App</h1>
@@ -57,9 +60,9 @@
                                         <ul id="decks-list">
                                             <!--Add decks dynamically-->
                                         </ul>
-<!--                                        <ul id="cards-list">
-
-                                        </ul>-->
+                                        <!--                                        <ul id="cards-list">
+                                        
+                                                                                </ul>-->
                                     </div>
                                     <hr/>
                                 </div>
@@ -359,7 +362,7 @@
                                         <!--<h2 id="user-bucket-name">User Bucket</h2>-->
                                         <div class="dropdown" id="category-div">
                                             <button id="category-dropdown" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false">
+                                                    aria-expanded="false">
                                                 Category Filter
                                             </button>
                                             <div id="category-dropdown-list" class="dropdown-menu" aria-labelledby="category-dropdown">
@@ -370,7 +373,7 @@
                                     </div>
                                     <div class="row cards-table">
                                         <div class="col-sm-12" id="main-table-div">
-                                        <!--<div class="col-md-12" id="main-table-div">-->
+                                            <!--<div class="col-md-12" id="main-table-div">-->
                                             <table id="main-page-table">
                                                 <tr id="name-row">
                                                     <th>Name</th>
@@ -389,9 +392,9 @@
                             <div class="row" id="card-div">
                                 <div class="col-md-2">
                                     <div class="left-div item">
-                                       <button id="left-button" class="icons left-button" type="button"></button>   
+                                        <button id="left-button" class="icons left-button" type="button"></button>   
                                     </div>
-                                   
+
                                 </div>
                                 <div class="col-md-8">
                                     <div>
@@ -401,18 +404,18 @@
                                     <div id="card-front" class="cards">
                                         <div class="row">
                                             <div id="front-content" class="card-front-side-content">
-<!--                                                <div id="card-front" class="collapse card cta cta--featured" >
-                                                    <div class="card-block">
-                                                        <h3 class="card-title no-margin-top">Card Challenge Side<span class="fa fa-map pull-right"></span></h3>
-                                                    </div>
-                                                    <span class="header-line gradient-color-1"></span>
-                                                    <div class="card-block">
-                                                        <img class="card-img-top" src="http://www.placehold.it/370x200" alt="Card image cap" />
-                                                        <p class="card-text">Card challenge content --------- With supporting text below as a natural lead-in to additional content.</p>
-                                                        <a  class="btn btn-primary" data-toggle="collapse" data-target="#card-back">Go somewhere</a>
-                                                        <button id="toggle-card-button" class="icons rotate-button" data-toggle="card" data-target="#card-back" type="button" class="close" ></button>
-                                                    </div>
-                                                </div>-->
+                                                <!--                                                <div id="card-front" class="collapse card cta cta--featured" >
+                                                                                                    <div class="card-block">
+                                                                                                        <h3 class="card-title no-margin-top">Card Challenge Side<span class="fa fa-map pull-right"></span></h3>
+                                                                                                    </div>
+                                                                                                    <span class="header-line gradient-color-1"></span>
+                                                                                                    <div class="card-block">
+                                                                                                        <img class="card-img-top" src="http://www.placehold.it/370x200" alt="Card image cap" />
+                                                                                                        <p class="card-text">Card challenge content --------- With supporting text below as a natural lead-in to additional content.</p>
+                                                                                                        <a  class="btn btn-primary" data-toggle="collapse" data-target="#card-back">Go somewhere</a>
+                                                                                                        <button id="toggle-card-button" class="icons rotate-button" data-toggle="card" data-target="#card-back" type="button" class="close" ></button>
+                                                                                                    </div>
+                                                                                                </div>-->
                                             </div>
                                         </div>
                                     </div>
@@ -420,19 +423,19 @@
                                         <input type="hidden" id="number-in-deck-back"/>
                                         <div class="row">
                                             <div id="back-content" class="card-back-side-content">
-<!--                                                <div id = "card-back" class="collapse card cta cta--featured " >
-                                                    <div class="card-block">
-                                                        <h3 class="card-title no-margin-top">Card Answer Side<span class="fa fa-map pull-right"></span></h3>
-                                                    </div>
-                                                    <span class="header-line gradient-color-1"></span>
-                                                    <div class="card-block">
-                                                        <img class="card-img-top" src="http://www.placehold.it/370x200" alt="Card image cap" />
-                                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                                                                                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                                                                                                                <a  class="btn btn-primary" data-toggle=collapse data-target="#card-front">Go somewhere</a>
-                                                                                                                <button id="toggle-card-button" class="icons rotate-button" data-toggle="card" data-target="#card-front" type="button" class="close" ></button>
-                                                    </div>
-                                                </div>-->
+                                                <!--                                                <div id = "card-back" class="collapse card cta cta--featured " >
+                                                                                                    <div class="card-block">
+                                                                                                        <h3 class="card-title no-margin-top">Card Answer Side<span class="fa fa-map pull-right"></span></h3>
+                                                                                                    </div>
+                                                                                                    <span class="header-line gradient-color-1"></span>
+                                                                                                    <div class="card-block">
+                                                                                                        <img class="card-img-top" src="http://www.placehold.it/370x200" alt="Card image cap" />
+                                                                                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                                                                                                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                                                                                                                                <a  class="btn btn-primary" data-toggle=collapse data-target="#card-front">Go somewhere</a>
+                                                                                                                                                                <button id="toggle-card-button" class="icons rotate-button" data-toggle="card" data-target="#card-front" type="button" class="close" ></button>
+                                                                                                    </div>
+                                                                                                </div>-->
                                             </div>
                                         </div>
                                     </div>

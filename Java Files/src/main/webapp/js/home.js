@@ -121,6 +121,11 @@ function showDecks() {
     $('#decks-list').toggle();
 }
 
+function backButton() {
+    $('#table-div').show();
+    $('#card-div').hide();
+}
+
 
 function todoOnClick(i) {
 //    $('#card-number').val(i);
