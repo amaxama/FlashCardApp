@@ -145,6 +145,8 @@ function todoOnClick(i) {
                     .attr({class: "card-block"})
                     .append($("<p>")
                             .attr({class: "card-text"}).text(challenge))))
+    $('.card-text').css({'height': '550px', 'text-align': 'center'});
+    $('.card-block').css({'text-align': 'center'});
     $('#back-content').empty();
     $('#back-content').append($('<div>')
             .attr({class: "card cta cta--featured"})
@@ -162,6 +164,8 @@ function todoOnClick(i) {
     console.log($('#front-content').text());
     console.log($('#card-back').text());
     console.log(parseInt($('#card-number').val()));
+    $('.card-text').css({'height': '550px', 'text-align': 'center'});
+    $('.card-block').css({'text-align': 'center'});
 }
 
 function findItemById(array, id, idValue) {
@@ -332,7 +336,7 @@ function displayCardRatings() {
     var ratingsFeed = $('#card-ratings');
     cardsList.empty();
     ratingsFeed.empty();
-    cardsToDisplayArray = cardArray.slice(0,5);
+    cardsToDisplayArray = cardArray.slice(0, 5);
     cardsToDisplayArray.forEach(card => {
         var id = card.cardId;
         var name = card.cardName;
@@ -486,16 +490,16 @@ function loadCategoriesToArray(catArray) {
             $.each(categoryArray, function (index, category) {
                 catArray.push(category);
                 $('#category-dropdown-list')
-                    .append($('<button>')
-                        .attr({ class: 'dropdown-item', type: 'button', onclick: 'filterDisplayByCategory(' + category.categoryId + ')' })
-                        .text(category.categoryName));
+                        .append($('<button>')
+                                .attr({class: 'dropdown-item', type: 'button', onclick: 'filterDisplayByCategory(' + category.categoryId + ')'})
+                                .text(category.categoryName));
             });
         },
         error: function () {
             $('#error-messages')
-                .append($('<li>')
-                    .attr({ class: 'list-group-item list-group-item-danger' })
-                    .text('Error calling web service.  Please try again later.'));
+                    .append($('<li>')
+                            .attr({class: 'list-group-item list-group-item-danger'})
+                            .text('Error calling web service.  Please try again later.'));
         }
     });
 }
@@ -505,11 +509,11 @@ function loadDisplayByCategory() {
     var displayByCategory = $('#displayByCategory');
     cardArray.forEach(card => {
         displayByCategory
-            .append($('<tr>')
-                .append($('<td>')
-                    .text(card.cardName))
-                .append($('<td>')
-                    .text(card.cardChallenge)))
+                .append($('<tr>')
+                        .append($('<td>')
+                                .text(card.cardName))
+                        .append($('<td>')
+                                .text(card.cardChallenge)))
     });
 }
 
@@ -525,11 +529,11 @@ function filterDisplayByCategory(categoryId) {
                 var cards = category.cards;
                 cards.forEach(card => {
                     displayByCategory
-                        .append($('<tr>')
-                            .append($('<td>')
-                                .text(card.cardName))
-                            .append($('<td>')
-                                .text(card.cardChallenge)))
+                            .append($('<tr>')
+                                    .append($('<td>')
+                                            .text(card.cardName))
+                                    .append($('<td>')
+                                            .text(card.cardChallenge)))
                 })
             }
         });
@@ -784,6 +788,7 @@ function studyDeck(deck) {
                     .attr({class: "card-block"})
                     .append($("<p>")
                             .attr({class: "card-text"}).text(challenge))));
+
     $('#back-content').append($('<div>')
             .attr({class: "card cta cta--featured"})
             .append($('<div>')
@@ -797,6 +802,9 @@ function studyDeck(deck) {
                     .attr({class: "card-block"})
                     .append($("<p>")
                             .attr({class: "card-text"}).text(answer))));
+
+    $('.card-text').css({'height': '550px', 'text-align': 'center'});
+    $('.card-block').css({'text-align': 'center'});
 }
 
 
@@ -877,7 +885,7 @@ function getFolder(folderId) {
 }
 
 function createFolder() {
-    id= $('#current-user-id').val();
+    id = $('#current-user-id').val();
     $.ajax({
         type: 'POST',
         url: 'http://localhost:8080/FlashCardApp/folder/user/' + id,
