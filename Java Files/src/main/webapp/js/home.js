@@ -26,7 +26,7 @@ $(document).ready(function () {
 
     $('#create-folder-button').click(function (event) {
         console.log("buttonclicked");
-        addFolder();
+        createFolder();
     });
     $('#create-deck-button').click(function (event) {
         console.log("buttonclicked");
@@ -885,7 +885,9 @@ function getFolder(folderId) {
 }
 
 function createFolder() {
-    id = $('#current-user-id').val();
+
+    id= $('#current-user-id').val();
+    console.log("create folder");
     $.ajax({
         type: 'POST',
         url: 'http://localhost:8080/FlashCardApp/folder/user/' + id,
@@ -898,9 +900,10 @@ function createFolder() {
             'Content-Type': 'application/json'
         },
         'dataType': 'json',
-        success: function (data, status) {
+        success: function (folder, status) {
             $('#errorMessages').empty();
             $('#add-folder-name').val('');
+            folderArray.push(folder);
             getAllUserFolders();
         },
         error: function () {
